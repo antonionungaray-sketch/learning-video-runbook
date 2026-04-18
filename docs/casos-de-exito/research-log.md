@@ -349,3 +349,150 @@ Entries 16-25 añadidas (10 nuevas). Meta de Sesión 2 alcanzada y superada:
 
 Pendientes Sesión 3: 2-3 fichas divulgación adicionales (Kurzgesagt, Steve Mould anglo / DotCSV o QuantumFracture hispano); arranque de onboarding corporativo (Platzi, LinkedIn Learning, reportes LMS).
 
+
+## Sesión 3 — 2026-04-18
+
+### 2026-04-18 — Kurzgesagt "This Is the Scariest Place in The Universe" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=yDAAlojz8NU (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: Kurzgesagt / divulgación científica animada (equipo, no persona)
+- Claim extraído: Hook "escala inhumana → consecuencias". "The vast majority of the cosmos is voids. Gigantic, unfathomably large spaces of empty nothingness. Bubbles of eternal night stretching hundreds of millions of light years..." NO presenta al creador (no hay creador visible). Entra por la magnitud, no por la promesa de aprender.
+- Evidencia: 9:13 duración, 6,375,377 views, 235,810 likes, upload 2026-03-10. WPM medido: **146.9** (1354 palabras). Cierre: plug del shop propio ("space souvenirs drop... created with lots of care by our team of scientists and designers").
+- Sobrevive filtro pilar-1: sí — apertura con escala conecta con principio de personalización (§2.3 #10) via 2ª persona implícita ("travelling with us") y genera curiosity gap sin saturar.
+- Destino: ficha Kurzgesagt (creación); pilar 02 Idea→Guión / Patrones (hook "escala cósmica" como variante).
+- Notas: WPM 147 es el más bajo del atlas hasta ahora. Confirma hipótesis "canal visual denso → WPM bajo permite procesamiento". Animación Kurzgesagt carga información visual suficiente para justificar la pausa oral.
+
+### 2026-04-18 — Kurzgesagt "Why Are There No Holes Around Trees?" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=pHJIhxZEoxg (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: Kurzgesagt / divulgación científica
+- Claim extraído: Hook "dato colosal → paradoja aparente → pregunta del título". "Trees are the heaviest and largest living things on Earth... But instead of floating weightlessly... held in place by surprisingly shallow roots. You'd think trees grow from the ground because, well, they're made of stuff and there's stuff in the ground. But if something so massive and huge ate something down below, it would have to leave holes."
+- Evidencia: 11:20 duración, 3,951,065 views, 162,501 likes, upload 2026-01-07. WPM medido: **164.6** (1866 palabras). Cierre: **45s pitch Brilliant** ("To explore everything Brilliant has to offer for free for a full 30 days, go to brilliant.org/nutshell... 20% off an annual premium subscription").
+- Sobrevive filtro pilar-1: sí — formato "dato concreto → paradoja" activa curiosity gap (§6.1) y modelo mental previo (§6.2 de forma débil, con pregunta explícita que impone estructuramiento activo).
+- Destino: ficha Kurzgesagt (segunda variante hook); pilar 02 Publicación (Brilliant como sponsor transversal divulgación — 3er caso observado después de Veritasium y QuantumFracture).
+- Notas: Patrón sponsor Brilliant en 3 de 5 canales de divulgación (Veritasium, Kurzgesagt, QuantumFracture). Suficiente para declarar patrón.
+
+### 2026-04-18 — DotCSV "Camino a las IAs con RAZONAMIENTO SOBREHUMANO" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=jPmrIh8uLzw (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: DotCSV / divulgación IA hispana
+- Claim extraído: Hook "re-anclaje serial + setup editorial". "Hace una semana OpenAI dio inicio a la segunda fase de su hoja de ruta tras conquistar con los modelos GPT la capacidad de que una máquina domine el uso del lenguaje." Anclaje temporal + continuidad con videos previos + setup del análisis.
+- Evidencia: 22:57 duración, 289,227 views, 15,589 likes, upload 2024-09-29. WPM medido: **176.3** (4045 palabras). CTA explícito "si os ha gustado el vídeo, no dejéis de compartirlo, no dejéis de apoyarlo, dejad vuestro me gusta y vuestros comentarios con vuestras opiniones..." + cross-plug a DotCSV Lab.
+- Sobrevive filtro pilar-1: sí — re-anclaje serial equivale a prior-knowledge activation (§2.3 #9 pre-training) para audiencia recurrente.
+- Destino: ficha DotCSV (creación); pilar 02 Idea→Guión (hook "re-anclaje serial" para creators con audiencia recurrente); pilar 02 Publicación (CTA explícito como matiz cultural hispano — flaggear).
+- Notas: DotCSV es el único del atlas con CTA explícito completo. Contradice el patrón "anti-suscríbete" de los demás 9 creators. Flag importante: no es anti-patrón universal.
+
+### 2026-04-18 — DotCSV "¡EMPIEZA A USAR la IA GRATIS en tu PC!" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=Ye7cERMKZDY (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: DotCSV / divulgación IA hispana
+- Claim extraído: Hook "referencia explícita a video previo + pivot al actual". "Hace unos meses estuvimos hablando del papel privilegiado que tiene NVIDIA dentro de la batalla... en aquel vídeo, si recordáis, pues nos centramos más en entender la parte de la nube..." Asume viewer serial o lo invita a verificar.
+- Evidencia: 27:59 duración, 367,382 views, 16,516 likes, upload 2024-08-04. WPM medido: **182.3** (5100 palabras).
+- Sobrevive filtro pilar-1: sí.
+- Destino: ficha DotCSV (segunda variante del hook).
+- Notas: Refuerza patrón "DotCSV asume audiencia serial". 2 de 2 videos observados usan re-anclaje temporal. Es consistente, no accidente.
+
+### 2026-04-18 — QuantumFracture "¿El Espacio es una Ilusión?" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=fGVSY0ZRGts (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: QuantumFracture (José Luis Crespo) / divulgación física hispana
+- Claim extraído: Hook "alegoría literaria" — reescritura de la alegoría de la caverna de Platón como entrada al principio holográfico. "Estás en una cueva de cara a una pared. Llevas allí desde que naciste, atado de tal forma que no puedes girar el cuello. Detrás de ti hay una hoguera..." 30s sin mencionar física.
+- Evidencia: 25:38 duración, 463,877 views, 22,850 likes, upload 2025-12-23. WPM medido: **167.7** (4299 palabras). Cierre: plantilla "si quieres más ciencia, solo tienes que suscribirte" + cross-plug a podcast Quantum FM + Brilliant sponsor.
+- Sobrevive filtro pilar-1: sí — hook narrativo absorbente genera emoción antes de carga cognitiva (§3.4 + §1.1 bottom-up).
+- Destino: ficha QuantumFracture (creación); pilar 02 Idea→Guión (hook "alegoría literaria" como variante para temas abstractos).
+- Notas: Hook muy distintivo. Requiere capacidad literaria genuina — no replicable mecánicamente.
+
+### 2026-04-18 — QuantumFracture "¿Por qué Queremos Volver a la Luna?" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=U4EMQIN6Yoo (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: QuantumFracture / divulgación física hispana
+- Claim extraído: Hook directo + humor auto-consciente. "Volvemos a la Luna. Hacía más de 50 años que no enviábamos una misión tripulada, pero eso ya es historia." + break "Soy un friky que sube vídeos a internet." El humor sirve para desacralizar la posición del divulgador.
+- Evidencia: 11:47 duración, 1,229,845 views, 61,755 likes, upload 2026-04-01. WPM medido: **169.5** (1997 palabras). Cierre plantilla suscribirse.
+- Sobrevive filtro pilar-1: sí — self-deprecación es instanciación de principio de personalización (§2.3 #10).
+- Destino: ficha QuantumFracture (segunda variante hook); pilar 02 Idea→Guión (humor auto-consciente como recurso de warmth).
+- Notas: Contrasta deliberadamente con hook 1 del mismo creator (alegoría). Crespo maneja dos registros según el tema — abstracto=alegórico, concreto=directo+humor.
+
+### 2026-04-18 — Corporate training video stats (literature review 2024-2025)
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://elearningindustry.com/microlearning-statistics-facts-and-trends + https://research.com/education/video-training-statistics + https://www.continu.com/research/corporate-elearning-statistics (WebSearch consolidado)
+- Tipo: análisis industria
+- Creator/nicho asociado: n/a — framework transversal onboarding
+- Claim extraído: (1) Microlearning courses ~80% completion vs ~20% long-form. (2) Non-interactive training video completion dropped a 60% en 2024. (3) Gamified experiences → 90% vs 25% non-gamified. (4) 58% de empleados engage más con segmentos cortos. (5) 72% de grandes empresas asignan ≥20% de contenido a bite-sized modules.
+- Evidencia: Múltiples fuentes secundarias reputadas (eLearning Industry, Research.com, Continu) convergen en rangos similares.
+- Sobrevive filtro pilar-1: sí — microlearning compatible con Guo et al. 2014 §pilar 1 §2.4 (ceiling ~6 min; 5-10 min acepta extensión profesional). Gamification encaja con §3.4 (motivación externa como ayuda, no sustituto).
+- Destino: ficha `onboarding-corporativo.md` §Patrones transversales microlearning; pilar 02 Publicación (métricas de completion rate como benchmark para onboarding).
+- Notas: Data secundaria múltiple — cada claim está en ≥2 fuentes independientes. Flag para futura revisión: la afirmación "95% recall video vs 10% text" aparece recurrentemente pero sus fuentes primarias son débiles; tratar con cautela hasta triangular paper original.
+
+### 2026-04-18 — LinkedIn Learning — política completion 70%
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.linkedin.com/help/learning/answer/a700839 (Help oficial) + https://www.linkedin.com/help/linkedin/answer/a700781
+- Tipo: plataforma (documentación oficial)
+- Creator/nicho asociado: LinkedIn Learning / onboarding corporativo
+- Claim extraído: LinkedIn Learning marca un video como "Complete" cuando se alcanza el 70% de reproducción. Esta es política platform-level, no heurística industry.
+- Evidencia: Documentación oficial verificable.
+- Sobrevive filtro pilar-1: n/a (es política, no claim cognitivo).
+- Destino: ficha `onboarding-corporativo.md`; pilar 02 Publicación / Métricas (definición operativa de "completion" varía por plataforma — no comparable 1:1 con YouTube APV).
+- Notas: Dato importante para evitar falsas comparaciones. "Completion rate 80%" de un LMS no significa lo mismo que "APV 80%" de YouTube.
+
+### 2026-04-18 — Articulate Storyline — penetración enterprise
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.articulate.com/resources/case-studies/ + research consolidado (WebSearch)
+- Tipo: análisis industria (con data from Articulate)
+- Creator/nicho asociado: Articulate Storyline / onboarding corporativo
+- Claim extraído: 40%+ de Fortune 500 usan Articulate Storyline para training. Articulate 360 ayudó a 71% de clientes a reducir costos de training. Principio del producto: transformar video pasivo en "decision-driven exploration" (branching scenarios, pause-choose-alternative scenes, dynamic feedback).
+- Evidencia: Citation del vendor (Articulate); cifras también citadas por analistas secundarios (CommLab India, eLearning Industry).
+- Sobrevive filtro pilar-1: sí — branching scenarios encajan con §7 (story + consequences) y §6.3 (retrieval practice activa antes de recibir explicación).
+- Destino: ficha `onboarding-corporativo.md`; pilar 02 Edición (formato interactivo como alternativa al video lineal para temas compliance/policy).
+- Notas: Claim de "40% Fortune 500" viene del vendor — tratarlo como orden de magnitud, no precisión. Suficiente para decir "penetración enterprise alta" con confianza.
+
+### 2026-04-18 — Mike Meyers / Total Seminars — formato certification instructor
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.udemy.com/user/mike-meyers/ + https://totalsem.com + reviews IT Support Group 2025
+- Tipo: observación (reviews múltiples) + plataforma (perfiles oficiales)
+- Creator/nicho asociado: Mike Meyers / onboarding corporativo (nicho certificación IT)
+- Claim extraído: Arquetipo "instructor-certificación" — curso estructurado alrededor del syllabus oficial de la certificación (CompTIA A+, Security+, Network+), 5-15 min por módulo, formato instructor face-cam + diagrams + screen recordings + demos hardware real. Bestseller en Udemy con 250K+ estudiantes acumulados.
+- Evidencia: Reviews consistentes reportan "easy-going, approachable, funny teaching style"; estructura del curso refleja syllabus oficial CompTIA.
+- Sobrevive filtro pilar-1: sí — 5-15 min por módulo compatible con Guo et al. 2014 §pilar 1 §2.4; humor integrado refuerza warmth (§2.3 #10).
+- Destino: ficha `onboarding-corporativo.md` (Mike Meyers / Total Seminars).
+- Notas: Contraste útil con YouTube — Mike Meyers en YouTube tiene ~800K subs (canal Total Seminars), pero su modelo principal es Udemy (audiencia captiva paga). El patrón "syllabus oficial = outline maestro" es transferible a cualquier curso de certificación (ISO, SOC2, ITIL, etc.).
+
+### 2026-04-18 — Plataformas hispanas Platzi + Crehana — data pública
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://contxto.com/en/startups/review-education-meets-tech-with-platzi-and-crehana/ + https://pitchbook.com/profiles/company/108801-19 (Platzi) + https://pitchbook.com/profiles/company/101395-27 (Crehana) + https://www.crunchbase.com/organization/mejorandola (Platzi)
+- Tipo: análisis + plataforma
+- Creator/nicho asociado: Platzi + Crehana / onboarding corporativo hispano
+- Claim extraído: Platzi ~5M+ estudiantes, ~1K+ cursos, ancla técnica (programación, data, negocio digital). Crehana con pivot B2B post-adquisición EQT 2022, suites "learning + performance + engagement". Ambas plataformas usan formato "face-cam instructor + slides técnicos + live coding cuando aplica", clases 5-15 min dentro de cursos seriales de 60-120 clases.
+- Evidencia: Data oficial + Contxto review + PitchBook profiles.
+- Sobrevive filtro pilar-1: sí.
+- Destino: ficha `onboarding-corporativo.md` (Platzi + Crehana).
+- Notas: Data pública sobre completion rates de estas plataformas NO está disponible (protegida como commercial). Claim "5-15 min clase" viene de observación de cursos públicos. Pendiente: observación directa de 1 clase Platzi + 1 Crehana para medir WPM con la misma metodología.
+
+### Cierre Sesión 3
+
+Entries 26-36 añadidas (11 nuevas). Meta de Sesión 3 alcanzada:
+- 3 fichas nuevas divulgación (Kurzgesagt, DotCSV, QuantumFracture) — total nicho: 5.
+- Arranque onboarding corporativo con 3 fichas/clusters (Mike Meyers arquetipo, Platzi+Crehana plataformas, patrones microlearning transversales) en archivo nuevo `onboarding-corporativo.md`.
+- Research log acumula 36 entries con trazabilidad completa.
+- Patrones emergentes para Sesión 4 (consolidación en pilar 02): 7 patrones transversales divulgación + 5 patrones onboarding + 4 patrones tutorial técnico = ~16 patrones candidatos para el pilar.
+
+Pendientes Sesión 4: reescribir `docs/pilares/02-tendencias-y-casos.md` usando el research log completo. Sustituir todas las secciones `(Pendiente)` por casos concretos citando fichas. Actualizar tabla Frescura.
+
+Pendientes Sesión 5: revisión cruzada fichas ↔ pilar 02 ↔ research log.
+
