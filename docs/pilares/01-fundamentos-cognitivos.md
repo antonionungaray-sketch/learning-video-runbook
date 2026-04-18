@@ -10,7 +10,7 @@ Referencia conceptual sobre cómo el cerebro humano percibe, atiende y aprende a
 
 ## 1. Arquitectura de la atención
 
-### 1.1 Sistemas y redes atencionales
+### 1.1 Sistemas y redes atencionales [P1-§1.1]
 
 La atención no es un recurso único. Posner & Petersen (1990; revisión en Petersen & Posner 2012) describen tres redes funcionalmente distintas:
 
@@ -25,7 +25,7 @@ Sobre esa arquitectura, Corbetta & Shulman (2002) distinguen dos modos de contro
 
 **Implicación de diseño.** El contenido debe primero enganchar al sistema bottom-up con un estímulo saliente, y luego ceder el control al sistema top-down para el procesamiento profundo. Si el contenido se queda en estímulos salientes (ruido visual continuo) impide el procesamiento profundo. Si nunca activa el bottom-up, no captura la atención inicial.
 
-### 1.2 La duración del foco: dato real y mito
+### 1.2 La duración del foco: dato real y mito [P1-§1.2]
 
 Es frecuente leer que "la atención humana ha caído a 8 segundos, menos que la de un pez dorado". Es **falso**. El dato del pez no existe en ninguna fuente verificable y la idea de un colapso atencional generalizado no tiene respaldo empírico.
 
@@ -33,7 +33,7 @@ El dato real proviene del trabajo de Gloria Mark (UC Irvine, 2004-2023). Mark mi
 
 **Implicación de diseño.** El aprendiz puede sostener atención voluntaria mucho más tiempo que 47 segundos cuando el contenido lo recompensa. Pero opera por defecto en un entorno de cambio frecuente, así que el contenido compite con todo lo demás abierto en la misma pantalla.
 
-### 1.3 Anticipación, recompensa y motivación de continuar
+### 1.3 Anticipación, recompensa y motivación de continuar [P1-§1.3]
 
 El sistema dopaminérgico mesolímbico no codifica "placer" sino **error de predicción de recompensa** (Schultz, 1997, *Science*; Schultz, Dayan & Montague, 1997). La dopamina se libera cuando una recompensa esperada llega antes o es mayor de lo previsto, y se inhibe cuando una recompensa esperada no llega.
 
@@ -45,7 +45,7 @@ Aplicado a contenido formativo: cuando el título o el hook prometen una soluci�
 
 ## 2. Carga cognitiva y diseño multimedia
 
-### 2.1 Teoría de la Carga Cognitiva (CLT)
+### 2.1 Teoría de la Carga Cognitiva (CLT) [P1-§2.1]
 
 Sweller (1988, *Cognitive Science*) y Sweller, van Merriënboer & Paas (1998) postulan que la memoria de trabajo es severamente limitada (~4 elementos simultáneos en estimaciones modernas; Cowan 2001), mientras que la memoria de largo plazo es prácticamente ilimitada. El aprendizaje ocurre cuando la información se transfiere de la memoria de trabajo a esquemas en la memoria de largo plazo.
 
@@ -55,30 +55,30 @@ Tres tipos de carga compiten por la memoria de trabajo:
 - **Carga extraña** — distracciones, redundancias, presentación deficiente. Es la que el diseño puede y debe minimizar.
 - **Carga germana** — esfuerzo productivo dedicado a construir esquemas. Es lo que se quiere maximizar dentro del presupuesto disponible.
 
-### 2.2 Codificación dual
+### 2.2 Codificación dual [P1-§2.2]
 
 Paivio (1971, 1986) propone que el cerebro procesa información verbal y visual en dos canales diferenciados pero conectados. Información codificada en ambos canales se recuerda mejor que información codificada en uno solo.
 
 Esta es la base teórica de por qué texto + imagen relevante supera a texto solo (o imagen sola) para aprendizaje, siempre que ambos canales presenten contenido complementario, no redundante.
 
-### 2.3 Los 12 principios de Mayer
+### 2.3 Los 12 principios de Mayer [P1-§2.3]
 
 Mayer (2009, *Multimedia Learning*, Cambridge UP; revisado en Mayer 2014) integra CLT y codificación dual en doce principios derivados de ~100 experimentos. Versión sintética:
 
-1. **Coherencia** — eliminar palabras, imágenes y sonidos irrelevantes.
-2. **Señalización** — destacar información esencial con flechas, contornos, énfasis tipográfico.
-3. **Redundancia** — texto en pantalla idéntico a la narración degrada el aprendizaje (compite por el canal verbal).
-4. **Contigüidad espacial** — texto e imagen relacionados deben estar visualmente cerca.
-5. **Contigüidad temporal** — narración y animación correspondientes deben presentarse simultáneamente.
-6. **Segmentación** — dividir el contenido en unidades manejables, idealmente con control del usuario sobre el avance.
-7. **Pre-entrenamiento** — introducir nombres y características de componentes clave antes del flujo principal.
-8. **Modalidad** — texto narrado supera a texto en pantalla cuando acompaña a un gráfico (libera el canal visual).
-9. **Multimedia** — palabras + imágenes superan a palabras solas.
-10. **Personalización** — lenguaje conversacional ("tú", "nosotros") supera al lenguaje formal.
-11. **Voz** — voz humana cálida supera a voz sintética genérica para aprendizaje (la brecha se ha estrechado con TTS modernos; ver §5.4).
-12. **Imagen del instructor** — la presencia visual del instructor en pantalla puede ayudar o estorbar; depende de si compite con el contenido.
+1. **Coherencia** — eliminar palabras, imágenes y sonidos irrelevantes. [P1-§2.3-#1]
+2. **Señalización** — destacar información esencial con flechas, contornos, énfasis tipográfico. [P1-§2.3-#2]
+3. **Redundancia** — texto en pantalla idéntico a la narración degrada el aprendizaje (compite por el canal verbal). [P1-§2.3-#3]
+4. **Contigüidad espacial** — texto e imagen relacionados deben estar visualmente cerca. [P1-§2.3-#4]
+5. **Contigüidad temporal** — narración y animación correspondientes deben presentarse simultáneamente. [P1-§2.3-#5]
+6. **Segmentación** — dividir el contenido en unidades manejables, idealmente con control del usuario sobre el avance. [P1-§2.3-#6]
+7. **Pre-entrenamiento** — introducir nombres y características de componentes clave antes del flujo principal. [P1-§2.3-#7]
+8. **Modalidad** — texto narrado supera a texto en pantalla cuando acompaña a un gráfico (libera el canal visual). [P1-§2.3-#8]
+9. **Multimedia** — palabras + imágenes superan a palabras solas. [P1-§2.3-#9]
+10. **Personalización** — lenguaje conversacional ("tú", "nosotros") supera al lenguaje formal. [P1-§2.3-#10]
+11. **Voz** — voz humana cálida supera a voz sintética genérica para aprendizaje (la brecha se ha estrechado con TTS modernos; ver §5.4). [P1-§2.3-#11]
+12. **Imagen del instructor** — la presencia visual del instructor en pantalla puede ayudar o estorbar; depende de si compite con el contenido. [P1-§2.3-#12]
 
-### 2.4 Segmentación: cuánto dura una unidad útil
+### 2.4 Segmentación: cuánto dura una unidad útil [P1-§2.4]
 
 Guo, Kim & Rubin (2014) analizaron 6.9 millones de sesiones de video en cuatro cursos masivos de edX. El engagement promedio cayó marcadamente pasados los **6 minutos**, con una mediana de tiempo de visualización entre 3 y 6 minutos según la duración total. Videos más largos no aumentaron el aprendizaje proporcionalmente.
 
@@ -90,7 +90,7 @@ Guo, Kim & Rubin (2014) analizaron 6.9 millones de sesiones de video en cuatro c
 
 > Esta sección requiere especial cuidado porque la "psicología del color" comercial mezcla hallazgos modestos con afirmaciones pseudocientíficas. La cromoterapia (la idea de que colores específicos estimulan glándulas y curan condiciones) **no tiene base mecánica en neurociencia** y se omite aquí.
 
-### 3.1 Color: efectos modestos y context-dependent
+### 3.1 Color: efectos modestos y context-dependent [P1-§3.1]
 
 Elliot & Maier (2014) revisan el estado de la investigación en color y comportamiento. Conclusión: existen efectos reales de ciertos colores sobre desempeño y emoción, pero son **modestos, dependen del contexto** y muchas veces dependen de la asociación cultural más que de propiedades físicas universales.
 
@@ -104,7 +104,7 @@ Generalizaciones operativas razonables (con esa cautela):
 
 La regla **60/30/10** (un dominante, un secundario, un acento) es una **convención de diseño** popularizada en interiorismo y trasladada a interfaces. No proviene de un estudio empírico sobre aprendizaje. Funciona como heurística para evitar paletas caóticas, no como prescripción científica.
 
-### 3.2 Contraste: estándares objetivos
+### 3.2 Contraste: estándares objetivos [P1-§3.2]
 
 Hay un único marco de referencia objetivo y útil: **WCAG 2.2 (W3C 2023)**, criterio 1.4.3 *Contrast (Minimum)*:
 
@@ -114,7 +114,7 @@ Hay un único marco de referencia objetivo y útil: **WCAG 2.2 (W3C 2023)**, cri
 
 El nivel AAA pide 7:1 / 4.5:1 respectivamente, pero sacrificar legibilidad de cuerpo extenso por contraste extremo puede aumentar la fatiga visual. **Amarillo sobre negro** alcanza ratios cercanos a 19:1 (depende del tono exacto) y es excelente para señalización puntual; usado como cuerpo de texto extenso es agotador.
 
-### 3.3 Forma: una observación específica, no una doctrina
+### 3.3 Forma: una observación específica, no una doctrina [P1-§3.3]
 
 Bar & Neta (2006, *Psychological Science*) reportan que sujetos prefieren objetos con contornos curvos sobre objetos visualmente equivalentes con vértices agudos, y muestran mayor activación de la amígdala frente a los segundos. La interpretación es que los ángulos agudos, evolutivamente, indicaban amenaza potencial.
 
@@ -126,23 +126,23 @@ Este hallazgo es real y replicado en algunos contextos, pero **no autoriza** las
 
 ## 4. Movimiento y guía de la atención visual
 
-### 4.1 Movimiento como activador bottom-up
+### 4.1 Movimiento como activador bottom-up [P1-§4.1]
 
 El sistema visual humano detecta movimiento con prioridad evolutiva, especialmente en la periferia (Franconeri & Simons, 2003, *Perception & Psychophysics*). Un cambio inesperado en una zona estática captura la atención bottom-up de forma involuntaria, incluso cuando el aprendiz intenta mantener foco en otro lugar.
 
 **Implicación de diseño.** Movimiento estratégico y escaso re-enfoca al aprendiz; movimiento continuo (animaciones decorativas perpetuas) lo agota y compite con el contenido sustantivo (viola el principio de coherencia de Mayer).
 
-### 4.2 Guía de mirada (gaze guidance)
+### 4.2 Guía de mirada (gaze guidance) [P1-§4.2]
 
 van Gog, Jarodzka, Scheiter, Gerjets & Paas (2009) demostraron en estudios de eye-tracking que cuando el aprendiz observa a un instructor experto y la mirada del instructor se dirige hacia el punto explicado, el aprendiz tiende a fijar el mismo punto antes y por más tiempo. Este fenómeno de **atención conjunta mediada por mirada** se traslada a video instruccional: cuando el rostro del instructor en pantalla mira hacia el contenido —no a cámara— mejora la transferencia visual al elemento relevante.
 
-### 4.3 Direccionalidad de lectura
+### 4.3 Direccionalidad de lectura [P1-§4.3]
 
 En culturas con sistemas de escritura izquierda-a-derecha existe un sesgo bien documentado para esperar progresión temporal y causal en esa misma dirección (Chatterjee 2002; Maass & Russo 2003). En culturas con escritura derecha-a-izquierda (árabe, hebreo) el sesgo es opuesto.
 
 **Implicación.** Diagramas de flujo, líneas de tiempo y secuencias causales deben respetar la direccionalidad esperada por la audiencia. Romper este sesgo deliberadamente puede usarse para sorpresa, pero introduce una pequeña carga extraña.
 
-### 4.4 La frecuencia de cortes: heurística, no ley
+### 4.4 La frecuencia de cortes: heurística, no ley [P1-§4.4]
 
 Es habitual leer recomendaciones del tipo "haz un corte o cambio visual cada 15-30 segundos para evitar el zombie-scrolling". Esto es **heurística de creadores** —especialmente popularizada en YouTube y formatos cortos— no un hallazgo experimental. La evidencia disponible sobre engagement (Guo et al. 2014) opera a escala de minutos, no de segundos, y depende fuertemente del contenido y la audiencia.
 
@@ -152,19 +152,19 @@ Lo defendible: **la habituación visual es real**. Una toma estática prolongada
 
 ## 5. Lenguaje, tipografía y voz
 
-### 5.1 Tipografía para pantalla
+### 5.1 Tipografía para pantalla [P1-§5.1]
 
 El consenso en legibilidad digital favorece **fuentes sans-serif** para cuerpo en pantallas de baja densidad de píxeles, y serif o sans-serif indistintamente en pantallas de alta densidad y para texto extenso (Beier 2016, *Reading Letters*). La diferencia objetiva es pequeña; la elección importa más para coherencia visual y carga de marca que para legibilidad.
 
-### 5.2 Subtítulos y velocidad de lectura
+### 5.2 Subtítulos y velocidad de lectura [P1-§5.2]
 
 Los estándares de la industria fijan la velocidad sostenible de subtítulos en **15-20 caracteres por segundo (CPS)** (BBC Subtitle Guidelines; Netflix Timed Text Style Guide). Velocidades superiores degradan comprensión, especialmente en audiencias no nativas. La regla práctica complementaria es **2 líneas máximo, ~37-42 caracteres por línea**, exhibidas mínimo ~1 segundo y máximo ~7 segundos.
 
-### 5.3 Posición de subtítulos y lower thirds
+### 5.3 Posición de subtítulos y lower thirds [P1-§5.3]
 
 La convención de ubicar subtítulos en el tercio inferior de la pantalla proviene de la práctica televisiva (broadcast), no de un estudio cognitivo específico. Tiene base en que el centro vertical típicamente contiene el sujeto principal de la toma, y la periferia inferior es lo suficientemente cercana al centro para lectura sin sacudir la fijación, pero sin ocluir lo importante. Es **convención sólida**, no ley empírica.
 
-### 5.4 Voz y personalización
+### 5.4 Voz y personalización [P1-§5.4]
 
 El **principio de voz** de Mayer (#11) reportaba que voz humana cálida supera a voz sintética para aprendizaje. Estudios más recientes con TTS de alta calidad muestran que la brecha se ha estrechado considerablemente (Davis, Vincent & Park 2019; Craig & Schroeder 2017): lo que importa es la naturalidad prosódica y la ausencia de artefactos, más que el origen humano vs sintético per se.
 
@@ -174,7 +174,7 @@ El **principio de personalización** (#10) sí mantiene un efecto robusto: lengu
 
 ## 6. Estructura narrativa y motivación
 
-### 6.1 Confusión productiva y cambio conceptual
+### 6.1 Confusión productiva y cambio conceptual [P1-§6.1]
 
 Muller, Bewes, Sharma & Reimann (2008, *Journal of Computer Assisted Learning*) compararon dos formatos de video instruccional en física: una versión clara que explicaba directamente el concepto correcto, y una versión que presentaba primero las concepciones erróneas comunes y las desafiaba. Resultado: la versión que abordaba los misconceptions produjo mayor ganancia de aprendizaje en post-test, **a pesar de** ser percibida como más confusa por los participantes.
 
@@ -182,7 +182,7 @@ El hallazgo concuerda con la **teoría del cambio conceptual** (Posner, Strike, 
 
 **Atención al matiz.** El estudio de Muller no demuestra que "presentar errores duplica la retención" (afirmación que circula en literatura divulgativa). Demuestra una mejora significativa en condiciones específicas. La magnitud depende del tipo de contenido y de la audiencia.
 
-### 6.2 El efecto Zeigarnik y los bucles abiertos
+### 6.2 El efecto Zeigarnik y los bucles abiertos [P1-§6.2]
 
 Zeigarnik (1927) reportó que sujetos recordaban mejor tareas interrumpidas que tareas completadas. El efecto ha sido replicado y matizado a lo largo de décadas (revisión en Schiffman & Greist-Bousquet 1992): no es universal, depende de la motivación inicial por la tarea y de si el sujeto espera retomarla.
 
@@ -190,7 +190,7 @@ La traslación a video —"plantea una pregunta y resuélvela 30 segundos despu�
 
 **Síntesis aplicable.** Estructurar el contenido con tensión narrativa (curiosidad → desarrollo → resolución), abrir bucles que se cierran más tarde, y mantener al aprendiz en estado de "estoy a punto de saber algo" funciona —no por una sola ley psicológica sino por la convergencia de varios mecanismos: anticipación de recompensa, transportación, y el simple hecho de que las preguntas formuladas activan procesamiento más profundo que las respuestas presentadas.
 
-### 6.3 Tres hallazgos para retención y transferencia que la guía original omitía
+### 6.3 Tres hallazgos para retención y transferencia que la guía original omitía [P1-§6.3]
 
 Las siguientes tres líneas de investigación tienen meta-análisis robustos y son centrales para diseño de aprendizaje. Su ausencia en una guía sobre "entrenamiento basado en ciencia" es notable.
 
@@ -200,7 +200,7 @@ Las siguientes tres líneas de investigación tienen meta-análisis robustos y s
 
 **Spacing effect (Cepeda, Pashler, Vul, Wixted & Rohrer 2006, *Psychological Bulletin*).** Distribuir el estudio en sesiones espaciadas en el tiempo supera consistentemente al estudio masificado en una sola sesión, para la misma cantidad total de tiempo. La ratio óptima entre intervalo de espaciamiento y demora hasta el test de retención es del orden de 10-20%. En diseño de cursos esto implica fragmentar contenido en sesiones espaciadas y reintroducir conceptos clave varias veces a lo largo del programa.
 
-### 6.4 El problema de la transferencia
+### 6.4 El problema de la transferencia [P1-§6.4]
 
 Barnett & Ceci (2002, *Psychological Bulletin*) documentan que la **transferencia de aprendizaje** —aplicar lo aprendido en un contexto a otro contexto distinto— es notoriamente débil sin diseño explícito. Aprender un concepto en un dominio no garantiza saber aplicarlo en otro. La transferencia mejora cuando el contenido se presenta en múltiples contextos variados, cuando se hace explícita la estructura subyacente que se generaliza, y cuando se entrena con problemas variados, no con repetición del mismo ejemplo.
 
@@ -208,7 +208,7 @@ Barnett & Ceci (2002, *Psychological Bulletin*) documentan que la **transferenci
 
 ---
 
-## 7. Principios de diseño basados en evidencia
+## 7. Principios de diseño basados en evidencia [P1-§7]
 
 Síntesis aplicable, todavía agnóstica de herramientas:
 
@@ -231,11 +231,11 @@ Síntesis aplicable, todavía agnóstica de herramientas:
 
 ---
 
-## 8. Diseño para retención y transferencia a largo plazo
+## 8. Diseño para retención y transferencia a largo plazo [P1-§8]
 
 La mayoría de las recomendaciones para video instruccional se centran en captar y mantener la atención dentro de un solo video. Eso es necesario pero insuficiente para producir aprendizaje real. Esta sección sintetiza los elementos de diseño que operan a escalas más largas.
 
-### 8.1 Retrieval checkpoints dentro del contenido
+### 8.1 Retrieval checkpoints dentro del contenido [P1-§8.1]
 
 Diseñar momentos explícitos donde el aprendiz debe recuperar activamente lo aprendido —responder una pregunta, predecir un resultado, generar un ejemplo propio— produce mejor retención que continuar exponiendo nueva información (Roediger & Karpicke 2006). Implicaciones operativas:
 
@@ -243,15 +243,15 @@ Diseñar momentos explícitos donde el aprendiz debe recuperar activamente lo ap
 - La pregunta debe ser *generativa* (requiere producir la respuesta) más que reconocedora (elegir entre opciones).
 - El feedback inmediato refuerza el efecto.
 
-### 8.2 Espaciamiento en cursos y series
+### 8.2 Espaciamiento en cursos y series [P1-§8.2]
 
 Para programas formativos compuestos por múltiples piezas, distribuir el contenido en sesiones espaciadas es preferible a maratones intensivos (Cepeda et al. 2006). Reintroducir los conceptos centrales en intervalos crecientes (espaciamiento expandido) mantiene la accesibilidad de la información en memoria a largo plazo.
 
-### 8.3 Variedad contextual
+### 8.3 Variedad contextual [P1-§8.3]
 
 Presentar el mismo principio aplicado en múltiples contextos diferentes facilita la **transferencia lejana** (Barnett & Ceci 2002): la capacidad de aplicar lo aprendido en situaciones distintas a las del entrenamiento. El opuesto —repetir el mismo ejemplo varias veces— produce sensación subjetiva de dominio sin la transferencia correspondiente.
 
-### 8.4 Métricas que importan vs. métricas que se miden fácil
+### 8.4 Métricas que importan vs. métricas que se miden fácil [P1-§8.4]
 
 Las plataformas exponen métricas conductuales: tiempo de visualización, porcentaje promedio visto, retención por segundo, click-through rate. Son **proxies imperfectos del aprendizaje**: alguien puede ver un video completo sin aprender, o aprender mucho de un video que abandona temprano porque ya entendió.
 
