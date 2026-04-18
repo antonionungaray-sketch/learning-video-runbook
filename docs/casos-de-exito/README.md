@@ -7,8 +7,8 @@ Fichas de creators exitosos de YouTube en entrenamiento y divulgación, más el 
 ## Estructura
 
 - [research-log.md](research-log.md) — registro append-only de cada fuente consultada. Una entrada por fuente. Ninguna afirmación entra al pilar 02 sin pasar antes por aquí.
-- [tutoriales-tecnicos.md](tutoriales-tecnicos.md) — fichas de creators del nicho "tutorial técnico".
-- `divulgacion-corta.md` — (pendiente Sesión 2-3).
+- [tutoriales-tecnicos.md](tutoriales-tecnicos.md) — fichas de creators del nicho "tutorial técnico" (5 al cierre de Sesión 2: Fireship, ThePrimeagen, MoureDev, Midudev, The Coding Train).
+- [divulgacion-corta.md](divulgacion-corta.md) — fichas de creators del nicho "divulgación" (2 borradores al cierre de Sesión 2: 3Blue1Brown, Veritasium). Nota: el nombre de archivo mantiene "corta" por convención inicial pero el contenido cubre divulgación en cualquier duración.
 - `onboarding-corporativo.md` — (pendiente Sesión 3).
 
 ## Reglas firmes

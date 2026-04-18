@@ -215,3 +215,137 @@
 - Notas: Este es el entry 15 del research log. Meta de Sesión 1 alcanzada. Transición a cierre: verificación final, commit, preparación de Sesión 2.
 
 
+## Sesión 2 — 2026-04-18
+
+Metodología de la sesión: observación directa de videos vía `yt-dlp --write-auto-subs --sub-format vtt --write-info-json --skip-download`, luego parseo con `vtt2txt2.py` (script en `/tmp/casos-de-exito-sesion2/`, no versionado) que usa los timestamps inline `<c>` del VTT para evitar la triplicación natural de los auto-subs de YouTube (cada caption se repite 3 veces por la ventana deslizante). Métricas extraídas por video: hook 0-30s (texto exacto), CTA últimos 45s (texto exacto), WPM limpio (palabras reales ÷ duración en minutos), duración, views, likes, fecha de upload.
+
+### 2026-04-18 — ThePrimeagen "What You Need To Learn 2023" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=6jPiuOXmxEc (VTT auto-subs + info-json)
+- Tipo: observación
+- Creator/nicho asociado: ThePrimeagen / tutorial técnico
+- Claim extraído: Hook estructural "lista retórica + contrarian". 0-15s enumera 3 preguntas repetidas de la audiencia ("what programming language / library / service should you use"), luego pivot explícito: "I'm going to take the contrarian opinion here". Estructura pain point × N → postura disidente.
+- Evidencia: 3:45 duración, 292,745 views, 11,231 likes, upload 2023-08-03. WPM medido: **206.2** (770 palabras / 3.74 min). Hook textual verbatim en `/tmp/casos-de-exito-sesion2/primeagen/6jPiuOXmxEc.en.vtt`. CTA: NO hay subscribe-like explícito; video cierra con chiste meta "the name is I have to manually hit the stop button you know because this is just a full single take".
+- Sobrevive filtro pilar-1: sí — hook estructural compatible con principio de señalización (pilar 1 §2.3 #2 "signaling") al marcar explícitamente el pivot contrarian.
+- Destino: ficha ThePrimeagen (elimina `[pendiente verificación]` de hook/cadencia/CTA); pilar 02 Idea→Guión / Patrones (hook "lista retórica + contrarian" como variante editorial).
+- Notas: La ausencia de CTA explícito es dato fuerte — contradice el consejo generalizado de "recordar suscribirse al final". Funciona porque los sponsors + multichannel están en la descripción + el ecosistema Twitch/Discord ya capturó la audiencia.
+
+### 2026-04-18 — ThePrimeagen "Are Developers Ok?" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=SCPVDpyApgQ (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: ThePrimeagen / tutorial técnico
+- Claim extraído: Hook "personal-vivencial + drama de comunidad". 0-30s abre con declaración identitaria ("20 years into my software engineering career"), luego entrada al incidente específico ("this thing deleted 3 months of work I had just downloaded vs code..."). Formato: autoridad personal → setup narrativo.
+- Evidencia: 11:47 duración, 202,219 views, 10,873 likes, upload 2024-01-10. WPM medido: **189.3** (2228 palabras). Cierre con punchline cómica sobre el profile del autor del drama ("lover of Santa Claus Christmas and all things holiday currently residing in the North Pole"). Sponsor boot.dev en descripción, NO en voice-over.
+- Sobrevive filtro pilar-1: sí — narrativa-first compatible con pilar 1 §6.1 (curiosity gaps) y §7 (story structure). No contradice nada.
+- Destino: ficha ThePrimeagen (modo 2 del hook); pilar 02 Idea→Guión (hook narrativo como alternativa al hook de promesa).
+- Notas: Dos videos confirman patrón: Primeagen ancla hooks en postura personal, nunca en promesa de beneficio. Eso es distintivo — contradice la heurística "promete un resultado concreto" común en advice de creator coaching. Funciona porque la audiencia viene por la voz editorial, no por el beneficio.
+
+### 2026-04-18 — Midudev "HTML acaba de cambiar para siempre" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=hwNoYKhSBh0 (VTT `es` + info-json)
+- Tipo: observación
+- Creator/nicho asociado: Midudev / tutorial técnico hispano
+- Claim extraído: Hook de "promesa directa + tecnología específica + ejemplo concreto" en 3 frases. "Vamos a hablar del futuro de HTML porque os va a volar la cabeza. Esto es una nueva propuesta para utilizar en el HTML, en la etiqueta canvas, ya sea en 2D o en 3D, poder utilizar HTML dentro. Esto es una cosa que hasta ahora no se podía hacer." Cero warm-up, cero presentación del creador.
+- Evidencia: 10:45 duración, 166,666 views, 9,300 likes, upload 2026-04-13. WPM medido: **181.9** (1955 palabras). Cierre reflexivo sin CTA explícito. Link al artículo de GitHub/WICG en descripción.
+- Sobrevive filtro pilar-1: sí — hook cumple señalización (pilar 1 §2.3 #2) y promesa cumplible (pilar 1 §1.3).
+- Destino: ficha Midudev (creación); pilar 02 Idea→Guión (hook "promesa + tech + demo" para tech-news).
+- Notas: Español a 182 WPM es subjetivamente similar a 200-210 WPM anglo (español requiere ~10-15% más palabras). Registro "vosotros/ustedes" revela decisión consciente de dirigirse a audiencia pan-hispana con sede España.
+
+### 2026-04-18 — Midudev "Claude... ¿Esto es una broma?" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=1VaSXlQnHfA (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: Midudev / tutorial técnico hispano
+- Claim extraído: Hook de "urgencia + twist revelador". "tenéis 17€ gratuitos... hasta el 17 de abril... no os voy a engañar, esto es que te dan un caramélito para destruiros directamente". Patrón: oferta/novedad neutra → insinuación de trampa → setup del argumento crítico.
+- Evidencia: 18:20 duración, 166,493 views, 6,939 likes, upload 2026-04-07. WPM medido: **192.5** (3523 palabras). Cierre conversacional sin pitch explícito.
+- Sobrevive filtro pilar-1: sí — hook crea curiosity gap (§6.1) con la palabra "caramélito" (promesa contraintuitiva).
+- Destino: ficha Midudev (variante del hook); pilar 02 Idea→Guión (hook "urgencia + twist" aplicable a contenido reactivo).
+- Notas: El modelo "reaccionar a noticia del sector" requiere pipeline activo — Midudev tiene podcast + comunidad que le alimentan de temas. Para creator nuevo sin ese pipeline, los temas llegan tarde y el patrón pierde su arma principal (urgencia).
+
+### 2026-04-18 — The Coding Train "What the font?!?!" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=d0GgzjCFWq0 (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: The Coding Train / tutorial técnico
+- Claim extraído: Hook "salutación informal + contexto directo + self-deprecación honesta". "Hi everybody. In today's video, I'm showing you another feature of P5 2.0... I don't really know these things, so I'm going to be kind of figuring it out as I go in this video." Tres elementos: saludo, promesa temática, admisión de ignorancia.
+- Evidencia: 20:53 duración, 17,161 views, 735 likes, upload 2026-03-30. WPM medido: **155.6** (3246 palabras). Cierre ritual "please share it with me on the coding train website in the passenger showcase".
+- Sobrevive filtro pilar-1: sí — la self-deprecación honesta encaja con pilar 1 §2.3 #10 (personalización de Mayer: tono conversacional) y §5.3 (modelar metacognición — el experto que duda es más útil pedagógicamente que el experto seguro).
+- Destino: ficha The Coding Train (creación); pilar 02 Idea→Guión / Patrones (hook self-deprecating + modelado de metacognición).
+- Notas: 155 WPM es el valor más bajo de los 5 creators medidos en Sesión 1+2. Refuerza que "talking-head informal" de Guo et al. 2014 permite (y probablemente requiere) velocidad más pausada para facilitar el rol pedagógico.
+
+### 2026-04-18 — The Coding Train "Coding Challenge 187: Bayes Theorem" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=g3-PXyF8U70 (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: The Coding Train / tutorial técnico
+- Claim extraído: Hook meta-temporal que rompe la cuarta pared. "Hi everybody, welcome to a coding challenge video. Hi, it's me from the future in the editing booth." Narrador presente + narrador editor-del-futuro. Reconoce la producción como parte del show.
+- Evidencia: 53:38 duración, 38,937 views, 1,212 likes, upload 2025-10-12. WPM medido: **157.0** (8421 palabras). Cierre ritual "Thank you, everybody. See you next time on the coding train."
+- Sobrevive filtro pilar-1: sí — meta-narración conecta con conciencia metacognitiva (§5.3); NO hay conflicto.
+- Destino: ficha Coding Train (segunda variante del hook); pilar 02 Meta-formatos (coding challenge long-form como variante de nicho).
+- Notas: Los 53:38 minutos del formato signature violan el ceiling de 6 min de Guo et al. 2014. Funciona por (a) audiencia nicho consolidada, (b) monetización Nebula alternativa, (c) 10 años de rapport. **Patrón clave para pilar 02:** "formatos long-form justificados requieren 3 pre-requisitos: audiencia nicho, monetización alternativa, rapport acumulado". Sin los tres, el long-form fracasa.
+
+### 2026-04-18 — 3Blue1Brown "The Hairy Ball Theorem" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=BHdbsHFs2P0 (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: 3Blue1Brown / divulgación matemática
+- Claim extraído: Hook "anécdota personal íntima → conexión inesperada con tema matemático". "These days, whenever I look at the back of my beloved 7-month-old baby's head, this little swirl of tiny hairs reminds me of one of the most ridiculously named facts in math, the hairy ball theorem." Patrón: detalle doméstico específico (bebé, pelito) → objeto matemático con nombre absurdo → promesa ("I promise this is a genuinely serious bit of math").
+- Evidencia: 29:40 duración, 2,610,343 views, 77,755 likes, upload 2026-01-31. WPM medido: **192.4** (5706 palabras). Cierre con promesa narrativa ("it's a fun puzzle to see if you can construct an explicit example..."). NO hay pitch de sponsor — monetización Patreon.
+- Sobrevive filtro pilar-1: sí — entra emocionalmente antes de cargar cognitivamente (compatible con §3.4 "emocionalidad del aprendizaje" y §1.1 "captura bottom-up antes de top-down").
+- Destino: ficha 3Blue1Brown (creación); pilar 02 Idea→Guión / Patrones ("hook anecdótico" como entrada para divulgación técnica densa).
+- Notas: Este hook es REPLICABLE por creadores sin producción de Hollywood — requiere observación personal genuina + capacidad de conectar con el tema. Costo cero de producción, alto valor retentivo. Contraste con hook Veritasium (montaje social) que requiere múltiples entrevistados.
+
+### 2026-04-18 — 3Blue1Brown "But what is a Laplace Transform?" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=j0wJBEZdwLs (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: 3Blue1Brown / divulgación matemática
+- Claim extraído: Hook "visual-promesa + analogía pedagógica". "What you're looking at, a somewhat complicated diagram that you and I are going to build up in this video..." + "learning how to drive a car versus learning how an engine works". Apunta al screen, promete construcción en vivo, luego da analogía de niveles de comprensión.
+- Evidencia: 34:41 duración, 1,469,418 views, 47,407 likes, upload 2025-10-12. WPM medido: **183.3** (6354 palabras).
+- Sobrevive filtro pilar-1: sí — la analogía driver/mechanic es ejemplo perfecto del principio de pre-training (pilar 1 §2.3 #9) aplicado al metaaprendizaje.
+- Destino: ficha 3Blue1Brown (segunda variante); pilar 02 Idea→Guión / Patrones (hook analogía + promesa visual); pilar 02 Pre-producción (modelo Manim animación-driven como alternativa a talking-head).
+- Notas: Combinando 2 videos, 3B1B mantiene WPM ~185-192 pese a la "sensación" de pausa. Variable oculta: **tiempo visual entre ideas**. Manim tarda segundos en dibujar una curva; el audio llena el tiempo pero no acelera más. Importa para producción: la velocidad percibida NO es WPM, es ritmo visual.
+
+### 2026-04-18 — Veritasium "Why are these 3 letters on almost all of my zippers?" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=9szhjhO9epA (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: Veritasium / divulgación ciencia/ingeniería
+- Claim extraído: Hook "pregunta directa + demo física invitada + wow-fact escalonado". "How does a zipper actually work? Like try to push down on a zipper from above and it probably won't budge. But if you just use the pull tab, suddenly it's buttery smooth." Luego magnitud cósmica: "We've made more zippers than there are stars in the Milky Way."
+- Evidencia: 20:45 duración, 8,155,909 views, 223,267 likes, upload 2026-03-19. WPM medido: **174.1** (3609 palabras). Sponsor Hostinger en pre-roll (primera frase de descripción), NO en voice-over del video. Cierre reflexivo personal sobre la persistencia del invento de 1914.
+- Sobrevive filtro pilar-1: sí — demo invitada es retrieval practice implícito (§6.3): el viewer "prueba" la idea mentalmente antes de recibir la explicación.
+- Destino: ficha Veritasium (creación); pilar 02 Idea→Guión / Patrones (hook "demo física invitada" replicable para temas físico-mecánicos).
+- Notas: Veritasium 174 WPM es más bajo que 3B1B 192 — patrón visual completamente distinto. Veritasium usa pausas orales para que los viewers miren el B-roll y procesen.
+
+### 2026-04-18 — Veritasium "This Paradox Splits Smart People 50/50" — observación directa
+
+- Fecha verificación: 2026-04-18
+- Fuente: https://www.youtube.com/watch?v=Ol18JoeXlVI (VTT + info-json)
+- Tipo: observación
+- Creator/nicho asociado: Veritasium / divulgación ciencia
+- Claim extraído: Hook "montaje social-dramático" — múltiples voces intercaladas sin introducción del presentador. "No. What?" / "It just seems so obvious to me." / "Now I'm all screwed up, man." / "I even argued with Derek about it. There's no way." Crea tensión antes de revelar el problema. **Format documental, no tutorial.**
+- Evidencia: 25:40 duración, 7,140,434 views, 207,119 likes, upload 2026-03-09. WPM medido: **181.0** (4645 palabras). Cierre con pitch de Brilliant integrado ~45s ("Brilliant's course on Bayes and probability goes through that exact problem").
+- Sobrevive filtro pilar-1: sí — conflict-driven hook genera attention + curiosity gap (§6.1) sin contradecir cognitivo.
+- Destino: ficha Veritasium (segunda variante del hook); pilar 02 Idea→Guión / Patrones (hook montaje social requiere polifonía — apunta a anti-patrón "no copies sin acceso a múltiples voces"). pilar 02 Publicación (sponsor Brilliant al CIERRE para temas conceptuales vs pre-roll para temas infra-tool).
+- Notas: Decisión estratégica observada: **posición del sponsor varía por tema**. Brilliant (educación) ↔ cierre; Hostinger (infra) ↔ pre-roll. No es aleatorio — es relevancia temática. Framework replicable: sponsor se integra donde el tema del video lo justifica semánticamente, no donde el YouTuber "tenga que hacerlo".
+
+### Cierre Sesión 2
+
+Entries 16-25 añadidas (10 nuevas). Meta de Sesión 2 alcanzada y superada:
+- Ficha ThePrimeagen completada (4 `[pendiente]` eliminados).
+- 2 fichas nuevas tutorial técnico (Midudev, The Coding Train) — total nicho: 5.
+- 2 fichas nuevas divulgación (3Blue1Brown, Veritasium) en archivo nuevo `divulgacion-corta.md`.
+- Toolchain de extracción (yt-dlp + vtt2txt2.py) funciona y queda disponible para Sesión 3.
+
+Pendientes Sesión 3: 2-3 fichas divulgación adicionales (Kurzgesagt, Steve Mould anglo / DotCSV o QuantumFracture hispano); arranque de onboarding corporativo (Platzi, LinkedIn Learning, reportes LMS).
+
