@@ -163,14 +163,19 @@ offline-first) con **dos vistas del mismo modelo de datos**:
   Pensado para **cerrar decisiones técnicas antes de lockear**.
 
 **Overlays auxiliares (capa de post) en la UI.** Cada bloque puede
-declarar overlays generados en post (intro-animada, outro-animada,
-lower-third, idea-bulb, callout-flecha, separador, highlight-icono).
-En Cómic se ven como chips ámbar debajo de la viñeta y como
-pictogramas dibujados sobre la viñeta (foquito arriba-derecha,
-tarjeta en tercio inferior, etc.) para que un principiante **vea**
-lo que después va a aparecer en pantalla. En Tabla hay editor
-completo por bloque (tipo · desde · hasta · descripción/prompt IA).
-Se propagan al brief `edicion/10-overlays-auxiliares`.
+declarar overlays del catálogo canónico de 10 tipos universales
+(`intro-animada`, `outro-animada`, `lower-third`, `callout`,
+`chapter-marker`, `stat-callout`, `pull-quote`, `progress-indicator`,
+`question-prompt`, `answer-reveal`) o usar el escape hatch `otro`
+con descripción libre cuando la necesidad del video no cae en ninguno.
+Cada tipo del catálogo tiene respaldo en un pilar citable y el
+tooltip del select lo muestra (ej. `lower-third` → "Identificación ·
+P1-§5.3"). En Cómic se ven como chips ámbar debajo de la viñeta y
+como pictogramas dibujados sobre la viñeta para que un principiante
+**vea** lo que va a aparecer en pantalla. En Tabla hay editor completo
+por bloque (tipo · desde · hasta · descripción/prompt IA). Cuando el
+tipo es `otro`, la descripción es obligatoria (borde ámbar indica
+faltante). Se propagan al brief `edicion/10-overlays-auxiliares`.
 
 Toggle `Cómic | Tabla` arriba. Mismo modelo; lo que editás en una
 vista aparece en la otra. Reordenar/duplicar/eliminar bloques

@@ -122,7 +122,15 @@ DURACIÓN FINAL: [N min]
 [NO POST-PRODUCIBLES]: [listado de zooms/PiP ya resueltos en captura]
 
 ═══ 10. OVERLAYS AUXILIARES ═══
+[CATÁLOGO]: 10 tipos universales + 'otro' (escape hatch libre).
+Cada tipo tiene cita al pilar que lo respalda (el brief lo documenta).
 [LISTA POR TIMESTAMP]: [bloque, tipo, timestamps, descripción/prompt IA]
+  Ejemplo (explainer económico):
+    B3  stat-callout    01:12-01:15  "8.3% inflación anual"
+    B4  pull-quote      02:11-02:16  "...función de reacción" — Banxico
+    B6  question-prompt 04:20-04:24  "¿Cuál es el mecanismo de transmisión?"
+    B6  answer-reveal   04:26-04:29  "Tasa → crédito → consumo"
+    B7  otro            05:10-05:12  "mapa animado de la región afectada"
 [HERRAMIENTA DE GENERACIÓN]: [Remotion / Motion Canvas / HyperFrames / Manim]
 [PROPAGADOS DESDE]: [Production Brief locked, sección 4]
 
