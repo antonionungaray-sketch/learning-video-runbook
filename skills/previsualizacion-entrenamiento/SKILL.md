@@ -138,11 +138,25 @@ HTML local**. Es opt-in; si la rechaza, el flujo sigue como antes
 (edición puramente conversacional).
 
 **Qué es:** una página HTML autocontenida (vanilla JS, zero-dep,
-offline-first) que muestra los bloques del storyboard como tarjetas
-editables, permite arrastrar/duplicar/eliminar bloques, elegir tipo
-y transición desde selects, marcar "requiere zoom OBS", nombrar
-escenas y shortcuts, y al final exportar un bloque YAML que pegás
-de vuelta al chat.
+offline-first) con **dos vistas del mismo modelo de datos**:
+
+- **Vista Cómic (default):** viñetas 16:9 en rejilla estilo
+  storyboard cinematográfico. Cada viñeta renderea un SVG
+  esquemático según el tipo (silueta del creador, pantalla con
+  líneas de UI, PiP, recuadro de zoom con flecha). Campos mínimos
+  editables inline (título, tipo, duración, visual corto, zoom
+  OBS, transición saliente). Pensado para **ideación temprana**
+  donde el usuario itera composición visual antes de cerrar
+  decisiones técnicas.
+
+- **Vista Tabla:** tarjeta vertical por bloque con todos los
+  campos (narración completa del guion, referencia, señalización
+  detallada, nombre de escena OBS, shortcut). Pensado para
+  **cerrar decisiones técnicas antes de lockear**.
+
+Toggle `Cómic | Tabla` arriba. Mismo modelo; lo que editás en una
+vista aparece en la otra. Reordenar/duplicar/eliminar bloques
+funciona en ambas.
 
 **Cómo generarla:**
 

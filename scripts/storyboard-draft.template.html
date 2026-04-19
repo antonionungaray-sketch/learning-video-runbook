@@ -57,6 +57,53 @@
   details { border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; margin-top: 10px; background: var(--bg); }
   details summary { cursor: pointer; color: var(--muted); font-size: 12px; }
   details[open] summary { color: var(--fg); margin-bottom: 8px; }
+
+  /* View toggle */
+  .view-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .view-toggle button { margin: 0 !important; border: none !important; border-radius: 0 !important;
+                        padding: 7px 14px; background: transparent; color: var(--muted); font-size: 13px; }
+  .view-toggle button.active { background: var(--accent); color: #0b1220; font-weight: 600; }
+
+  /* Cómic mode */
+  .comic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+  .comic-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+                 display: flex; flex-direction: column; }
+  .panel-meta-top { display: flex; justify-content: space-between; align-items: center;
+                    padding: 8px 12px; font-family: var(--mono); font-size: 11px;
+                    color: var(--muted); border-bottom: 1px solid var(--line); background: var(--bg); }
+  .panel-meta-top .plano { color: var(--accent); font-weight: 600; }
+  .panel-meta-top .dur { color: var(--fg); }
+  .panel-svg-wrap { position: relative; background: #0a0c10; aspect-ratio: 16/9; overflow: hidden; }
+  .panel-svg-wrap svg { width: 100%; height: 100%; display: block; }
+  .panel-body { padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .panel-body input[type="text"], .panel-body textarea, .panel-body select, .panel-body input[type="checkbox"] {
+    font-size: 12px;
+  }
+  .panel-body .panel-title-input { font-weight: 600; font-size: 13px; }
+  .panel-body textarea { min-height: 36px; }
+  .panel-inline { display: flex; gap: 6px; align-items: center; }
+  .panel-inline select { flex: 1; }
+  .panel-inline label.zoom-lbl { display: inline-flex; gap: 4px; align-items: center; color: var(--muted); font-size: 11px;
+                                 padding: 0; white-space: nowrap; }
+  .panel-inline label.zoom-lbl input { width: auto !important; }
+  .panel-trans { padding: 6px 12px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line);
+                 font-family: var(--mono); background: var(--bg); }
+  .panel-trans strong { color: var(--accent); font-weight: 600; }
+  .panel-actions { display: flex; gap: 4px; justify-content: flex-end; padding: 6px 8px; border-top: 1px solid var(--line); }
+  .panel-actions button { padding: 3px 8px; font-size: 11px; background: transparent; color: var(--muted);
+                          border: 1px solid var(--line); border-radius: 3px; cursor: pointer; }
+  .panel-actions button:hover { color: var(--fg); border-color: var(--muted); }
+  .panel-actions button.remove { color: var(--bad); }
+
+  /* SVG glyphs */
+  .sb-silhouette-head { fill: #3a4559; }
+  .sb-silhouette-body { fill: #2a3345; }
+  .sb-screen-frame { fill: #1a2030; stroke: #3a4559; stroke-width: 1; }
+  .sb-ui-line { stroke: #4a5568; stroke-width: 1; }
+  .sb-zoom-box { fill: rgba(94,177,255,0.12); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3,2; }
+  .sb-arrow { stroke: var(--accent); stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+  .sb-label { fill: var(--muted); font: 10px var(--mono, monospace); }
+  .sb-label-accent { fill: var(--accent); font: 10px var(--mono, monospace); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -65,6 +112,10 @@
   <h1>Storyboard draft</h1>
   <span id="state-badge" class="state draft">draft</span>
   <span id="title-label" class="hint"></span>
+  <span class="view-toggle" style="margin-left:auto">
+    <button id="btn-view-comic"  class="active">Cómic</button>
+    <button id="btn-view-tabla">Tabla</button>
+  </span>
   <button id="btn-add-block">+ Bloque</button>
   <button id="btn-lock">Lock</button>
   <button id="btn-export" class="primary">Exportar YAML</button>
@@ -90,8 +141,17 @@
 
 <section>
   <h2>Bloques</h2>
-  <div id="blocks"></div>
+  <div id="blocks-comic" class="comic-grid"></div>
+  <div id="blocks-tabla" style="display:none"></div>
 </section>
+
+<svg style="width:0;height:0;position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5eb1ff"/>
+    </marker>
+  </defs>
+</svg>
 
 <section>
   <h2>Requisitos de captura (auto-derivados)</h2>
@@ -265,11 +325,175 @@ function blockCard(block, idx) {
   return card;
 }
 
-function renderBlocks() {
-  const host = document.getElementById("blocks");
+function renderTabla() {
+  const host = document.getElementById("blocks-tabla");
   host.innerHTML = "";
   state.blocks.forEach((b, i) => host.appendChild(blockCard(b, i)));
+}
+
+/* ————————————— Vista cómic ————————————— */
+
+function svgForBlock(block) {
+  const t = block.tipo || "camara";
+  const zoom = !!block.zoomOBS;
+
+  // Viewbox cinematográfico 16:9
+  const W = 320, H = 180;
+  const p = [];
+  p.push(`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`);
+
+  if (t === "camara") {
+    // Silueta del creador, plano medio centrado
+    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#101522"/>`);
+    p.push(`<ellipse cx="160" cy="80" rx="42" ry="48" class="sb-silhouette-head"/>`);
+    p.push(`<path d="M 80 180 Q 80 120 160 120 Q 240 120 240 180 Z" class="sb-silhouette-body"/>`);
+    p.push(`<text x="10" y="170" class="sb-label">cam · full</text>`);
+  } else if (t === "demo-pantalla") {
+    // Pantalla/UI
+    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#0a0c10"/>`);
+    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="4" class="sb-screen-frame"/>`);
+    // barra superior simulada
+    p.push(`<rect x="22" y="20" width="40" height="4" class="sb-silhouette-body"/>`);
+    p.push(`<rect x="66" y="20" width="30" height="4" class="sb-silhouette-body"/>`);
+    // líneas de UI
+    for (let i = 0; i < 5; i++) {
+      const y = 40 + i * 18;
+      const w = 180 + (i % 2) * 40;
+      p.push(`<line x1="28" y1="${y}" x2="${28 + w}" y2="${y}" class="sb-ui-line"/>`);
+    }
+    if (zoom) {
+      // recuadro de zoom + flechas
+      p.push(`<rect x="110" y="78" width="100" height="56" class="sb-zoom-box"/>`);
+      p.push(`<line x1="210" y1="78" x2="240" y2="48" class="sb-arrow"/>`);
+      p.push(`<text x="216" y="45" class="sb-label-accent">zoom</text>`);
+    }
+    p.push(`<text x="10" y="170" class="sb-label">${zoom ? "pantalla · zoom" : "pantalla · full"}</text>`);
+  } else if (t === "mixto") {
+    // Pantalla principal + PiP del creador en esquina
+    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#0a0c10"/>`);
+    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="4" class="sb-screen-frame"/>`);
+    // líneas de UI
+    for (let i = 0; i < 4; i++) {
+      const y = 40 + i * 22;
+      p.push(`<line x1="28" y1="${y}" x2="${180}" y2="${y}" class="sb-ui-line"/>`);
+    }
+    // PiP
+    const px = W - 86, py = H - 76;
+    p.push(`<rect x="${px}" y="${py}" width="64" height="56" rx="3" fill="#101522" stroke="#5eb1ff" stroke-width="1.5"/>`);
+    p.push(`<ellipse cx="${px + 32}" cy="${py + 22}" rx="10" ry="12" class="sb-silhouette-head"/>`);
+    p.push(`<path d="M ${px + 10} ${py + 56} Q ${px + 10} ${py + 38} ${px + 32} ${py + 38} Q ${px + 54} ${py + 38} ${px + 54} ${py + 56} Z" class="sb-silhouette-body"/>`);
+    p.push(`<text x="10" y="170" class="sb-label">mixto · screen + pip</text>`);
+  } else if (t === "b-roll") {
+    // Inserto visual neutro
+    p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#0a0c10"/>`);
+    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="4" fill="#141a28" stroke="#3a4559" stroke-width="1" stroke-dasharray="4,3"/>`);
+    // patrón diagonal tenue
+    for (let x = 30; x < W - 30; x += 30) {
+      p.push(`<line x1="${x}" y1="28" x2="${x - 20}" y2="${H - 20}" stroke="#1f2738" stroke-width="1"/>`);
+    }
+    p.push(`<text x="${W / 2 - 20}" y="${H / 2 + 4}" class="sb-label-accent" style="font-size:14px">b-roll</text>`);
+    p.push(`<text x="10" y="170" class="sb-label">inserto visual</text>`);
+  }
+  p.push(`</svg>`);
+  return p.join("");
+}
+
+function panelCard(block, idx) {
+  const card = el("div", { class: "comic-panel" });
+
+  // meta top: B# · plano · duración
+  const tipoTxt = block.tipo || "—";
+  const zoomTxt = block.zoomOBS ? " · zoom" : "";
+  const meta = el("div", { class: "panel-meta-top" });
+  meta.innerHTML = `<span class="plano">B${idx + 1} · ${tipoTxt}${zoomTxt}</span><span class="dur">${block.duracion || "—"}</span>`;
+  card.appendChild(meta);
+
+  // SVG
+  const svgWrap = el("div", { class: "panel-svg-wrap" });
+  svgWrap.innerHTML = svgForBlock(block);
+  card.appendChild(svgWrap);
+
+  // body mínimo
+  const body = el("div", { class: "panel-body" });
+  body.appendChild(el("input", {
+    type: "text", class: "panel-title-input",
+    value: block.titulo || "", placeholder: "Título del bloque",
+    oninput: e => { state.blocks[idx].titulo = e.target.value; }
+  }));
+
+  const tipoSel = el("select", {
+    onchange: e => { state.blocks[idx].tipo = e.target.value; renderComic(); renderScenePreview(); }
+  }, ...TIPO_OPTS.map(t => el("option", { value: t }, t)));
+  tipoSel.value = block.tipo || "camara";
+  const dur = el("input", {
+    type: "text", value: block.duracion || "", placeholder: "0:30",
+    style: "max-width:70px",
+    oninput: e => { state.blocks[idx].duracion = e.target.value; meta.querySelector(".dur").textContent = e.target.value || "—"; }
+  });
+  const zoomWrap = el("label", { class: "zoom-lbl" });
+  const zoomChk = el("input", {
+    type: "checkbox",
+    onchange: e => { state.blocks[idx].zoomOBS = e.target.checked; renderComic(); renderScenePreview(); }
+  });
+  if (block.zoomOBS) zoomChk.checked = true;
+  zoomWrap.appendChild(zoomChk);
+  zoomWrap.appendChild(document.createTextNode("zoom OBS"));
+  const inline = el("div", { class: "panel-inline" }, tipoSel, dur, zoomWrap);
+  body.appendChild(inline);
+
+  const visual = el("textarea", {
+    placeholder: "Qué se ve (corto). Detalles finos van en Tabla.",
+    oninput: e => { state.blocks[idx].visual = e.target.value; }
+  });
+  visual.value = block.visual || "";
+  body.appendChild(visual);
+
+  card.appendChild(body);
+
+  // transición saliente (flecha al siguiente)
+  const trans = el("div", { class: "panel-trans" });
+  const transSel = el("select", {
+    style: "background:transparent;border:1px solid var(--line);color:var(--fg);font-size:11px;padding:2px 4px",
+    onchange: e => { state.blocks[idx].transicion = e.target.value; }
+  }, ...TRANS_OPTS.map(t => el("option", { value: t }, t)));
+  transSel.value = block.transicion || "corte seco";
+  trans.innerHTML = `<strong>→</strong> `;
+  trans.appendChild(transSel);
+  card.appendChild(trans);
+
+  // acciones
+  const actions = el("div", { class: "panel-actions" },
+    el("button", { onclick: () => moveBlock(idx, -1), title: "Mover a la izquierda" }, "←"),
+    el("button", { onclick: () => moveBlock(idx, 1), title: "Mover a la derecha" }, "→"),
+    el("button", { onclick: () => duplicateBlock(idx), title: "Duplicar" }, "⎘"),
+    el("button", { class: "remove", onclick: () => removeBlock(idx), title: "Eliminar" }, "✕")
+  );
+  card.appendChild(actions);
+
+  return card;
+}
+
+function renderComic() {
+  const host = document.getElementById("blocks-comic");
+  host.innerHTML = "";
+  state.blocks.forEach((b, i) => host.appendChild(panelCard(b, i)));
   renderScenePreview();
+}
+
+let currentView = "comic";
+function setView(v) {
+  currentView = v;
+  document.getElementById("blocks-comic").style.display = v === "comic" ? "" : "none";
+  document.getElementById("blocks-tabla").style.display = v === "tabla" ? "" : "none";
+  document.getElementById("btn-view-comic").classList.toggle("active", v === "comic");
+  document.getElementById("btn-view-tabla").classList.toggle("active", v === "tabla");
+  if (v === "comic") renderComic(); else renderTabla();
+}
+
+function renderBlocks() {
+  // Mantiene la vista activa y re-renderiza ambas (una oculta) para sincronizar.
+  renderComic();
+  renderTabla();
 }
 
 function renderScenePreview() {
@@ -393,9 +617,13 @@ document.getElementById("btn-close-export").onclick = () =>
 });
 document.getElementById("conflicts").addEventListener("input", e => { state.conflicts = e.target.value; });
 
+document.getElementById("btn-view-comic").onclick = () => setView("comic");
+document.getElementById("btn-view-tabla").onclick = () => setView("tabla");
+
 if (state.blocks.length === 0) addBlock();
 renderMeta();
 renderBlocks();
+setView("comic");
 </script>
 </body>
 </html>
