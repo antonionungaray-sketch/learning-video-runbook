@@ -150,6 +150,32 @@
   .sb-label-accent { fill: #b86e3a; font: 10px var(--mono, monospace); font-weight: 600; }
   .sb-bullet { fill: #5c4a38; }
   .sb-pip-frame { fill: #ece2d0; stroke: #7a8a6b; stroke-width: 1.6; }
+
+  /* Overlays auxiliares (IA-generados en post) */
+  .overlay-chips { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px 8px 2px 8px;
+                   border-top: 1px dashed var(--line); }
+  .overlay-chip { display: inline-flex; align-items: center; gap: 4px;
+                  background: rgba(184,110,58,0.12); color: #c78a5a;
+                  border: 1px solid rgba(184,110,58,0.45); border-radius: 3px;
+                  padding: 2px 7px; font-family: var(--mono); font-size: 10px;
+                  letter-spacing: 0.3px; text-transform: uppercase; }
+  .overlay-chip .chip-ts { color: var(--muted); text-transform: none; letter-spacing: 0; }
+  .overlay-chip-add { background: transparent; color: var(--muted);
+                      border: 1px dashed var(--line); border-radius: 3px;
+                      padding: 2px 7px; font-family: var(--mono); font-size: 10px;
+                      cursor: pointer; text-transform: uppercase; letter-spacing: 0.3px; }
+  .overlay-chip-add:hover { color: var(--accent); border-color: var(--accent); }
+  .overlays-editor { display: flex; flex-direction: column; gap: 6px; padding: 4px 0; }
+  .overlay-row { display: grid; grid-template-columns: 120px 70px 70px 1fr auto;
+                 gap: 6px; align-items: center; background: var(--bg);
+                 border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; }
+  .overlay-row select, .overlay-row input { padding: 4px 6px; font-size: 12px; }
+  .overlay-row button { padding: 3px 8px; font-size: 11px; background: transparent;
+                        color: var(--bad); border: 1px solid var(--line);
+                        border-radius: 3px; cursor: pointer; }
+  .overlays-add-btn { padding: 4px 10px; font-size: 11px; background: transparent;
+                      color: var(--accent); border: 1px dashed var(--accent);
+                      border-radius: 3px; cursor: pointer; align-self: flex-start; }
 </style>
 </head>
 <body>
@@ -248,6 +274,18 @@ const INITIAL_DATA = window.__STORYBOARD_DATA__ || {
 };
 
 const TIPO_OPTS = ["camara", "demo-pantalla", "mixto", "b-roll"];
+// Overlays auxiliares: elementos visuales que AGREGA el editor en post
+// (no existen en el crudo). Catálogo canónico del brief
+// edicion/10-overlays-auxiliares. Abbr = badge corto en el chip del cómic.
+const OVERLAY_TIPOS = [
+  { v: "intro-animada",   l: "intro-animada",   abbr: "INTRO" },
+  { v: "outro-animada",   l: "outro-animada",   abbr: "OUTRO" },
+  { v: "lower-third",     l: "lower-third",     abbr: "LT"    },
+  { v: "idea-bulb",       l: "idea-bulb",       abbr: "IDEA"  },
+  { v: "callout-flecha",  l: "callout-flecha",  abbr: "CALL"  },
+  { v: "separador",       l: "separador",       abbr: "SEP"   },
+  { v: "highlight-icono", l: "highlight-icono", abbr: "ICON"  }
+];
 const TRANS_OPTS = [
   "corte seco",
   "cross-dissolve 400ms",
@@ -374,6 +412,42 @@ function blockCard(block, idx) {
   senal.value = block.senalizacion || "";
   addRow("Señalización", senal);
 
+  // Overlays auxiliares (capa de post-producción, brief edicion/10).
+  const ovWrap = el("div", { class: "overlays-editor" });
+  (block.overlays || []).forEach((ov, oi) => {
+    const row = el("div", { class: "overlay-row" });
+    const sel = el("select", {
+      onchange: e => { state.blocks[idx].overlays[oi].tipo = e.target.value; renderBlocks(); }
+    }, ...OVERLAY_TIPOS.map(o => el("option", { value: o.v }, o.l)));
+    sel.value = ov.tipo || "idea-bulb";
+    const desde = el("input", {
+      value: ov.desde || "", placeholder: "0:34",
+      oninput: e => { state.blocks[idx].overlays[oi].desde = e.target.value; }
+    });
+    const hasta = el("input", {
+      value: ov.hasta || "", placeholder: "0:39",
+      oninput: e => { state.blocks[idx].overlays[oi].hasta = e.target.value; }
+    });
+    const desc = el("input", {
+      value: ov.descripcion || "",
+      placeholder: 'Ej. "Dr. Ana · Investigadora" o prompt IA',
+      oninput: e => { state.blocks[idx].overlays[oi].descripcion = e.target.value; }
+    });
+    const rm = el("button", { onclick: () => removeOverlay(idx, oi), title: "Quitar overlay" }, "✕");
+    row.appendChild(sel);
+    row.appendChild(desde);
+    row.appendChild(hasta);
+    row.appendChild(desc);
+    row.appendChild(rm);
+    ovWrap.appendChild(row);
+  });
+  const addOvBtn = el("button", {
+    class: "overlays-add-btn",
+    onclick: () => addOverlay(idx)
+  }, "+ Agregar overlay");
+  ovWrap.appendChild(addOvBtn);
+  addRow("Overlays auxiliares", ovWrap);
+
   card.appendChild(grid);
 
   const btns = el("div", { class: "row-btn" },
@@ -443,7 +517,12 @@ const PAL = {
   horizon: { stroke: "#c4b39a", strokeWidth: 0.9 },
   brollFrame: { stroke: "#6b5d4e", strokeWidth: 1.5, fill: "#ece2d0", fillStyle: "solid", strokeLineDash: [5, 3] },
   brollPlay: { stroke: "#8a4f22", strokeWidth: 1.4, fill: "#b86e3a", fillStyle: "solid", fillWeight: 0.8 },
-  brollDot: { stroke: "#bfa68c", strokeWidth: 0.8, fill: "#bfa68c", fillStyle: "solid" }
+  brollDot: { stroke: "#bfa68c", strokeWidth: 0.8, fill: "#bfa68c", fillStyle: "solid" },
+  // Overlays auxiliares — paleta ámbar viva para que resalten como "capa de post"
+  overlayFill:   { stroke: "#8a4f22", strokeWidth: 1.4, fill: "#f5c97b", fillStyle: "solid" },
+  overlayBadge:  { stroke: "#8a4f22", strokeWidth: 1.3, fill: "#f5d99a", fillStyle: "solid" },
+  overlayInk:    { stroke: "#8a4f22", strokeWidth: 1.2, fill: "#8a4f22", fillStyle: "solid" },
+  overlayAccent: { stroke: "#b86e3a", strokeWidth: 1.4 }
 };
 
 // Humano plano medio (MS) — silueta cabeza + hombros + torso que se corta abajo.
@@ -584,6 +663,125 @@ function drawBroll(rc, x, y, w, h, opts) {
   return out;
 }
 
+/* ————— Glyphs de overlays auxiliares —————
+   Pictogramas dibujados con rough.js sobre la viñeta para que un
+   principiante VEA los elementos que el editor agregará en post.
+   Cada función retorna un array de nodos SVG listos para append. */
+
+function drawIdeaBulb(rc, cx, cy, size, opts) {
+  // foquito: círculo amarillo + rayitas de destello + base de filamento
+  const out = [];
+  const r = size / 2;
+  // rayitas de destello primero (quedan detrás)
+  const rays = [-70, -35, 0, 35, 70];
+  for (const deg of rays) {
+    const a = (deg - 90) * Math.PI / 180;
+    const x1 = cx + Math.cos(a) * (r + 3);
+    const y1 = cy + Math.sin(a) * (r + 3);
+    const x2 = cx + Math.cos(a) * (r + 9);
+    const y2 = cy + Math.sin(a) * (r + 9);
+    out.push(rc.line(x1, y1, x2, y2, { ...opts, ...PAL.overlayAccent }));
+  }
+  // bombilla
+  out.push(rc.circle(cx, cy, size, { ...opts, ...PAL.overlayFill }));
+  // base (rosca) debajo
+  out.push(rc.rectangle(cx - r * 0.45, cy + r * 0.75, r * 0.9, r * 0.5,
+    { ...opts, ...PAL.overlayInk }));
+  return out;
+}
+
+function drawLowerThird(rc, W, H, opts) {
+  // tarjeta en tercio inferior con dos líneas (nombre + rol)
+  const out = [];
+  const x = W * 0.04;
+  const y = H * 0.78;
+  const w = W * 0.52;
+  const h = H * 0.17;
+  out.push(rc.rectangle(x, y, w, h, { ...opts, ...PAL.overlayBadge }));
+  out.push(rc.line(x + 8, y + h * 0.38, x + w * 0.72, y + h * 0.38,
+    { ...opts, ...PAL.overlayInk }));
+  out.push(rc.line(x + 8, y + h * 0.70, x + w * 0.55, y + h * 0.70,
+    { ...opts, stroke: "#8a4f22", strokeWidth: 0.9 }));
+  return out;
+}
+
+function drawCalloutArrow(rc, W, H, opts) {
+  // flecha que apunta desde fuera-derecha hacia el centro-alto del cuadro
+  const out = [];
+  const fromX = W * 0.92, fromY = H * 0.18;
+  const toX = W * 0.58, toY = H * 0.42;
+  const arrowPath = `M ${fromX} ${fromY} Q ${W * 0.78} ${H * 0.38} ${toX} ${toY}`;
+  out.push(rc.path(arrowPath, { ...opts, ...PAL.overlayAccent, strokeWidth: 1.7 }));
+  // punta
+  out.push(rc.polygon([
+    [toX, toY],
+    [toX + 10, toY - 3],
+    [toX + 6, toY + 7]
+  ], { ...opts, ...PAL.overlayFill }));
+  return out;
+}
+
+function drawIntroStar(rc, W, H, opts) {
+  // estrella en esquina arriba-izq + trazo "INTRO" implícito
+  const cx = W * 0.14, cy = H * 0.18, r = 12;
+  const pts = [];
+  for (let i = 0; i < 10; i++) {
+    const a = (i * 36 - 90) * Math.PI / 180;
+    const rr = i % 2 === 0 ? r : r * 0.45;
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
+  }
+  return [rc.polygon(pts, { ...opts, ...PAL.overlayFill })];
+}
+
+function drawOutroMark(rc, W, H, opts) {
+  // dos flechitas ">>" abajo-derecha (suggest fin/salida)
+  const cx = W * 0.88, cy = H * 0.82;
+  const out = [];
+  for (let i = 0; i < 2; i++) {
+    const dx = i * 8;
+    out.push(rc.path(
+      `M ${cx - 10 + dx} ${cy - 8} L ${cx - 2 + dx} ${cy} L ${cx - 10 + dx} ${cy + 8}`,
+      { ...opts, ...PAL.overlayAccent, strokeWidth: 2 }
+    ));
+  }
+  return out;
+}
+
+function drawSeparator(rc, W, H, opts) {
+  // dos barras verticales en el centro (transición gráfica entre unidades)
+  const cx = W / 2;
+  return [
+    rc.rectangle(cx - 10, H * 0.32, 6, H * 0.36, { ...opts, ...PAL.overlayFill }),
+    rc.rectangle(cx + 4,  H * 0.32, 6, H * 0.36, { ...opts, ...PAL.overlayFill })
+  ];
+}
+
+function drawHighlightIcon(rc, W, H, opts) {
+  // círculo con exclamación (ícono de "ojo acá")
+  const cx = W * 0.86, cy = H * 0.78, r = 11;
+  return [
+    rc.circle(cx, cy, r * 2, { ...opts, ...PAL.overlayFill }),
+    rc.line(cx, cy - r * 0.45, cx, cy + r * 0.22, { ...opts, ...PAL.overlayInk, strokeWidth: 2 }),
+    rc.circle(cx, cy + r * 0.55, 2.2, { ...opts, ...PAL.overlayInk })
+  ];
+}
+
+function drawOverlayBadges(rc, W, H, overlays, baseOpts) {
+  if (!overlays || !overlays.length) return [];
+  const out = [];
+  for (const ov of overlays) {
+    const t = (ov && ov.tipo) || "";
+    if (t === "idea-bulb")        out.push(...drawIdeaBulb(rc, W * 0.80, H * 0.22, 22, baseOpts));
+    else if (t === "lower-third")    out.push(...drawLowerThird(rc, W, H, baseOpts));
+    else if (t === "callout-flecha") out.push(...drawCalloutArrow(rc, W, H, baseOpts));
+    else if (t === "intro-animada")  out.push(...drawIntroStar(rc, W, H, baseOpts));
+    else if (t === "outro-animada")  out.push(...drawOutroMark(rc, W, H, baseOpts));
+    else if (t === "separador")      out.push(...drawSeparator(rc, W, H, baseOpts));
+    else if (t === "highlight-icono")out.push(...drawHighlightIcon(rc, W, H, baseOpts));
+  }
+  return out;
+}
+
 function renderSvgForBlock(block, idx, wrapEl) {
   const t = block.tipo || "camara";
   const zoom = !!block.zoomOBS;
@@ -631,6 +829,9 @@ function renderSvgForBlock(block, idx, wrapEl) {
   } else if (t === "b-roll") {
     appendAll(drawBroll(rc, 16, 14, W - 32, H - 28, baseOpts));
   }
+
+  // Overlays auxiliares encima de lo ya dibujado (capa de post-producción)
+  appendAll(drawOverlayBadges(rc, W, H, block.overlays, baseOpts));
 
   const framing = block.encuadre || "MS";
   const tag = t === "camara" ? ("cam · " + framing)
@@ -683,6 +884,32 @@ function panelCard(block, idx) {
   const svgWrap = el("div", { class: "panel-svg-wrap" });
   card.appendChild(svgWrap);
   renderSvgForBlock(block, idx, svgWrap);
+
+  // Chips de overlays auxiliares debajo del SVG: resumen + quick remove.
+  const chipsRow = el("div", { class: "overlay-chips" });
+  (block.overlays || []).forEach((ov, oi) => {
+    const meta = OVERLAY_TIPOS.find(o => o.v === ov.tipo) || { abbr: "?" };
+    const ts = (ov.desde || "") + (ov.hasta ? "-" + ov.hasta : "");
+    const chip = el("span", {
+      class: "overlay-chip",
+      title: (ov.descripcion || meta.l || ov.tipo) + (ts ? " · " + ts : "")
+    });
+    chip.appendChild(el("span", {}, meta.abbr));
+    if (ts) chip.appendChild(el("span", { class: "chip-ts" }, ts));
+    const xBtn = el("span", {
+      style: "cursor:pointer;margin-left:4px;color:#c78a5a;font-weight:600",
+      onclick: () => removeOverlay(idx, oi),
+      title: "Quitar overlay"
+    }, "✕");
+    chip.appendChild(xBtn);
+    chipsRow.appendChild(chip);
+  });
+  chipsRow.appendChild(el("button", {
+    class: "overlay-chip-add",
+    onclick: () => addOverlay(idx),
+    title: "Agregar overlay auxiliar (se edita en Tabla)"
+  }, "+ overlay"));
+  card.appendChild(chipsRow);
 
   // body mínimo
   const body = el("div", { class: "panel-body" });
@@ -857,6 +1084,7 @@ function addBlock() {
                       visual: "", narracion: "",
                       transicion: "corte seco", zoomOBS: false, escena: "", shortcut: "",
                       referencia: "", senalizacion: "",
+                      overlays: [],
                       variantGroup: null, variantLabel: null, variantChosen: null });
   renderBlocks();
 }
@@ -874,6 +1102,22 @@ function moveBlock(i, dir) {
   if (j < 0 || j >= state.blocks.length) return;
   const [moved] = state.blocks.splice(i, 1);
   state.blocks.splice(j, 0, moved);
+  renderBlocks();
+}
+
+/* ————————————— Overlays auxiliares ————————————— */
+
+function addOverlay(blockIdx) {
+  const b = state.blocks[blockIdx];
+  if (!b.overlays) b.overlays = [];
+  b.overlays.push({ tipo: "idea-bulb", desde: "", hasta: "", descripcion: "" });
+  renderBlocks();
+}
+
+function removeOverlay(blockIdx, ovIdx) {
+  const b = state.blocks[blockIdx];
+  if (!b.overlays) return;
+  b.overlays.splice(ovIdx, 1);
   renderBlocks();
 }
 
@@ -1007,6 +1251,16 @@ function toYAML() {
     lines.push(`      shortcut: "${esc(b.shortcut)}"`);
     lines.push(`      referencia: "${esc(b.referencia)}"`);
     lines.push(`      senalizacion: "${esc(b.senalizacion)}"`);
+    const ovs = Array.isArray(b.overlays) ? b.overlays.filter(o => o && o.tipo) : [];
+    if (ovs.length) {
+      lines.push(`      overlays_auxiliares:`);
+      ovs.forEach(ov => {
+        lines.push(`        - tipo: ${ov.tipo}`);
+        if (ov.desde) lines.push(`          desde: "${esc(ov.desde)}"`);
+        if (ov.hasta) lines.push(`          hasta: "${esc(ov.hasta)}"`);
+        if (ov.descripcion) lines.push(`          descripcion: "${esc(ov.descripcion)}"`);
+      });
+    }
     if (b.variantGroup) {
       lines.push(`      variante_grupo: "${esc(b.variantGroup)}"`);
       lines.push(`      variante_etiqueta: "${esc(b.variantLabel)}"`);
