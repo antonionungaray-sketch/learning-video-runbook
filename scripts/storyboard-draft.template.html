@@ -481,78 +481,34 @@ function drawRoomWS(rc, W, H, opts) {
   return out;
 }
 
-// Close-up (CU): cabeza grande ocupando la mayor parte del cuadro, con ojos/nariz/boca.
+// Close-up (CU): misma silueta icónica escalada; cabeza grande centrada y
+// hombros cortados en el borde inferior del cuadro. Sin rasgos faciales.
 function drawHumanCU(rc, W, H, opts) {
   const out = [];
   const cx = W / 2;
-  const headH = H * 0.88;
+  const headH = H * 0.80;
   const headW = headH * 0.82;
   const headCY = H * 0.50;
-  // sugerencia de hombros en la base del cuadro
-  const shoulderY = H * 0.96;
-  out.push(rc.path(
-    `M ${W * 0.05} ${H + 2} Q ${W * 0.05} ${shoulderY} ${cx * 0.50} ${shoulderY} L ${cx} ${shoulderY + 2} L ${cx + cx * 0.50} ${shoulderY} Q ${W * 0.95} ${shoulderY} ${W * 0.95} ${H + 2} Z`,
-    { ...opts, stroke: "#2b2620", strokeWidth: 1.2, fill: "#4a403a", fillStyle: "hachure", hachureAngle: 38, hachureGap: 3.2, fillWeight: 0.8 }
-  ));
-  // cabeza
+  // Hombros continuando fuera del cuadro (curva que nace debajo de la cabeza
+  // y sale por el borde inferior). Mantiene la forma de la silueta MS.
+  const shoulderTop = H * 0.88;
+  const shoulderHalf = W * 0.42;
+  const bodyPath =
+    `M ${cx - shoulderHalf} ${H + 12} ` +
+    `Q ${cx - shoulderHalf} ${shoulderTop} ${cx} ${shoulderTop} ` +
+    `Q ${cx + shoulderHalf} ${shoulderTop} ${cx + shoulderHalf} ${H + 12} Z`;
+  out.push(rc.path(bodyPath, { ...opts, ...PAL.silhouetteBody }));
   out.push(rc.ellipse(cx, headCY, headW, headH, { ...opts, ...PAL.silhouette }));
-  // detalles faciales
-  const eyeY = headCY - headH * 0.06;
-  const eyeGap = headW * 0.20;
-  const eyeOpts = { ...opts, stroke: "#1a1614", strokeWidth: 1.3, fill: "#1a1614", fillStyle: "solid" };
-  out.push(rc.ellipse(cx - eyeGap, eyeY, headW * 0.11, headH * 0.045, eyeOpts));
-  out.push(rc.ellipse(cx + eyeGap, eyeY, headW * 0.11, headH * 0.045, eyeOpts));
-  // cejas
-  const browY = eyeY - headH * 0.07;
-  out.push(rc.line(cx - eyeGap * 1.35, browY, cx - eyeGap * 0.65, browY - headH * 0.01,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.3 }));
-  out.push(rc.line(cx + eyeGap * 0.65, browY - headH * 0.01, cx + eyeGap * 1.35, browY,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.3 }));
-  // nariz (V pequeña centrada)
-  out.push(rc.path(
-    `M ${cx - 4} ${headCY + 2} L ${cx} ${headCY + headH * 0.10} L ${cx + 4} ${headCY + 2}`,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.1 }
-  ));
-  // boca (curva sutil)
-  out.push(rc.path(
-    `M ${cx - headW * 0.14} ${headCY + headH * 0.20} Q ${cx} ${headCY + headH * 0.24} ${cx + headW * 0.14} ${headCY + headH * 0.20}`,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.4 }
-  ));
   return out;
 }
 
-// Extreme close-up (ECU): cara desborda el cuadro, sólo rasgos.
+// Extreme close-up (ECU): cabeza desborda el cuadro. Sin hombros, sin rasgos.
 function drawHumanECU(rc, W, H, opts) {
-  const out = [];
   const cx = W / 2;
-  const headH = H * 1.30;
+  const headH = H * 1.25;
   const headW = headH * 0.82;
   const headCY = H * 0.50;
-  // cabeza desbordada (stroke del elipse sale del cuadro — se ve solo el interior)
-  out.push(rc.ellipse(cx, headCY, headW, headH, { ...opts, ...PAL.silhouette }));
-  // detalles faciales más pronunciados
-  const eyeY = headCY - headH * 0.04;
-  const eyeGap = headW * 0.22;
-  const eyeOpts = { ...opts, stroke: "#1a1614", strokeWidth: 1.5, fill: "#1a1614", fillStyle: "solid" };
-  out.push(rc.ellipse(cx - eyeGap, eyeY, headW * 0.16, headH * 0.065, eyeOpts));
-  out.push(rc.ellipse(cx + eyeGap, eyeY, headW * 0.16, headH * 0.065, eyeOpts));
-  // cejas
-  const browY = eyeY - headH * 0.08;
-  out.push(rc.line(cx - eyeGap * 1.4, browY + headH * 0.01, cx - eyeGap * 0.55, browY - headH * 0.02,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.6 }));
-  out.push(rc.line(cx + eyeGap * 0.55, browY - headH * 0.02, cx + eyeGap * 1.4, browY + headH * 0.01,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.6 }));
-  // nariz
-  out.push(rc.path(
-    `M ${cx - 7} ${headCY} L ${cx} ${headCY + headH * 0.10} L ${cx + 7} ${headCY}`,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.3 }
-  ));
-  // boca
-  out.push(rc.path(
-    `M ${cx - headW * 0.16} ${headCY + headH * 0.18} Q ${cx} ${headCY + headH * 0.23} ${cx + headW * 0.16} ${headCY + headH * 0.18}`,
-    { ...opts, stroke: "#1a1614", strokeWidth: 1.6 }
-  ));
-  return out;
+  return [rc.ellipse(cx, headCY, headW, headH, { ...opts, ...PAL.silhouette })];
 }
 
 // Dispatcher de encuadre para bloques `camara`.
