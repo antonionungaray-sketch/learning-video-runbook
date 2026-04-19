@@ -422,8 +422,18 @@ function blockCard(block, idx) {
     const row = el("div", { class: "overlay-row" });
     const sel = el("select", {
       onchange: e => { state.blocks[idx].overlays[oi].tipo = e.target.value; renderBlocks(); }
-    }, ...OVERLAY_TIPOS.map(o => el("option", { value: o.v }, o.l)));
+    }, ...OVERLAY_TIPOS.map(o => {
+      const opt = el("option", { value: o.v, title: o.tip }, o.l);
+      return opt;
+    }));
     sel.value = ov.tipo || "callout";
+    // Tooltip sobre el select global muestra la info del tipo seleccionado
+    const current = OVERLAY_TIPOS.find(o => o.v === sel.value);
+    if (current) sel.title = current.tip;
+    sel.addEventListener("change", () => {
+      const c = OVERLAY_TIPOS.find(o => o.v === sel.value);
+      if (c) sel.title = c.tip;
+    });
     const desde = el("input", {
       value: ov.desde || "", placeholder: "0:34",
       oninput: e => { state.blocks[idx].overlays[oi].desde = e.target.value; }
@@ -434,9 +444,20 @@ function blockCard(block, idx) {
     });
     const desc = el("input", {
       value: ov.descripcion || "",
-      placeholder: 'Ej. "Dr. Ana · Investigadora" o prompt IA',
-      oninput: e => { state.blocks[idx].overlays[oi].descripcion = e.target.value; }
+      placeholder: ov.tipo === "otro"
+        ? 'OBLIGATORIO: describir la forma (el editor no la puede inferir)'
+        : 'Ej. "Dr. Ana · Investigadora" o prompt IA',
+      oninput: e => {
+        state.blocks[idx].overlays[oi].descripcion = e.target.value;
+        desc.style.borderColor = (state.blocks[idx].overlays[oi].tipo === "otro"
+          && !e.target.value.trim())
+          ? "var(--warn)" : "";
+      }
     });
+    // estado inicial del borde
+    if (ov.tipo === "otro" && !(ov.descripcion || "").trim()) {
+      desc.style.borderColor = "var(--warn)";
+    }
     const rm = el("button", { onclick: () => removeOverlay(idx, oi), title: "Quitar overlay" }, "✕");
     row.appendChild(sel);
     row.appendChild(desde);
