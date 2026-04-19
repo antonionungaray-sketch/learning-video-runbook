@@ -62,9 +62,11 @@ Para cada decisión:
    el brief 03 y anotá la sección correspondiente como "N/A — video
    sin demos".
 4. **Manejar auto-skip del brief 04:** si el storyboard no declara
-   ningún `zoom-pantalla`, `PiP`, `cut-away`, `cambio-de-ángulo` ni
-   `escena-alternativa`, registrá "N/A — sin requisitos especiales
-   más allá de la escena base" y pasá al cierre.
+   ningún `zoom-pantalla`, `PiP`, `cut-away`, `cambio-de-ángulo`,
+   `escena-alternativa` ni `overlays_auxiliares`, registrá "N/A — sin
+   requisitos especiales más allá de la escena base" y pasá al cierre.
+   Si hay overlays pero no hay escenas OBS dedicadas, registrá solo la
+   sección de overlays y saltá el resto.
 5. **Registrar la decisión** antes de pasar a la siguiente.
 
 ## Salida — Production Brief consolidado
@@ -117,6 +119,12 @@ B-roll:  <lista con duración y bloque destino, o N/A>
 Props / estado inicial:  <editor/terminal/navegador/otros>
 Mapa bloque → escena:  B1→… · B2→… · …
 
+Overlays auxiliares previstos (propagados a `edicion/10`):
+  B1  intro-animada  00:00-04  branding + título
+  B3  idea-bulb      01:42     foquito sobre cabeza (prompt: ...)
+  B4  lower-third    02:11-16  "Dr. Ana Pérez · NLP"
+  B7  callout        02:58-03:00  flecha al botón "Deploy"
+
 (o "N/A — sin requisitos especiales más allá de la escena base")
 
 ## 5. Conflictos flaggeados
@@ -151,8 +159,18 @@ offline-first) con **dos vistas del mismo modelo de datos**:
 
 - **Vista Tabla:** tarjeta vertical por bloque con todos los
   campos (narración completa del guion, referencia, señalización
-  detallada, nombre de escena OBS, shortcut). Pensado para
-  **cerrar decisiones técnicas antes de lockear**.
+  detallada, nombre de escena OBS, shortcut, **overlays auxiliares**).
+  Pensado para **cerrar decisiones técnicas antes de lockear**.
+
+**Overlays auxiliares (capa de post) en la UI.** Cada bloque puede
+declarar overlays generados en post (intro-animada, outro-animada,
+lower-third, idea-bulb, callout-flecha, separador, highlight-icono).
+En Cómic se ven como chips ámbar debajo de la viñeta y como
+pictogramas dibujados sobre la viñeta (foquito arriba-derecha,
+tarjeta en tercio inferior, etc.) para que un principiante **vea**
+lo que después va a aparecer en pantalla. En Tabla hay editor
+completo por bloque (tipo · desde · hasta · descripción/prompt IA).
+Se propagan al brief `edicion/10-overlays-auxiliares`.
 
 Toggle `Cómic | Tabla` arriba. Mismo modelo; lo que editás en una
 vista aparece en la otra. Reordenar/duplicar/eliminar bloques
@@ -259,6 +277,10 @@ El Production Brief es también input para `edicion-entrenamiento`:
   → fuente de verdad para `edicion/09-transiciones`. Transiciones
   marcadas como `scene-switch F2` ya están en el crudo (no son post);
   `cross-dissolve` / `J-cut` / `corte seco` se ejecutan en edición.
+- **Overlays auxiliares previstos (sección 4)** → fuente de verdad
+  para `edicion/10-overlays-auxiliares`. El editor lee el listado con
+  bloque, tipo, timestamps y prompt/descripción, y los genera con la
+  herramienta del brief (Remotion, Motion Canvas, HyperFrames, etc.).
 
 ## Reglas firmes
 

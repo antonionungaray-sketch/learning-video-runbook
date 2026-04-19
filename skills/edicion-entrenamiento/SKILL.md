@@ -17,9 +17,10 @@ Antes de proponer cualquier decisión, **lee todos los briefs de esta etapa**:
 docs/briefs/edicion/*.md
 ```
 
-(8 archivos de 40-85 líneas cada uno. Orden alfabético = orden de flujo:
+(10 archivos de 40-100 líneas cada uno. Orden alfabético = orden de flujo:
 01-pacing → 02-senalizacion → 03-audio-loudness → 04-texto-pantalla →
-05-subtitulos → 06-b-roll → 07-voiceover → 08-render.)
+05-subtitulos → 06-b-roll → 07-voiceover → 08-render → 09-transiciones →
+10-overlays-auxiliares.)
 
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información pertinente con trazabilidad al pilar vía IDs estables. Si
@@ -30,7 +31,7 @@ completo.
 
 ## Flujo
 
-Camina al creador por las 8 decisiones críticas **en el orden de los
+Camina al creador por las 10 decisiones críticas **en el orden de los
 briefs cargados**. Cada decisión usa EXCLUSIVAMENTE su brief
 correspondiente.
 
@@ -46,9 +47,10 @@ Para cada decisión:
    - Si un solo caso domina: proponer una sola propuesta, no ofrecer
      variantes.
    - **Nota de etapa:** en edición, la mayoría de decisiones son
-     deterministas (estándares técnicos objetivos). Solo 01-pacing y
-     02-senalizacion admiten variantes. El resto (loudness, texto,
-     subtítulos, B-roll, voiceover, render) tiene `false` por diseño.
+     deterministas (estándares técnicos objetivos). Admiten variantes:
+     01-pacing, 02-senalizacion, 09-transiciones, 10-overlays-auxiliares
+     (4/10). El resto (loudness, texto, subtítulos, B-roll, voiceover,
+     render) tiene `false` por diseño.
 3. **Proponer con justificación trazable** usando `Principio aplicable` +
    `Casos` del brief. Si el brief lista `Conflictos conocidos` aplicables
    al contexto, **flaggearlos explícitamente al usuario**.
@@ -74,7 +76,7 @@ pedir justificación antes de aceptar el override.
 
 ## Salida
 
-Al terminar las 8 decisiones, produce un **plan de edición documentado**
+Al terminar las 10 decisiones, produce un **plan de edición documentado**
 con el siguiente formato:
 
 ```
@@ -115,6 +117,15 @@ DURACIÓN FINAL: [N min]
 [PRESET]: [codec, bitrate, resolución, fps, container, audio codec]
 [VERIFICACIÓN FFPROBE]: [confirmación de parámetros]
 
+═══ 09. TRANSICIONES ═══
+[POR BLOQUE]: [corte seco / cross-dissolve Nms / J-cut / match cut / …]
+[NO POST-PRODUCIBLES]: [listado de zooms/PiP ya resueltos en captura]
+
+═══ 10. OVERLAYS AUXILIARES ═══
+[LISTA POR TIMESTAMP]: [bloque, tipo, timestamps, descripción/prompt IA]
+[HERRAMIENTA DE GENERACIÓN]: [Remotion / Motion Canvas / HyperFrames / Manim]
+[PROPAGADOS DESDE]: [Production Brief locked, sección 4]
+
 ═══ NOTAS DE PRODUCCIÓN ═══
 [CONFLICTOS FLAGGEADOS]: [lista — incluye P2 vs P1 y P1 vs restricción
 externa como accesibilidad]
@@ -131,6 +142,10 @@ Verifica antes de declarar la etapa completa:
 - [ ] Voiceover consistente, sin rupturas entre original y TTS.
 - [ ] Render en preset correcto para plataforma destino; ffprobe
       confirma.
+- [ ] Transiciones declaradas y coherentes con lo que YA viene en el
+      crudo (no "arreglar zoom en post").
+- [ ] Overlays auxiliares ejecutados con timestamps sincronizados a la
+      narración; los del Production Brief `locked` están todos cubiertos.
 - [ ] Cero conflictos no resueltos (P2 vs P1 o P1 vs restricción externa).
 
 ## Reglas firmes
