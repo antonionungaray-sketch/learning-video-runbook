@@ -446,6 +446,7 @@ const PAL = {
   brollDot: { stroke: "#bfa68c", strokeWidth: 0.8, fill: "#bfa68c", fillStyle: "solid" }
 };
 
+// Humano plano medio (MS) — silueta cabeza + hombros + torso que se corta abajo.
 function drawHuman(rc, x, y, w, h, opts) {
   const cx = x + w / 2;
   const headH = h * 0.40;
@@ -461,6 +462,113 @@ function drawHuman(rc, x, y, w, h, opts) {
     rc.path(bodyPath, { ...opts, ...PAL.silhouetteBody }),
     rc.ellipse(cx, headCY, headW, headH, { ...opts, ...PAL.silhouette })
   ];
+}
+
+// Contexto de habitación para planos amplios (WS): horizonte + sofá + cuadro colgado.
+function drawRoomWS(rc, W, H, opts) {
+  const out = [];
+  out.push(rc.line(10, H * 0.62, W - 10, H * 0.62, { ...opts, stroke: "#8a7968", strokeWidth: 0.9 }));
+  out.push(rc.rectangle(W * 0.72, H * 0.18, W * 0.20, H * 0.24,
+    { ...opts, stroke: "#6b5d4e", strokeWidth: 1.2, fill: "#e8dfd0", fillStyle: "solid" }));
+  out.push(rc.line(W * 0.74, H * 0.30, W * 0.90, H * 0.30, { ...opts, stroke: "#8a7968", strokeWidth: 0.9 }));
+  out.push(rc.rectangle(W * 0.04, H * 0.84, W * 0.42, H * 0.13,
+    { ...opts, stroke: "#6b5d4e", strokeWidth: 1.3, fill: "#d8cab5", fillStyle: "solid" }));
+  // lámpara de pie en esquina izquierda: vertical + circle arriba
+  out.push(rc.line(W * 0.12, H * 0.65, W * 0.12, H * 0.42, { ...opts, stroke: "#6b5d4e", strokeWidth: 1.3 }));
+  out.push(rc.polygon([
+    [W * 0.07, H * 0.42], [W * 0.17, H * 0.42], [W * 0.14, H * 0.32], [W * 0.10, H * 0.32]
+  ], { ...opts, stroke: "#6b5d4e", strokeWidth: 1.3, fill: "#d8cab5", fillStyle: "hachure", hachureGap: 2.5, hachureAngle: 45, fillWeight: 0.8 }));
+  return out;
+}
+
+// Close-up (CU): cabeza grande ocupando la mayor parte del cuadro, con ojos/nariz/boca.
+function drawHumanCU(rc, W, H, opts) {
+  const out = [];
+  const cx = W / 2;
+  const headH = H * 0.88;
+  const headW = headH * 0.82;
+  const headCY = H * 0.50;
+  // sugerencia de hombros en la base del cuadro
+  const shoulderY = H * 0.96;
+  out.push(rc.path(
+    `M ${W * 0.05} ${H + 2} Q ${W * 0.05} ${shoulderY} ${cx * 0.50} ${shoulderY} L ${cx} ${shoulderY + 2} L ${cx + cx * 0.50} ${shoulderY} Q ${W * 0.95} ${shoulderY} ${W * 0.95} ${H + 2} Z`,
+    { ...opts, stroke: "#2b2620", strokeWidth: 1.2, fill: "#4a403a", fillStyle: "hachure", hachureAngle: 38, hachureGap: 3.2, fillWeight: 0.8 }
+  ));
+  // cabeza
+  out.push(rc.ellipse(cx, headCY, headW, headH, { ...opts, ...PAL.silhouette }));
+  // detalles faciales
+  const eyeY = headCY - headH * 0.06;
+  const eyeGap = headW * 0.20;
+  const eyeOpts = { ...opts, stroke: "#1a1614", strokeWidth: 1.3, fill: "#1a1614", fillStyle: "solid" };
+  out.push(rc.ellipse(cx - eyeGap, eyeY, headW * 0.11, headH * 0.045, eyeOpts));
+  out.push(rc.ellipse(cx + eyeGap, eyeY, headW * 0.11, headH * 0.045, eyeOpts));
+  // cejas
+  const browY = eyeY - headH * 0.07;
+  out.push(rc.line(cx - eyeGap * 1.35, browY, cx - eyeGap * 0.65, browY - headH * 0.01,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.3 }));
+  out.push(rc.line(cx + eyeGap * 0.65, browY - headH * 0.01, cx + eyeGap * 1.35, browY,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.3 }));
+  // nariz (V pequeña centrada)
+  out.push(rc.path(
+    `M ${cx - 4} ${headCY + 2} L ${cx} ${headCY + headH * 0.10} L ${cx + 4} ${headCY + 2}`,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.1 }
+  ));
+  // boca (curva sutil)
+  out.push(rc.path(
+    `M ${cx - headW * 0.14} ${headCY + headH * 0.20} Q ${cx} ${headCY + headH * 0.24} ${cx + headW * 0.14} ${headCY + headH * 0.20}`,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.4 }
+  ));
+  return out;
+}
+
+// Extreme close-up (ECU): cara desborda el cuadro, sólo rasgos.
+function drawHumanECU(rc, W, H, opts) {
+  const out = [];
+  const cx = W / 2;
+  const headH = H * 1.30;
+  const headW = headH * 0.82;
+  const headCY = H * 0.50;
+  // cabeza desbordada (stroke del elipse sale del cuadro — se ve solo el interior)
+  out.push(rc.ellipse(cx, headCY, headW, headH, { ...opts, ...PAL.silhouette }));
+  // detalles faciales más pronunciados
+  const eyeY = headCY - headH * 0.04;
+  const eyeGap = headW * 0.22;
+  const eyeOpts = { ...opts, stroke: "#1a1614", strokeWidth: 1.5, fill: "#1a1614", fillStyle: "solid" };
+  out.push(rc.ellipse(cx - eyeGap, eyeY, headW * 0.16, headH * 0.065, eyeOpts));
+  out.push(rc.ellipse(cx + eyeGap, eyeY, headW * 0.16, headH * 0.065, eyeOpts));
+  // cejas
+  const browY = eyeY - headH * 0.08;
+  out.push(rc.line(cx - eyeGap * 1.4, browY + headH * 0.01, cx - eyeGap * 0.55, browY - headH * 0.02,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.6 }));
+  out.push(rc.line(cx + eyeGap * 0.55, browY - headH * 0.02, cx + eyeGap * 1.4, browY + headH * 0.01,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.6 }));
+  // nariz
+  out.push(rc.path(
+    `M ${cx - 7} ${headCY} L ${cx} ${headCY + headH * 0.10} L ${cx + 7} ${headCY}`,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.3 }
+  ));
+  // boca
+  out.push(rc.path(
+    `M ${cx - headW * 0.16} ${headCY + headH * 0.18} Q ${cx} ${headCY + headH * 0.23} ${cx + headW * 0.16} ${headCY + headH * 0.18}`,
+    { ...opts, stroke: "#1a1614", strokeWidth: 1.6 }
+  ));
+  return out;
+}
+
+// Dispatcher de encuadre para bloques `camara`.
+function drawHumanFramed(rc, W, H, framing, opts) {
+  if (framing === "WS") {
+    const roomItems = drawRoomWS(rc, W, H, opts);
+    const humanH = H * 0.52;
+    const humanW = humanH * 0.55;
+    const humanItems = drawHuman(rc, W / 2 - humanW / 2, H * 0.34, humanW, humanH, opts);
+    return [...roomItems, ...humanItems];
+  }
+  if (framing === "CU") return drawHumanCU(rc, W, H, opts);
+  if (framing === "ECU") return drawHumanECU(rc, W, H, opts);
+  // MS (default)
+  const hH = H * 0.62, hW = H * 0.62;
+  return drawHuman(rc, W / 2 - hW / 2, H * 0.18, hW, hH, opts);
 }
 
 function drawScreen(rc, x, y, w, h, opts, extra = {}) {
@@ -553,9 +661,11 @@ function renderSvgForBlock(block, idx, wrapEl) {
   const appendAll = items => items.forEach(g => svg.appendChild(g));
 
   if (t === "camara") {
-    const humanH = H * 0.62, humanW = H * 0.62;
-    appendAll(drawHuman(rc, W / 2 - humanW / 2, H * 0.18, humanW, humanH, baseOpts));
-    svg.appendChild(rc.line(20, H * 0.70, W - 20, H * 0.70, { ...baseOpts, ...PAL.horizon }));
+    const framing = block.encuadre || "MS";
+    appendAll(drawHumanFramed(rc, W, H, framing, baseOpts));
+    if (framing === "MS") {
+      svg.appendChild(rc.line(20, H * 0.70, W - 20, H * 0.70, { ...baseOpts, ...PAL.horizon }));
+    }
   } else if (t === "demo-pantalla") {
     appendAll(drawScreen(rc, 16, 14, W - 32, H - 28, baseOpts));
     if (zoom) appendAll(drawZoomBox(rc, W * 0.34, H * 0.42, W * 0.34, H * 0.32, baseOpts));
@@ -566,7 +676,8 @@ function renderSvgForBlock(block, idx, wrapEl) {
     appendAll(drawBroll(rc, 16, 14, W - 32, H - 28, baseOpts));
   }
 
-  const tag = t === "camara" ? "cam · full"
+  const framing = block.encuadre || "MS";
+  const tag = t === "camara" ? ("cam · " + framing)
             : t === "demo-pantalla" ? (zoom ? "pantalla · zoom" : "pantalla · full")
             : t === "mixto" ? "mixto · screen + pip"
             : "b-roll · inserto";
@@ -642,7 +753,27 @@ function panelCard(block, idx) {
   if (block.zoomOBS) zoomChk.checked = true;
   zoomWrap.appendChild(zoomChk);
   zoomWrap.appendChild(document.createTextNode("zoom OBS"));
-  const inline = el("div", { class: "panel-inline" }, tipoSel, dur, zoomWrap);
+
+  // Selector de encuadre — solo relevante para bloques tipo `camara`.
+  const ENC_OPTS = [
+    { v: "WS",  l: "WS · amplio" },
+    { v: "MS",  l: "MS · medio" },
+    { v: "CU",  l: "CU · close-up" },
+    { v: "ECU", l: "ECU · extremo" }
+  ];
+  const encSel = el("select", {
+    onchange: e => { state.blocks[idx].encuadre = e.target.value; renderComic(); },
+    style: "max-width:130px",
+    title: "Encuadre del plano"
+  }, ...ENC_OPTS.map(o => el("option", { value: o.v }, o.l)));
+  encSel.value = block.encuadre || "MS";
+  const currentTipo = block.tipo || "camara";
+  const encVisible = currentTipo === "camara";
+  const zoomVisible = currentTipo === "demo-pantalla" || currentTipo === "mixto";
+  if (!encVisible) encSel.style.display = "none";
+  if (!zoomVisible) zoomWrap.style.display = "none";
+
+  const inline = el("div", { class: "panel-inline" }, tipoSel, dur, zoomWrap, encSel);
   body.appendChild(inline);
 
   const visual = el("textarea", {
@@ -766,7 +897,8 @@ function renderScenePreview() {
 }
 
 function addBlock() {
-  state.blocks.push({ titulo: "", tipo: "camara", duracion: "", visual: "", narracion: "",
+  state.blocks.push({ titulo: "", tipo: "camara", encuadre: "MS", duracion: "",
+                      visual: "", narracion: "",
                       transicion: "corte seco", zoomOBS: false, escena: "", shortcut: "",
                       referencia: "", senalizacion: "",
                       variantGroup: null, variantLabel: null, variantChosen: null });
@@ -907,6 +1039,9 @@ function toYAML() {
     lines.push(`    - n: ${i + 1}`);
     lines.push(`      titulo: "${esc(b.titulo)}"`);
     lines.push(`      tipo: ${b.tipo || "camara"}`);
+    if ((b.tipo || "camara") === "camara") {
+      lines.push(`      encuadre: ${b.encuadre || "MS"}  # WS | MS | CU | ECU`);
+    }
     lines.push(`      duracion: "${esc(b.duracion)}"`);
     lines.push(`      visual: "${esc(b.visual)}"`);
     lines.push(`      narracion: "${esc(b.narracion)}"`);
