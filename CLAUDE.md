@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Claude Code plugin (skills-only, no build tooling) — a **runbook** estructurado que guía la producción de video con intención pedagógica (tutoriales técnicos, divulgación, formación corporativa, onboarding, contenido explicativo para público general). Package: `learning-video-runbook`. Content and skills are in **Spanish**; match that language when writing new skill/doc content.
+Claude Code plugin (skills-only, no build tooling) — a **runbook** estructurado que guía la producción de video con intención pedagógica (tutoriales técnicos, divulgación, formación corporativa, onboarding, contenido explicativo para público general). Package: `learning-video-runbook`. Content and skills are in **Spanish**; new content (added 2026-04-19 onward) uses **Mexican Spanish** specifically. Existing content stays in its original variant unless explicitly retranslated.
 
 There is no code to build, lint, or test. Changes are docs, skill markdown, and the two bash scripts in `scripts/`.
 
@@ -31,7 +31,7 @@ IDs are **stable contract**. If a section is renamed conceptually, the ID persis
 
 ### Layer 2 — Briefs (precomputed synthesis)
 
-`docs/briefs/{guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 36 archivos (8+4+7+9+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
+`docs/briefs/{guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 37 archivos (8+4+7+10+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
 
 **Contrato estricto de cada brief:**
 - Frontmatter YAML: `decision`, `etapa`, `pregunta`, `fuentes` (lista de IDs), `admite-variantes` (bool), `sync: YYYY-MM-DD`, `version`.
@@ -51,7 +51,7 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 5. Produce un plan documentado con template al final.
 
 **Cantidad de decisiones que admiten variantes por etapa (baseline establecido en dry-runs):**
-- Guión 2/8, Previsualización 0/4 (deterministas por diseño), Edición 3/9, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
+- Guión 2/8, Previsualización 0/4 (deterministas por diseño), Edición 4/10, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
 
 **Prohibido en skills:** leer pilares completos en runtime (`Read docs/pilares/...`). Si hay una pregunta fuera del scope de los briefs, usar `Grep` dirigido por ID.
 
@@ -67,7 +67,7 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 - `verificar-briefs.sh` — detecta drift entre briefs y pilares por rango de sección. Reporta 3 contadores: stale, IDs no encontrados (typos), IDs inline no declarados (bugs de integridad). Exit 0 por defecto (reporte). Con `--strict`, exit 1 si alguno > 0 (para hooks / CI).
 - `hook-verificar-pilares.sh` — hook `PostToolUse` (Edit/Write/MultiEdit): cuando tocás un archivo bajo `docs/pilares/`, corre `verificar-briefs.sh --strict` y avisa por stderr si hay drift. Registrado en `.claude/settings.json`. Nunca bloquea (exit 0 siempre).
 - `regenerar-vistas.sh` — emite `docs/vistas-por-etapa/<etapa>.md` desde los frontmatters de los briefs. Vistas son artefactos derivados, **no se editan a mano.**
-- `storyboard-draft.template.html` — template HTML autocontenido (vanilla JS) que `previsualizacion-entrenamiento` copia al directorio del usuario e hidrata con los datos del storyboard. El usuario itera visualmente, exporta YAML y pega de vuelta al chat. UI = view, markdown = model; el HTML se regenera cada vez y nunca se commitea.
+- `storyboard-draft.template.html` — template HTML autocontenido (vanilla JS + rough.js embebido) que `previsualizacion-entrenamiento` copia al directorio del usuario e hidrata con los datos del storyboard. Tiene vista Cómic (viñetas 16:9 sketchy) y vista Tabla (formulario por bloque); el data model incluye bloques con encuadre WS/MS/CU/ECU, variantes A/B, y **overlays auxiliares** (intro/outro, lower-third, idea-bulb, callout, separador, highlight-icono) dibujados sobre cada viñeta + chips debajo. El usuario itera visualmente, exporta YAML (con overlays serializados) y pega de vuelta al chat. UI = view, markdown = model; el HTML se regenera cada vez y nunca se commitea.
 
 Todos zero-dependency salvo el hook, que requiere `jq` para parsear stdin JSON.
 

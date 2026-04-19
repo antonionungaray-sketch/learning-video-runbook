@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/previsualizacion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T18:59:16Z
+> Última regeneración: 2026-04-19T20:53:21Z
 
 ## Decisiones críticas
 
@@ -27,6 +27,6 @@
 ### 04. requisitos-captura
 
 - **Pregunta:** ¿Qué setup de captura (escenas OBS, ángulos, b-roll, props) exige el storyboard antes de apretar REC?
-- **Fuentes:** P1-§2.3-#1 P1-§2.3-#2 P1-§2.3-#4 P3-preprod-captura P2-preprod-patrones P2-ficha-fireship P2-ficha-midudev P2-ficha-coding-train 
+- **Fuentes:** P1-§2.3-#1 P1-§2.3-#2 P1-§2.3-#4 P3-preprod-captura P2-preprod-patrones P2-ficha-fireship P2-ficha-midudev P2-ficha-coding-train P3-edicion-composicion 
 - **Brief:** [`briefs/previsualizacion/04-requisitos-captura.md`](../briefs/previsualizacion/04-requisitos-captura.md)
 

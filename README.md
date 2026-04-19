@@ -16,7 +16,7 @@ Todo claim tiene un **ID estable** (`[P1-§2.3-#8]`, `[P2-ficha-fireship]`, `[P3
 
 ### Capa 2 — Briefs (síntesis precomputada)
 
-36 briefs en `docs/briefs/<etapa>/NN-slug.md` (8+4+7+9+8), uno por decisión crítica. Cada brief es un ensamblaje denso de 40–100 líneas con contrato estricto: principio cognitivo + 2–3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. ≥5 citas a IDs estables por brief.
+37 briefs en `docs/briefs/<etapa>/NN-slug.md` (8+4+7+10+8), uno por decisión crítica. Cada brief es un ensamblaje denso de 40–100 líneas con contrato estricto: principio cognitivo + 2–3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. ≥5 citas a IDs estables por brief.
 
 Los briefs son la capa que los skills consumen en runtime. **Los skills NO leen pilares completos.**
 
@@ -48,7 +48,7 @@ learning-video-runbook/
 │   │   ├── 01-fundamentos-cognitivos.md
 │   │   ├── 02-tendencias-y-casos.md
 │   │   └── 03-herramientas.md
-│   ├── briefs/<etapa>/NN-slug.md             # 36 briefs con contrato estricto
+│   ├── briefs/<etapa>/NN-slug.md             # 37 briefs con contrato estricto
 │   ├── casos-de-exito/                       # Fichas de creators por nicho
 │   └── vistas-por-etapa/                     # Índices auto-generados
 ├── scripts/
