@@ -45,3 +45,17 @@ Mantenimiento del **pilar 3 — Herramientas** del toolkit. Las herramientas tec
 - **Cuándo elegirla.** No solo listar, sino explicar cuándo conviene esta herramienta vs alternativas.
 - **No duplicar el pilar 2.** El pilar 3 lista *qué* herramientas existen y *cuándo* usarlas. El pilar 2 documenta tendencias y patrones. Si la información es "este patrón está de moda", va al pilar 2; si es "esta herramienta acaba de salir", va al pilar 3.
 - **No tocar otros pilares.** Este skill solo actualiza el pilar 3.
+
+## Cierre — verificación de briefs
+
+Al terminar los cambios aprobados al pilar 3, ejecutá:
+
+```bash
+bash scripts/verificar-briefs.sh
+```
+
+Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde acá.** Reportá al usuario la lista y sugerí:
+
+> "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 3: [lista]. Para re-sincronizarlos de forma guiada, invocá la skill `sincronizar-briefs`."
+
+Si 0 stale: reportá "briefs al día" y terminá.

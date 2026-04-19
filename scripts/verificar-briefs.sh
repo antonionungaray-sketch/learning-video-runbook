@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
 # verificar-briefs.sh — detecta drift entre briefs y pilares.
 #
-# Para cada brief en docs/briefs/**/*.md, compara su `sync:` con la fecha
-# del último commit que tocó la línea específica donde vive cada ID del
-# pilar listado en `fuentes:`. Reporta briefs potencialmente stale.
+# Para cada brief en docs/briefs/**/*.md, compara su `sync:` con la
+# fecha del último commit que tocó el RANGO DE LA SECCIÓN donde vive
+# cada ID del pilar listado en `fuentes:`.
 #
-# Adicional: valida que cada ID listado en `fuentes:` exista realmente
-# en el pilar citado (detecta typos tempranos).
+# La "sección" de un ID es:
+#   - Si el ID está en un header `### X.Y ...`: desde esa línea hasta
+#     la línea anterior al siguiente `### ` o `## ` en el archivo.
+#   - Si el ID está en un header `## X ...`: desde esa línea hasta la
+#     línea anterior al siguiente `## ` (no ###).
+#   - Si el ID está inline (ej. item numerado de Mayer): solo esa línea.
 #
-# Zero-dependency: bash + git + grep + awk.
-# Exit 0 siempre (es reporte, no gate) salvo error de entorno.
+# Esto detecta edits en CONTENIDO dentro de la sección, no solo en el
+# header. Un cambio cosmético a una palabra dentro del bloque del ID
+# marca el brief como stale.
+#
+# Adicional: valida que cada ID listado en `fuentes:` exista en el
+# pilar citado (detecta typos) y que cada ID citado inline en el
+# cuerpo esté declarado en `fuentes:`.
+#
+# Zero-dependency: bash + git + grep + awk. Exit 0 siempre salvo error.
 
 set -euo pipefail
 
@@ -19,7 +30,6 @@ REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
 }
 cd "$REPO_ROOT"
 
-# Mapea prefijo de ID a archivo del pilar.
 map_fuente_to_file() {
   local fuente="$1"
   case "$fuente" in
@@ -41,6 +51,29 @@ map_fuente_to_file() {
   esac
 }
 
+# Dada (file, start_line), determina la línea de fin de la sección
+# según el tipo de header en start_line.
+section_end() {
+  local file="$1"
+  local start="$2"
+  local line_content
+  line_content=$(sed -n "${start}p" "$file")
+
+  local end
+  if [[ "$line_content" =~ ^###\  ]]; then
+    end=$(awk -v s="$start" 'NR>s && (/^### /||/^## /) {print NR-1; exit}' "$file")
+  elif [[ "$line_content" =~ ^##\  ]]; then
+    end=$(awk -v s="$start" 'NR>s && /^## / && !/^### / {print NR-1; exit}' "$file")
+  else
+    end="$start"
+  fi
+
+  if [[ -z "$end" ]]; then
+    end=$(wc -l < "$file")
+  fi
+  echo "$end"
+}
+
 STALE_COUNT=0
 MISSING_COUNT=0
 INLINE_MISSING_COUNT=0
@@ -52,16 +85,12 @@ while IFS= read -r brief; do
     continue
   fi
 
-  # Extraer bloque fuentes: del frontmatter
   fuentes=$(awk '
     /^fuentes:/ { in_fuentes=1; next }
     /^[a-z]+:/ && in_fuentes { exit }
     in_fuentes && /^  -/ { gsub(/^  - /,""); gsub(/ +#.*$/,""); print }
   ' "$brief")
 
-  # Cross-check: IDs citados inline en el cuerpo deben estar en fuentes:
-  # (Detecta drift opuesto: cuerpo cita algo que frontmatter no declara,
-  # lo que rompe la detección de drift para ese ID.)
   body_ids=$(awk 'BEGIN{in_front=0; dashes=0}
     /^---$/ { dashes++; if (dashes==2) in_front=1; next }
     in_front { print }
@@ -77,7 +106,6 @@ while IFS= read -r brief; do
     fi
   done <<< "$body_ids"
 
-  # Verificación de drift por fuente declarada
   while IFS= read -r fuente; do
     [[ -z "$fuente" ]] && continue
     pilar_file=$(map_fuente_to_file "$fuente")
@@ -90,20 +118,21 @@ while IFS= read -r brief; do
       continue
     fi
 
-    # Validar que el ID existe en el archivo citado
-    line=$(grep -n "\[$fuente\]" "$pilar_file" 2>/dev/null | head -1 | cut -d: -f1)
-    if [[ -z "$line" ]]; then
+    start=$(grep -n "\[$fuente\]" "$pilar_file" 2>/dev/null | head -1 | cut -d: -f1)
+    if [[ -z "$start" ]]; then
       echo "WARN: $brief cita $fuente — ID no encontrado en $pilar_file"
       MISSING_COUNT=$((MISSING_COUNT + 1))
       continue
     fi
 
-    # Drift per-line: última fecha de commit que tocó ESTA línea específica
-    last_edit=$(git log -1 --format=%cs -L "$line,+1:$pilar_file" 2>/dev/null | head -1 || echo "")
+    end=$(section_end "$pilar_file" "$start")
+
+    # Drift por rango de sección (detecta edits en contenido, no solo header)
+    last_edit=$(git log -1 --format=%cs -L "$start,$end:$pilar_file" 2>/dev/null | head -1 || echo "")
     [[ -z "$last_edit" ]] && continue
 
     if [[ "$last_edit" > "$sync_date" ]]; then
-      echo "STALE: $brief cita $fuente ($pilar_file:$line editado $last_edit, sync $sync_date)"
+      echo "STALE: $brief cita $fuente ($pilar_file:$start-$end editado $last_edit, sync $sync_date)"
       STALE_COUNT=$((STALE_COUNT + 1))
     fi
   done <<< "$fuentes"

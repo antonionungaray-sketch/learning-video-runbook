@@ -44,3 +44,17 @@ Mantenimiento del **pilar 2 — Tendencias y casos de éxito** del toolkit. Este
 - **Cada item con fecha.** Sin fecha no se puede saber qué está caduco.
 - **Prefierir evidencia mensurable.** "Esto funciona porque tal canal lo usa y tiene X% retention" > "esto funciona según opinión de blog Y".
 - **No tocar el pilar 1.** Este skill solo actualiza el pilar 2. Si el usuario pide cambiar el pilar 1, recordarle que es la capa estable y debe tener un proceso de revisión más cuidadoso (peer-review, no tendencias).
+
+## Cierre — verificación de briefs
+
+Al terminar los cambios aprobados al pilar 2, ejecutá:
+
+```bash
+bash scripts/verificar-briefs.sh
+```
+
+Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde acá.** Reportá al usuario la lista y sugerí:
+
+> "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 2: [lista]. Para re-sincronizarlos de forma guiada, invocá la skill `sincronizar-briefs`."
+
+Si 0 stale: reportá "briefs al día" y terminá.
