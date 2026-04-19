@@ -427,13 +427,11 @@ function blockCard(block, idx) {
       return opt;
     }));
     sel.value = ov.tipo || "callout";
-    // Tooltip sobre el select global muestra la info del tipo seleccionado
+    // Tooltip del select en sí (no el de la opción) refleja el tipo seleccionado.
+    // El onchange llama renderBlocks() que recrea el nodo, así que el título
+    // queda correcto tras cada cambio sin necesidad de un listener extra.
     const current = OVERLAY_TIPOS.find(o => o.v === sel.value);
     if (current) sel.title = current.tip;
-    sel.addEventListener("change", () => {
-      const c = OVERLAY_TIPOS.find(o => o.v === sel.value);
-      if (c) sel.title = c.tip;
-    });
     const desde = el("input", {
       value: ov.desde || "", placeholder: "0:34",
       oninput: e => { state.blocks[idx].overlays[oi].desde = e.target.value; }
@@ -501,7 +499,7 @@ function renderTabla() {
         const ph = el("div", { class: "unresolved-placeholder" });
         ph.innerHTML =
           `⚠ Grupo de variantes <strong>${b.variantGroup}</strong> con <strong>${sz}</strong> opciones sin decidir. ` +
-          `Abrí <strong>Cómic</strong> y elegí una antes de cerrar detalles técnicos.`;
+          `Abre <strong>Cómic</strong> y elige una antes de cerrar detalles técnicos.`;
         host.appendChild(ph);
         return;
       }
@@ -772,7 +770,7 @@ function drawChapterMarker(rc, W, H, opts) {
 function drawStatCallout(rc, W, H, opts) {
   // Cuadro en esquina superior izquierda con un "número" esquemático.
   const out = [];
-  const x = 10, y = 10, side = 52;
+  const x = W * 0.03, y = H * 0.055, side = W * 0.17;
   out.push(rc.rectangle(x, y, side, side, { ...opts, ...PAL.overlayFill }));
   // dos barras verticales gruesas que simulan un dígito
   out.push(rc.line(x + side * 0.30, y + side * 0.22, x + side * 0.30, y + side * 0.78,

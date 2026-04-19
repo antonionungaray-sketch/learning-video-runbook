@@ -32,12 +32,12 @@ docs/briefs/previsualizacion/*.md
 → 04-requisitos-captura.)
 
 También **carga el guion producido por `guion-entrenamiento`**: es el
-input obligatorio de esta etapa. Si no hay guion documentado, detenete
-y pedí al usuario volver a la etapa de guion primero.
+input obligatorio de esta etapa. Si no hay guion documentado, detente
+y pide al usuario volver a la etapa de guion primero.
 
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información con trazabilidad vía IDs estables. Si surge una pregunta
-fuera del scope de los briefs, usá `Grep` dirigido por ID
+fuera del scope de los briefs, usa `Grep` dirigido por ID
 (ej. `grep "P1-§2.3-#5" docs/pilares/01-fundamentos-cognitivos.md`),
 no `Read` del archivo completo.
 
@@ -58,15 +58,15 @@ Para cada decisión:
    **flaggearlos explícitamente al usuario** — no resolver en silencio.
    Pilar 1 prevalece salvo decisión informada.
 3. **Manejar auto-skip del brief 03:** si después del brief 01 ningún
-   bloque quedó clasificado como `demo-pantalla` ni `mixto`, saltá
-   el brief 03 y anotá la sección correspondiente como "N/A — video
+   bloque quedó clasificado como `demo-pantalla` ni `mixto`, salta
+   el brief 03 y anota la sección correspondiente como "N/A — video
    sin demos".
 4. **Manejar auto-skip del brief 04:** si el storyboard no declara
    ningún `zoom-pantalla`, `PiP`, `cut-away`, `cambio-de-ángulo`,
-   `escena-alternativa` ni `overlays_auxiliares`, registrá "N/A — sin
-   requisitos especiales más allá de la escena base" y pasá al cierre.
-   Si hay overlays pero no hay escenas OBS dedicadas, registrá solo la
-   sección de overlays y saltá el resto.
+   `escena-alternativa` ni `overlays_auxiliares`, registra "N/A — sin
+   requisitos especiales más allá de la escena base" y pasa al cierre.
+   Si hay overlays pero no hay escenas OBS dedicadas, registra solo la
+   sección de overlays y salta el resto.
 5. **Registrar la decisión** antes de pasar a la siguiente.
 
 ## Salida — Production Brief consolidado
@@ -120,10 +120,11 @@ Props / estado inicial:  <editor/terminal/navegador/otros>
 Mapa bloque → escena:  B1→… · B2→… · …
 
 Overlays auxiliares previstos (propagados a `edicion/10`):
-  B1  intro-animada  00:00-04  branding + título
-  B3  idea-bulb      01:42     foquito sobre cabeza (prompt: ...)
-  B4  lower-third    02:11-16  "Dr. Ana Pérez · NLP"
-  B7  callout        02:58-03:00  flecha al botón "Deploy"
+  B1  intro-animada   00:00-04    branding + título
+  B3  stat-callout    01:12-15    "8.3% inflación anual"
+  B4  lower-third     02:11-16    "Dra. Claudia Soto · Banco Central"
+  B6  question-prompt 04:20-24    "¿Cuál es el mecanismo de transmisión?"
+  B7  callout         02:58-03:00 flecha al elemento relevante
 
 (o "N/A — sin requisitos especiales más allá de la escena base")
 
@@ -141,7 +142,7 @@ toolkit — es artefacto del usuario, no del toolkit.
 ## UI de iteración visual (opt-in)
 
 Después de completar el brief 01 (storyboard) y antes de cerrar el
-Production Brief, **ofrecé al usuario iterar el storyboard en una UI
+Production Brief, **ofrece al usuario iterar el storyboard en una UI
 HTML local**. Es opt-in; si la rechaza, el flujo sigue como antes
 (edición puramente conversacional).
 
@@ -177,7 +178,7 @@ por bloque (tipo · desde · hasta · descripción/prompt IA). Cuando el
 tipo es `otro`, la descripción es obligatoria (borde ámbar indica
 faltante). Se propagan al brief `edicion/10-overlays-auxiliares`.
 
-Toggle `Cómic | Tabla` arriba. Mismo modelo; lo que editás en una
+Toggle `Cómic | Tabla` arriba. Mismo modelo; lo que editas en una
 vista aparece en la otra. Reordenar/duplicar/eliminar bloques
 funciona en ambas.
 
@@ -209,9 +210,9 @@ se emite; nunca se commitea, nunca se versiona. Si el usuario edita
 el `.md` a mano, el HTML queda obsoleto hasta la próxima emisión.
 
 **Cómo volver:** el usuario itera, aprieta "Exportar YAML" y pega
-el bloque. Parseá el YAML, reconstruí el Production Brief en markdown
+el bloque. Parsea el YAML, reconstruye el Production Brief en markdown
 (sección 1 storyboard + sección 4 requisitos auto-derivados), y
-respetá el `estado:` que el usuario dejó (si lockeó desde la UI,
+respeta el `estado:` que el usuario dejó (si lo dejó fijado desde la UI,
 el YAML trae `estado: locked` + `locked-at:`).
 
 **Cuándo NO ofrecerla:** si el storyboard tiene <3 bloques (no hay
@@ -239,7 +240,7 @@ Verifica antes de proponer el lock:
 
 ## Gate de lock
 
-Una vez verificado todo lo anterior, **preguntá explícitamente al
+Una vez verificado todo lo anterior, **pregunta explícitamente al
 usuario si quiere pasar el Production Brief a estado `locked`**:
 
 > "El Production Brief está completo. ¿Lo paso a `locked`? A partir

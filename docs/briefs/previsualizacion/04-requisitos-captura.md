@@ -33,8 +33,8 @@ pedido; zooms y crops son señalización ejecutada en captura, y el
 call-out cae cerca del elemento porque el crop ya lo encuadró.
 
 **Overlays auxiliares previstos.** El storyboard marca los overlays
-que se generan en post (intro/outro, lower-third, idea-bulb, callout,
-separador, highlight-icono) bloque por bloque y los propaga a
+que se generan en post (catálogo canónico de 10 tipos + `otro` libre,
+ver `edicion/10-overlays-auxiliares`) bloque por bloque y los propaga a
 `edicion/10-overlays-auxiliares` [P3-edicion-composicion].
 
 ## Auto-skip
@@ -92,8 +92,8 @@ B-roll, ángulos, props.
 Mapa bloque→escena: B1→cam-full · B2→coding-pip→zoom-cli · …
 Overlays auxiliares previstos:
   B1  intro-animada  00:00-04  branding + título
-  B3  idea-bulb      01:42     foquito sobre cabeza (prompt: ...)
-  B4  lower-third    02:11-16  "pgvector 0.8 · extensión Postgres"
+  B3  stat-callout   01:12-15  "8.3% inflación anual"
+  B4  lower-third    02:11-16  "Dra. Claudia Soto · Banco Central"
 ```
 
 Input **obligatorio** para `grabacion/04-escenas` y para
