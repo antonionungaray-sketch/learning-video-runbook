@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/edicion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T21:25:26Z
+> Última regeneración: 2026-04-19T21:38:05Z
 
 ## Decisiones críticas
 
@@ -62,7 +62,7 @@
 
 ### 10. overlays-auxiliares
 
-- **Pregunta:** ¿Qué overlays auxiliares generás en post (intro animada, idea-bulb sobre presentador, lower-third, callout animado, separador, ícono contextual) y con qué herramienta los producís?
-- **Fuentes:** P1-§2.3-#1 P1-§2.3-#2 P1-§2.3-#5 P1-§5.3 P2-edicion-patrones P2-edicion-antipatrones P2-ficha-fireship P2-ficha-kurzgesagt P2-ficha-3b1b P3-edicion-composicion 
+- **Pregunta:** ¿Qué overlays auxiliares generás en post (del catálogo de 10 tipos universales u `otro` libre) y con qué herramienta los producís?
+- **Fuentes:** P1-§2.3-#1 P1-§2.3-#2 P1-§2.3-#5 P1-§2.3-#6 P1-§2.3-#7 P1-§5.1 P1-§5.3 P1-§6.2 P1-§8 P2-edicion-patrones P2-edicion-antipatrones P2-ficha-fireship P2-ficha-kurzgesagt P2-ficha-3b1b P3-edicion-composicion 
 - **Brief:** [`briefs/edicion/10-overlays-auxiliares.md`](../briefs/edicion/10-overlays-auxiliares.md)
 
