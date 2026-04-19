@@ -21,6 +21,32 @@ docs/briefs/grabacion/*.md
 01-audio → 02-video-encuadre → 03-iluminacion → 04-escenas →
 05-captura-pantalla → 06-tomas → 07-b-roll-plan.)
 
+## Input opcional: Production Brief de previsualización
+
+Preguntá al usuario si completó la etapa de previsualización y tiene un
+**Production Brief** (`production-brief-<slug>.md` o similar, junto al
+guion). Si existe, cargalo como contexto estructurante read-only:
+
+- **Tipo de bloque** del storyboard → input para `02-video-encuadre`:
+  si todos los bloques son `demo-pantalla`, auto-proponé "sin face-cam";
+  si hay `camara` y `mixto`, proponé face-cam principal o PiP.
+- **Duración estimada por bloque** → input para `06-tomas`: plan de
+  bloques con duraciones objetivo y puntos de corte sugeridos.
+- **Shotlist** → input para `05-captura-pantalla`: lee cursor/highlight
+  declarado y props requeridos antes de grabar. Para
+  `04-escenas`, cada demo es una escena mapeable.
+- **Referencias visuales** → input para `04-escenas`: intención estética
+  por bloque, composición de fuentes acorde a la referencia citada.
+
+**Cuando NO existe el Production Brief** (usuario saltó previsualización
+o es un flujo antiguo), proceder autónomamente como siempre. No bloquear
+ni insistir; el skill es funcional con o sin brief.
+
+**Integración read-only.** Este skill nunca modifica el Production Brief;
+solo lo referencia. Si durante la grabación surge un cambio (nueva toma,
+nuevo orden), se anota en **Notas de Producción** de este plan, no
+edita el brief.
+
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información con trazabilidad vía IDs estables. Si durante el flujo
 surge una pregunta fuera del scope de los briefs, usá `Grep` dirigido

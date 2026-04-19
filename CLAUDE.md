@@ -31,7 +31,7 @@ IDs are **stable contract**. If a section is renamed conceptually, the ID persis
 
 ### Layer 2 — Briefs (precomputed synthesis)
 
-`docs/briefs/{guion,grabacion,edicion,publicacion}/NN-slug.md` — ~30 archivos, 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
+`docs/briefs/{guion,previsualizacion,grabacion,edicion,publicacion}/NN-slug.md` — 34 archivos (8+3+7+8+8), 40-100 líneas cada uno. Cada brief es un **ensamblaje denso** de una decisión crítica: principio cognitivo + 2-3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. Todo citado con IDs estables al pilar.
 
 **Contrato estricto de cada brief:**
 - Frontmatter YAML: `decision`, `etapa`, `pregunta`, `fuentes` (lista de IDs), `admite-variantes` (bool), `sync: YYYY-MM-DD`, `version`.
@@ -43,7 +43,7 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 
 ### Layer 3 — Skills (consume briefs)
 
-`skills/{guion,grabacion,edicion,publicacion}-entrenamiento/` — una por etapa. Cada skill:
+`skills/{guion,previsualizacion,grabacion,edicion,publicacion}-entrenamiento/` — una por etapa (5 etapas; previsualización es opcional, insertada entre guión y grabación). Cada skill:
 1. Carga `docs/briefs/<mi-etapa>/*.md` (glob, ~7-8 archivos).
 2. Recorre las decisiones en orden alfabético = orden de flujo.
 3. Para cada decisión: lee el brief correspondiente, propone con cita trazable, flaggea conflictos del brief, espera aprobación.
@@ -51,27 +51,28 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 5. Produce un plan documentado con template al final.
 
 **Cantidad de decisiones que admiten variantes por etapa (baseline establecido en dry-runs):**
-- Guión 2/8, Edición 2/8, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
+- Guión 2/8, Previsualización 0/3 (deterministas por diseño), Edición 2/8, Grabación 3/7, Publicación 3/8. El resto son estándares, derivados, o principios deterministas.
 
 **Prohibido en skills:** leer pilares completos en runtime (`Read docs/pilares/...`). Si hay una pregunta fuera del scope de los briefs, usar `Grep` dirigido por ID.
 
 ## Skills layout (`skills/`)
 
-- `crear-entrenamiento` — orchestrator. Identifies stage, delegates to stage skill.
-- `guion-entrenamiento` / `grabacion-entrenamiento` / `edicion-entrenamiento` / `publicacion-entrenamiento` — one per production stage. Consume briefs, no pilares.
+- `crear-entrenamiento` — orchestrator. Identifies stage, delegates to stage skill. Ofrece previsualización como puente opcional entre guión y grabación (recomendado, no bloqueante).
+- `guion-entrenamiento` / `previsualizacion-entrenamiento` / `grabacion-entrenamiento` / `edicion-entrenamiento` / `publicacion-entrenamiento` — one per production stage. Consume briefs, no pilares. `previsualizacion-entrenamiento` produce un **Production Brief** que `grabacion-entrenamiento` lee como input opcional (read-only).
 - `actualizar-tendencias` / `actualizar-herramientas` — mantenimiento de pilares 2 y 3. Tras aplicar cambios, cierran llamando a `scripts/verificar-briefs.sh` y sugieren `sincronizar-briefs` si hay stale.
 - `sincronizar-briefs` — re-sincroniza briefs cuando los pilares cambiaron. Muestra diff, pregunta editar/sync-bump/diferir por cada brief stale.
 
 ## Scripts (`scripts/`)
 
-- `verificar-briefs.sh` — detecta drift entre briefs y pilares por rango de sección. Reporta 3 contadores: stale, IDs no encontrados (typos), IDs inline no declarados (bugs de integridad). Exit 0 siempre (es reporte, no gate).
+- `verificar-briefs.sh` — detecta drift entre briefs y pilares por rango de sección. Reporta 3 contadores: stale, IDs no encontrados (typos), IDs inline no declarados (bugs de integridad). Exit 0 por defecto (reporte). Con `--strict`, exit 1 si alguno > 0 (para hooks / CI).
+- `hook-verificar-pilares.sh` — hook `PostToolUse` (Edit/Write/MultiEdit): cuando tocás un archivo bajo `docs/pilares/`, corre `verificar-briefs.sh --strict` y avisa por stderr si hay drift. Registrado en `.claude/settings.json`. Nunca bloquea (exit 0 siempre).
 - `regenerar-vistas.sh` — emite `docs/vistas-por-etapa/<etapa>.md` desde los frontmatters de los briefs. Vistas son artefactos derivados, **no se editan a mano.**
 
-Ambos scripts zero-dependency (bash + git + grep + awk), POSIX-safe.
+Todos zero-dependency salvo el hook, que requiere `jq` para parsear stdin JSON.
 
 ## Vistas por etapa (derivadas)
 
-`docs/vistas-por-etapa/{guion,grabacion,edicion,publicacion}.md` son **artefactos auto-generados** por `regenerar-vistas.sh` desde los frontmatters de los briefs. Conservan valor como índice humanamente legible pero no se editan a mano. Si necesitás cambiar una vista, editá el brief correspondiente y regenerá.
+`docs/vistas-por-etapa/{guion,previsualizacion,grabacion,edicion,publicacion}.md` son **artefactos auto-generados** por `regenerar-vistas.sh` desde los frontmatters de los briefs. Conservan valor como índice humanamente legible pero no se editan a mano. Si necesitás cambiar una vista, editá el brief correspondiente y regenerá.
 
 ## Objective technical standards (enforced by edicion)
 
@@ -91,7 +92,7 @@ Per pilar 1 §7, the repo explicitly rejects the "8-second attention span" claim
 ## Working on this repo
 
 - **Edit un brief:** cambio va en `docs/briefs/<etapa>/NN-*.md`. Si cambiás `fuentes:` o `pregunta:`, correr `bash scripts/regenerar-vistas.sh` después.
-- **Edit un pilar:** al terminar, correr `bash scripts/verificar-briefs.sh`. Si hay stale, invocar `sincronizar-briefs`.
+- **Edit un pilar:** el hook `PostToolUse` corre `verificar-briefs.sh --strict` automáticamente y avisa si hay drift. Si el aviso aparece, invocar `sincronizar-briefs`.
 - **Nuevo creator para pilar 2:** ficha va en `docs/casos-de-exito/<nicho>.md` con header `## <Nombre> [P2-ficha-<slug>]`. Slug es contrato estable.
 - **Nuevo brief:** usar plantilla de 6 bloques, ≥5 citas con IDs estables, frontmatter completo. Longitud 40-100 líneas. Agregar al `docs/briefs/<etapa>/` con prefijo NN-.
 - **Plugin packaging:** los briefs y scripts van en el paquete distribuible. Las vistas se regeneran en el repo del usuario si corre el script (opcional).

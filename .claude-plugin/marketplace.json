@@ -9,7 +9,7 @@
     {
       "name": "training-video-toolkit",
       "description": "Plugin de Claude Code para crear material de entrenamiento audiovisual basado en evidencia (3 pilares: fundamentos cognitivos, tendencias, herramientas)",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "source": "./",
       "author": {
         "name": "Antonio Nungaray",

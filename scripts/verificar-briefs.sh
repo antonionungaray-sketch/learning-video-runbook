@@ -20,9 +20,27 @@
 # pilar citado (detecta typos) y que cada ID citado inline en el
 # cuerpo esté declarado en `fuentes:`.
 #
-# Zero-dependency: bash + git + grep + awk. Exit 0 siempre salvo error.
+# Zero-dependency: bash + git + grep + awk. Exit 0 por defecto.
+# Con --strict, exit 1 si hay cualquier problema (stale, IDs missing, inline missing).
 
 set -euo pipefail
+
+STRICT=0
+for arg in "$@"; do
+  case "$arg" in
+    --strict) STRICT=1 ;;
+    -h|--help)
+      echo "usage: $0 [--strict]"
+      echo "  --strict    exit 1 si hay drift o integridad rota (para hooks/CI)"
+      exit 0
+      ;;
+    *)
+      echo "ERROR: flag desconocido: $arg" >&2
+      echo "usage: $0 [--strict]" >&2
+      exit 2
+      ;;
+  esac
+done
 
 REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
   echo "ERROR: no estás dentro de un repo git" >&2
@@ -142,4 +160,8 @@ echo ""
 echo "Total briefs stale: $STALE_COUNT"
 echo "Total IDs no encontrados en pilar: $MISSING_COUNT"
 echo "Total IDs inline no declarados en fuentes: $INLINE_MISSING_COUNT"
+
+if [[ "$STRICT" -eq 1 ]] && (( STALE_COUNT + MISSING_COUNT + INLINE_MISSING_COUNT > 0 )); then
+  exit 1
+fi
 exit 0

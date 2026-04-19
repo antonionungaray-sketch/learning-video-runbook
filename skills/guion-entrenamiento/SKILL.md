@@ -132,6 +132,13 @@ Verifica antes de declarar la etapa completa:
       accesibilidad). Si hay algún conflicto, queda flaggeado en Notas
       de Producción.
 
+**Siguiente etapa recomendada: previsualización.** Al cerrar el
+guión, sugerí al usuario pasar por `previsualizacion-entrenamiento`
+para fijar storyboard, pacing estimado y shotlist de demos antes
+de grabar. Es opcional — si el video es re-shoot de un formato
+conocido o muy simple, se puede saltar, pero documéntalo en Notas
+de Producción.
+
 ## Reglas firmes
 
 - **Nunca leer pilares completos** en el flujo normal. Solo briefs.

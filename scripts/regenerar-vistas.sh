@@ -13,7 +13,7 @@ REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
 }
 cd "$REPO_ROOT"
 
-ETAPAS=(guion grabacion edicion publicacion)
+ETAPAS=(guion previsualizacion grabacion edicion publicacion)
 STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 for etapa in "${ETAPAS[@]}"; do

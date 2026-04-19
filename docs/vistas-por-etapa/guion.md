@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/guion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-19T00:49:09Z
+> Última regeneración: 2026-04-19T18:13:34Z
 
 ## Decisiones críticas
 
