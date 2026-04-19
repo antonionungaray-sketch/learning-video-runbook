@@ -1,6 +1,6 @@
 # Arquitectura de la Atención y Neuropsicología del Aprendizaje en Medios Audiovisuales
 
-Referencia conceptual sobre cómo el cerebro humano percibe, atiende y aprende a partir de contenido audiovisual. Pensada para informar el diseño de tutoriales técnicos y formación corporativa basados en evidencia.
+Referencia conceptual sobre cómo el cerebro humano percibe, atiende y aprende a partir de contenido audiovisual. Pensada para informar el diseño de video con intención pedagógica —tutoriales técnicos, divulgación, formación corporativa, onboarding, contenido explicativo para público general— basado en evidencia.
 
 > **Alcance.** Este documento describe procesos cognitivos del aprendiz humano. No prescribe software, codecs ni flujos de producción concretos. La aplicación a un pipeline específico se aborda en documentos separados.
 >

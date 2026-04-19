@@ -1,15 +1,15 @@
 {
-  "name": "training-video-toolkit-marketplace",
-  "description": "Marketplace para el toolkit de creación de material de entrenamiento audiovisual",
+  "name": "learning-video-runbook-marketplace",
+  "description": "Marketplace para el runbook de producción de video con intención pedagógica",
   "owner": {
     "name": "Antonio Nungaray",
     "email": "antonio.nungaray@gmail.com"
   },
   "plugins": [
     {
-      "name": "training-video-toolkit",
-      "description": "Plugin de Claude Code para crear material de entrenamiento audiovisual basado en evidencia (3 pilares: fundamentos cognitivos, tendencias, herramientas)",
-      "version": "0.2.0",
+      "name": "learning-video-runbook",
+      "description": "Runbook estructurado para producir video con intención pedagógica (tutoriales, divulgación, formación, onboarding). Basado en 3 pilares: fundamentos cognitivos, tendencias y herramientas.",
+      "version": "0.3.0",
       "source": "./",
       "author": {
         "name": "Antonio Nungaray",

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Claude Code plugin (skills-only, no build tooling) that guides creators through evidence-based production of training/tutorial videos. Content and skills are in **Spanish**; match that language when writing new skill/doc content.
+Claude Code plugin (skills-only, no build tooling) — a **runbook** estructurado que guía la producción de video con intención pedagógica (tutoriales técnicos, divulgación, formación corporativa, onboarding, contenido explicativo para público general). Package: `learning-video-runbook`. Content and skills are in **Spanish**; match that language when writing new skill/doc content.
 
 There is no code to build, lint, or test. Changes are docs, skill markdown, and the two bash scripts in `scripts/`.
 

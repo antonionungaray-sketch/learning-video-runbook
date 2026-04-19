@@ -1,7 +1,7 @@
 {
-  "name": "training-video-toolkit",
-  "description": "Flujo de creación de material de entrenamiento audiovisual basado en tres pilares: fundamentos cognitivos, tendencias y herramientas",
-  "version": "0.2.0",
+  "name": "learning-video-runbook",
+  "description": "Runbook estructurado para producir video con intención pedagógica (tutoriales, divulgación, formación, onboarding), basado en 3 pilares: fundamentos cognitivos, tendencias y herramientas",
+  "version": "0.3.0",
   "author": {
     "name": "Antonio Nungaray",
     "email": "antonio.nungaray@gmail.com"
@@ -9,10 +9,15 @@
   "license": "MIT",
   "keywords": [
     "video",
-    "training",
-    "educacion",
-    "audiovisual",
+    "learning",
+    "runbook",
     "instructional-design",
+    "educational-video",
+    "explainer",
+    "training",
+    "divulgacion",
+    "pedagogia",
+    "audiovisual",
     "skills"
   ]
 }

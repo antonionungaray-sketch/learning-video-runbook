@@ -7,7 +7,7 @@ Mode: Builder
 
 ## Problem Statement
 
-El repo `training-video-toolkit` ya tiene la arquitectura correcta — orchestrator + 4 skills de etapa + 3 pilares + 4 vistas — pero funciona hoy más como *esqueleto* que como *playbook*. La meta es usarlo uno mismo y hacer que funcione para otros creadores, produciendo contenido audiovisual educativo y de divulgación atractivo para audiencias modernas de YouTube.
+El repo `learning-video-runbook` (antes `training-video-toolkit`) ya tiene la arquitectura correcta — orchestrator + 4 skills de etapa + 3 pilares + 4 vistas — pero funciona hoy más como *esqueleto* que como *playbook*. La meta es usarlo uno mismo y hacer que funcione para otros creadores, produciendo contenido audiovisual educativo y de divulgación atractivo para audiencias modernas de YouTube.
 
 El gap no es estructura: es (a) contenido suficientemente afilado en los pilares dinámicos (2 y 3), (b) un guardrail explícito contra AI slop que preserve voz humana, y (c) una primera prueba real — un video publicado — que demuestre el flujo de punta a punta.
 
