@@ -412,93 +412,153 @@ function renderTabla() {
 
 /* ————————————— Vista cómic ————————————— */
 
+/* ————— Mini-library de glyphs reutilizables —————
+   Cada glyph recibe una caja {x,y,w,h} y devuelve el SVG string.
+   Mismo humano, pantalla, PiP, b-roll, etc. a cualquier escala.
+   Así cam-full y PiP usan exactamente el mismo drawHuman. */
+const GLYPHS = {
+  // Humano plano medio: cabeza + hombros. Proporciones fijas:
+  // cabeza ocupa 40% del alto; hombros ~1.8× ancho de cabeza.
+  human(x, y, w, h) {
+    const cx = x + w / 2;
+    const headH = h * 0.40;
+    const headW = headH * 0.82;        // cabeza levemente más alta que ancha
+    const headCY = y + headH * 0.55;   // leve margen superior
+    const shoulderTop = y + headH * 1.05;
+    const shoulderHalf = Math.min(w * 0.42, headW * 1.9);
+    return `
+      <ellipse cx="${cx}" cy="${headCY}" rx="${headW / 2}" ry="${headH / 2}" class="sb-silhouette-head"/>
+      <path d="M ${cx - shoulderHalf} ${y + h}
+               Q ${cx - shoulderHalf} ${shoulderTop}
+                 ${cx} ${shoulderTop}
+               Q ${cx + shoulderHalf} ${shoulderTop}
+                 ${cx + shoulderHalf} ${y + h} Z"
+            class="sb-silhouette-body"/>
+    `;
+  },
+
+  // Marco de ventana tipo navegador/editor con 3 botones de títulobar.
+  screen(x, y, w, h, opts = {}) {
+    const titleH = Math.max(8, Math.min(14, h * 0.10));
+    const bullets = [];
+    const by = y + titleH / 2;
+    for (let i = 0; i < 3; i++) {
+      bullets.push(`<circle cx="${x + 8 + i * 9}" cy="${by}" r="${Math.max(1.8, titleH * 0.22)}" class="sb-bullet"/>`);
+    }
+    const titleBar = `<line x1="${x + 8 + 3 * 9 + 4}" y1="${by}" x2="${x + w * 0.45}" y2="${by}" class="sb-ui-line"/>`;
+    // líneas de texto simulado
+    const lines = [];
+    const firstLineY = y + titleH + (h * 0.10);
+    const lineGap = Math.max(10, h * 0.10);
+    const maxLines = opts.maxLines || 5;
+    for (let i = 0; i < maxLines; i++) {
+      const ly = firstLineY + i * lineGap;
+      if (ly > y + h - 6) break;
+      const lw = (w * 0.62) + (i % 2) * (w * 0.15) - (i === 2 ? w * 0.22 : 0);
+      lines.push(`<line x1="${x + 10}" y1="${ly}" x2="${x + 10 + lw}" y2="${ly}" class="sb-ui-line"/>`);
+    }
+    return `
+      <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" class="sb-screen-frame"/>
+      ${bullets.join("")}${titleBar}
+      ${lines.join("")}
+    `;
+  },
+
+  // Marco de PiP con silueta adentro (reusa drawHuman).
+  pip(x, y, w, h) {
+    return `
+      <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" class="sb-pip-frame"/>
+      ${GLYPHS.human(x + w * 0.10, y + h * 0.10, w * 0.80, h * 0.90)}
+    `;
+  },
+
+  // Recuadro de zoom con flecha saliente arriba-derecha.
+  zoomBox(x, y, w, h) {
+    return `
+      <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" class="sb-zoom-box"/>
+      <path d="M ${x + w} ${y} Q ${x + w + 16} ${y - 18} ${x + w + 28} ${y - 32}" class="sb-arrow"/>
+    `;
+  },
+
+  // Marco de b-roll con patrón de puntos + triángulo de play.
+  broll(x, y, w, h) {
+    const dots = [];
+    for (let j = 0; j < 8; j++) {
+      for (let i = 0; i < 12; i++) {
+        const dx = x + 16 + i * (w / 13) + (j % 2 === 0 ? 0 : (w / 26));
+        const dy = y + 16 + j * ((h - 32) / 8);
+        dots.push(`<circle cx="${dx}" cy="${dy}" r="1" fill="#bfa68c"/>`);
+      }
+    }
+    const cx = x + w / 2, cy = y + h / 2;
+    const tSize = Math.min(w, h) * 0.22;
+    return `
+      <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"
+            fill="#ece2d0" stroke="#6b5d4e" stroke-width="1.6" stroke-dasharray="5,3"/>
+      ${dots.join("")}
+      <path d="M ${cx - tSize * 0.5} ${cy - tSize}
+               L ${cx - tSize * 0.5} ${cy + tSize}
+               L ${cx + tSize}       ${cy} Z"
+            fill="#b86e3a" fill-opacity="0.55"
+            stroke="#8a4f22" stroke-width="1.5" stroke-linejoin="round"/>
+    `;
+  },
+
+  // Línea horizonte tenue (para cam-full).
+  horizon(x, y, w) {
+    return `<line x1="${x}" y1="${y}" x2="${x + w}" y2="${y}" stroke="#c4b39a" stroke-width="1"/>`;
+  }
+};
+
 function svgForBlock(block, idx) {
   const t = block.tipo || "camara";
   const zoom = !!block.zoomOBS;
-
-  // Viewbox cinematográfico 16:9
   const W = 320, H = 180;
   const seed = ((idx == null ? 0 : idx) * 17 + 3) % 100;
   const fid = "hd-" + (idx == null ? "x" : idx);
   const p = [];
   p.push(`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`);
-  // Filter "handdrawn" local con seed per-viñeta (variación sutil entre cuadros)
+  // Filter "handdrawn" local con seed per-viñeta
   p.push(`<defs>
     <filter id="${fid}" x="-3%" y="-3%" width="106%" height="106%">
       <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="${seed}"/>
       <feDisplacementMap in="SourceGraphic" scale="2.3"/>
     </filter>
   </defs>`);
-  // Fondo de papel crema (fuera del filter: plano, sin temblor)
+  // Papel crema + líneas de libreta (fuera del filter)
   p.push(`<rect x="0" y="0" width="${W}" height="${H}" fill="#f5efe3"/>`);
-  // "Líneas de libreta" muy tenues como fondo
   for (let y = 30; y < H - 20; y += 24) {
     p.push(`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="#e0d4bd" stroke-width="0.5"/>`);
   }
 
-  // Todo el contenido dibujado va adentro del filter handdrawn
+  // Todo el dibujo adentro del filter
   p.push(`<g filter="url(#${fid})">`);
 
   if (t === "camara") {
-    // Silueta del creador, plano medio centrado
-    p.push(`<ellipse cx="160" cy="80" rx="42" ry="48" class="sb-silhouette-head"/>`);
-    p.push(`<path d="M 80 180 Q 80 120 160 120 Q 240 120 240 180 Z" class="sb-silhouette-body"/>`);
-    // detalle: línea del horizonte/fondo
-    p.push(`<line x1="20" y1="130" x2="300" y2="130" stroke="#c4b39a" stroke-width="1"/>`);
+    // Humano plano medio centrado. Altura útil 55% del cuadro para dejar aire.
+    const humanH = H * 0.62;
+    const humanW = H * 0.62;
+    p.push(GLYPHS.human(W / 2 - humanW / 2, H * 0.18, humanW, humanH));
+    p.push(GLYPHS.horizon(20, H * 0.70, W - 40));
   } else if (t === "demo-pantalla") {
-    // Pantalla tipo navegador/editor
-    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="5" class="sb-screen-frame"/>`);
-    // barra superior con 3 "botones de ventana"
-    p.push(`<circle cx="28" cy="24" r="2.5" class="sb-bullet"/>`);
-    p.push(`<circle cx="37" cy="24" r="2.5" class="sb-bullet"/>`);
-    p.push(`<circle cx="46" cy="24" r="2.5" class="sb-bullet"/>`);
-    p.push(`<line x1="56" y1="24" x2="120" y2="24" class="sb-ui-line"/>`);
-    // líneas de UI simulando texto
-    for (let i = 0; i < 5; i++) {
-      const y = 46 + i * 18;
-      const w = 180 + (i % 2) * 40 - (i === 2 ? 80 : 0);
-      p.push(`<line x1="30" y1="${y}" x2="${30 + w}" y2="${y}" class="sb-ui-line"/>`);
-    }
-    if (zoom) {
-      p.push(`<rect x="108" y="78" width="108" height="58" rx="3" class="sb-zoom-box"/>`);
-      p.push(`<path d="M 216 78 Q 232 60 244 46" class="sb-arrow"/>`);
-    }
+    p.push(GLYPHS.screen(16, 14, W - 32, H - 28));
+    if (zoom) p.push(GLYPHS.zoomBox(W * 0.34, H * 0.42, W * 0.34, H * 0.32));
   } else if (t === "mixto") {
-    // Pantalla principal + PiP
-    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="5" class="sb-screen-frame"/>`);
-    p.push(`<circle cx="28" cy="24" r="2.5" class="sb-bullet"/>`);
-    p.push(`<circle cx="37" cy="24" r="2.5" class="sb-bullet"/>`);
-    p.push(`<circle cx="46" cy="24" r="2.5" class="sb-bullet"/>`);
-    for (let i = 0; i < 4; i++) {
-      const y = 50 + i * 22;
-      p.push(`<line x1="30" y1="${y}" x2="${180}" y2="${y}" class="sb-ui-line"/>`);
-    }
-    // PiP
-    const px = W - 90, py = H - 78;
-    p.push(`<rect x="${px}" y="${py}" width="66" height="58" rx="4" class="sb-pip-frame"/>`);
-    p.push(`<ellipse cx="${px + 33}" cy="${py + 22}" rx="10" ry="12" class="sb-silhouette-head"/>`);
-    p.push(`<path d="M ${px + 11} ${py + 58} Q ${px + 11} ${py + 38} ${px + 33} ${py + 38} Q ${px + 55} ${py + 38} ${px + 55} ${py + 58} Z" class="sb-silhouette-body"/>`);
+    p.push(GLYPHS.screen(16, 14, W - 32, H - 28, { maxLines: 4 }));
+    p.push(GLYPHS.pip(W - 92, H - 82, 72, 62));
   } else if (t === "b-roll") {
-    // Marco con esquinas estilo "cuadro" de b-roll
-    p.push(`<rect x="16" y="14" width="${W - 32}" height="${H - 28}" rx="5" fill="#ece2d0" stroke="#6b5d4e" stroke-width="1.6" stroke-dasharray="5,3"/>`);
-    // patrón de puntos tenues dispersos
-    for (let y = 30; y < H - 30; y += 18) {
-      for (let x = 30; x < W - 30; x += 22) {
-        p.push(`<circle cx="${x + (y % 36 === 0 ? 11 : 0)}" cy="${y}" r="1" fill="#bfa68c"/>`);
-      }
-    }
-    // "play triangle" dibujado a mano
-    p.push(`<path d="M 138 72 L 138 112 L 180 92 Z" fill="#b86e3a" fill-opacity="0.55" stroke="#8a4f22" stroke-width="1.5" stroke-linejoin="round"/>`);
+    p.push(GLYPHS.broll(16, 14, W - 32, H - 28));
   }
+
   p.push(`</g>`);
 
-  // Etiquetas de plano (fuera del filter, para que queden legibles)
+  // Etiquetas (fuera del filter, legibles)
   const tag = t === "camara" ? "cam · full"
             : t === "demo-pantalla" ? (zoom ? "pantalla · zoom" : "pantalla · full")
             : t === "mixto" ? "mixto · screen + pip"
             : "b-roll · inserto";
   p.push(`<text x="12" y="172" class="sb-label">${tag}</text>`);
-  if (t === "demo-pantalla" && zoom) p.push(`<text x="220" y="42" class="sb-label-accent">zoom</text>`);
+  if (t === "demo-pantalla" && zoom) p.push(`<text x="240" y="${H * 0.40 - 2}" class="sb-label-accent">zoom</text>`);
   p.push(`</svg>`);
   return p.join("");
 }
