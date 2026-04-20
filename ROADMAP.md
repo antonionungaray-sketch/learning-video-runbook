@@ -2,7 +2,7 @@
 
 Source: diálogo de design 2026-04-19, plan file `/home/antonio/.claude/plans/desafortunadamente-este-proyecto-est-bubbly-charm.md`
 Branch: main
-Status: IN PROGRESS (fase 0 cerrada, fases 1-6 pendientes)
+Status: IN PROGRESS (fases 0-1 cerradas, fases 2-6 pendientes)
 Mode: Reform
 
 ## Problem Statement
@@ -16,7 +16,7 @@ La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad co
 | Fase | Qué | Tamaño | Estado |
 |---|---|---|---|
 | 0 | Rebrand semántico superficial — nombre del paquete, repo, 7 skills, copy en README/CLAUDE/ROADMAP/configs/HTML/onboarding | 1-2 sesiones | **Cerrada 2026-04-19** (ver `CHANGELOG.md [1.0.0]`). Pendiente: renombre de carpeta local y rename del repo en GitHub (diferido; el repo vive como `training-video-toolkit` en GitHub pero el plugin ya se llama `video-explainer-guide`). |
-| 1 | Diseño formal del modelo de 4 ejes estructurales + 12 presets de modalidad | 1 sesión | Pendiente |
+| 1 | Diseño formal del modelo de 5 ejes estructurales + 12 presets de modalidad | 1 sesión | **Cerrada 2026-04-19** — `docs/arquitectura/modalidades-y-ejes.md`. Commit `84a243f`. Evolución: 5 ejes (no 4; `grado-guion` se separó de `grado-edicion`); `narrador-omnisciente` agregado; Shorts = atributo de plataforma. |
 | 2 | Expansión del pilar 1: agregar teoría documental (Nichols), ensayo fílmico (Rascaroli), retórica visual (Cairo, Tufte), active learning (Freeman, Mazur), manteniendo Mayer/Sweller como núcleo | 3-5 sesiones | Pendiente |
 | 3 | Expansión de pilares 2 y 3 con fichas de creators y herramientas para modalidades nuevas | 2-3 sesiones | Pendiente |
 | 4 | Rediseño de los 43 briefs con bloques "Ajuste por eje" + marcado de universales | 3-4 sesiones | Pendiente |
@@ -29,8 +29,9 @@ La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad co
 - **Paquete + repo:** `video-explainer-guide` (slugs en inglés técnico; "guide" por accesibilidad sobre "runbook"/"toolkit").
 - **Skills:** verbos imperativos en inglés + sufijo `-explainer` (`create-explainer`, `concept-explainer`, `script-explainer`, `storyboard-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`). Identificadores kebab-case; títulos humanos internos en español de México.
 - **Contenido:** español de México en pilares, briefs, SKILL.md prose, vistas, fichas. Slugs de briefs permanecen en español (`decision: guion/04-retrieval`) por contrato de ID estable.
-- **12 modalidades** soportadas como presets nombrados de los 4 ejes; modalidad custom posible vía declaración directa de ejes.
-- **4 ejes:** arco dominante · objetivo cognitivo · grado de edición · rol del presentador.
+- **12 modalidades** soportadas como presets nombrados de los 5 ejes; modalidad custom posible vía declaración directa de ejes.
+- **5 ejes:** arco dominante · objetivo cognitivo · grado de edición · grado de guión · rol del presentador.
+- **Plataforma** como atributo separado de modalidad: long-form-horizontal · shorts-vertical · podcast-audio-primario · live-with-vod · corporate-lms.
 
 ---
 
