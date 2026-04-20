@@ -71,6 +71,21 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 - `concept-explainer` / `script-explainer` / `storyboard-explainer` / `record-explainer` / `edit-explainer` / `publish-explainer` — one per production stage. Consumen briefs, no pilares. `concept-explainer` produce un **Concept Brief** con `estado: draft | locked` + `locked-at: YYYY-MM-DD` que define audiencia, objetivo, promesa, ángulo, formato, plataforma, tono y restricciones; `script-explainer` lo lee read-only en su Paso 0, avisa si está en `draft` y lo trata como contrato cuando está `locked`. `storyboard-explainer` produce un **Production Brief** análogo; `record-explainer` y `edit-explainer` lo leen read-only con la misma disciplina. Cambios post-lock en cualquiera de los dos briefs requieren re-invocar la skill correspondiente.
 - `update-trends` / `update-tools` — mantenimiento de pilares 2 y 3. Tras aplicar cambios, cierran llamando a `scripts/verificar-briefs.sh` y sugieren `sync-briefs` si hay stale.
 - `sync-briefs` — re-sincroniza briefs cuando los pilares cambiaron. Muestra diff, pregunta editar/sync-bump/diferir por cada brief stale.
+- `setup-environment` — construye y actualiza el perfil de entorno del usuario (OS, preferencias, hardware, herramientas ya elegidas). Re-invocable. Leído por los skills de etapa para filtrar recomendaciones de herramientas.
+
+## Perfil de entorno del usuario (setup-environment)
+
+El skill `setup-environment` construye un perfil persistente del entorno del usuario (OS, preferencias, hardware, restricciones, herramientas ya elegidas) que los skills de etapa leen para filtrar recomendaciones de herramientas.
+
+**Archivos:**
+- Global por máquina: `~/.claude/video-explainer/profile.md` (no se commitea).
+- Override por proyecto: `.video-explainer/profile.md` en la raíz del proyecto de video (opcional; si existe, se mezcla con el global — los valores del override tienen precedencia).
+
+**Cuándo invocar:** antes del primer sprint de producción en una máquina nueva. Re-invocar si cambia el OS, el hardware, o las preferencias de licencia.
+
+**Metadata en Pilar 3:** cada bullet de herramienta en `docs/pilares/03-herramientas.md` tiene un bloque `<!-- meta: <slug> -->` con campos estructurados (`plataformas`, `licencia`, `modo`, `hardware-min?`, `equivalentes`). Ver formato canónico documentado en el prefacio del Pilar 3.
+
+**Re-invocación:** el usuario puede invocar `setup-environment` las veces que quiera. En re-invocaciones, muestra el perfil actual, ofrece actualizar solo secciones puntuales (plataforma / preferencias / restricciones / hardware / herramientas).
 
 ## Scripts (`scripts/`)
 
