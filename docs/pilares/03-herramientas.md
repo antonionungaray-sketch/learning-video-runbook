@@ -108,21 +108,94 @@ Cada bullet de herramienta lleva un bloque `<!-- meta: <slug> -->` indented deba
 
 ### Captura de pantalla y cámara [P3-preprod-captura]
 - **OBS Studio** — open source, cross-platform, scenes, encoders por hardware. Status: estable, líder de facto en captura.
-- **Loom / Riverside / Descript Recorder** — capturas rápidas, sincronización a la nube. Mejor para sesiones cortas o entrevistas remotas.
+  <!-- meta: obs-studio -->
+  - plataformas: [linux, mac, windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [streamlabs, loom, riverside]
+- **Loom** — capturas rápidas con sincronización a cloud.
+  <!-- meta: loom -->
+  - plataformas: [mac, windows, cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [riverside, descript-recorder]
+- **Riverside** — grabación multi-participante con local recording.
+  <!-- meta: riverside -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [squadcast, loom]
+- **Descript Recorder** — captura integrada con Descript para edit by transcription.
+  <!-- meta: descript-recorder -->
+  - plataformas: [mac, windows]
+  - licencia: free-tier
+  - modo: híbrido
+  - equivalentes: [loom]
 - **Streamlabs Desktop** — fork de OBS con UI más amigable; menos flexible para casos avanzados.
+  <!-- meta: streamlabs -->
+  - plataformas: [mac, windows]
+  - licencia: free-tier
+  - modo: local
+  - equivalentes: [obs-studio]
 
 ### Audio [P3-preprod-audio]
-- **Micrófono dinámico USB de gama media** (Shure MV7, Samson Q9U, Rode PodMic USB) — el upgrade técnico con mayor retorno por unidad de inversión en producción audiovisual.
+- **Shure MV7** — micrófono dinámico USB de gama media; mayor retorno por unidad de inversión.
+  <!-- meta: shure-mv7 -->
+  - plataformas: [linux, mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: [samson-q9u, rode-podmic-usb]
+- **Samson Q9U** — micrófono dinámico USB de gama media, alternativa al MV7.
+  <!-- meta: samson-q9u -->
+  - plataformas: [linux, mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: [shure-mv7, rode-podmic-usb]
+- **Rode PodMic USB** — micrófono dinámico USB de gama media, alternativa al MV7.
+  <!-- meta: rode-podmic-usb -->
+  - plataformas: [linux, mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: [shure-mv7, samson-q9u]
 - **Audacity** — edición y limpieza de audio offline, gratuito.
-- **Krisp / NVIDIA Broadcast** — supresión de ruido en vivo (requisitos de hardware).
+  <!-- meta: audacity -->
+  - plataformas: [linux, mac, windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: []
+- **Krisp** — supresión de ruido en vivo con IA.
+  <!-- meta: krisp -->
+  - plataformas: [mac, windows]
+  - licencia: free-tier
+  - modo: local
+  - equivalentes: [nvidia-broadcast]
+- **NVIDIA Broadcast** — supresión de ruido + efectos vía GPU NVIDIA RTX.
+  <!-- meta: nvidia-broadcast -->
+  - plataformas: [windows]
+  - licencia: free-tier
+  - modo: local
+  - hardware-min: {gpu: NVIDIA-RTX}
+  - equivalentes: [krisp]
 
 ### Iluminación [P3-preprod-iluminacion]
 - **Cualquier panel LED bicolor con difusor** — el principio importa más que la marca: luz suave, frontal, balance de blancos consistente.
+  <!-- meta: N/A (hardware genérico, no software filtrable por OS) -->
 
 ### Teleprompter y corrección de mirada IA [P3-preprod-teleprompter]
 - **Descript — teleprompter + Eye Contact AI** — teleprompter integrado + corrección de mirada en post; el presentador puede leer guion mirando ligeramente desviado y la IA reorienta el ojo a cámara sin deformar parpadeo/expresión. *Status: estable. Verificado: 2026-04-18.*
+  <!-- meta: descript-teleprompter -->
+  - plataformas: [mac, windows]
+  - licencia: subscription
+  - modo: híbrido
+  - equivalentes: [bigvu]
 - **BIGVU** — mobile-first, teleprompter + Eye Contact Fix + auto-captions + Brand Kit en una sola app. Útil para grabación on-the-go sin setup de estudio. *Status: estable. Verificado: 2026-04-18.*
-- **Cuándo elegir qué.** Presencia humana en cámara + guion leído: sin estas herramientas el espectador percibe lectura subconscientemente (mirada ligeramente fuera de eje). Descript encaja si ya se edita con transcripción; BIGVU si se graba desde móvil. Si la toma es puramente captura de pantalla sin cara, este bloque no aplica.
+  <!-- meta: bigvu -->
+  - plataformas: [mac, windows, cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [descript-teleprompter]
+
+Presencia humana en cámara + guion leído: sin estas herramientas el espectador percibe lectura subconscientemente (mirada ligeramente fuera de eje). Descript encaja si ya se edita con transcripción; BIGVU si se graba desde móvil. Si la toma es puramente captura de pantalla sin cara, este bloque no aplica.
 
 ### Cuándo elegir qué
 - Tutorial técnico de software: OBS + micrófono USB es suficiente. No requiere cámara.
