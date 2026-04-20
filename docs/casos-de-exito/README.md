@@ -4,7 +4,7 @@ Fichas de creators exitosos de YouTube en entrenamiento y divulgación, más el 
 
 **Alcance (v1 — 2026-04-18):** atlas completo de 3 nichos — tutorial técnico, divulgación, onboarding corporativo. 12-20 patrones estructurales en pilar 02 + fichas 1-a-1 por creator + research log append-only.
 
-**Expansión v2 (2026-04-19 — fase 3 de la reforma a `video-explainer-guide`):** 7 nichos nuevos para cubrir las 12 modalidades declaradas en [docs/arquitectura/modalidades-y-ejes.md](../arquitectura/modalidades-y-ejes.md). Estas fichas son **ligeras** (análisis general del canal, sin observación VTT + WPM medido) — marcadas como tal para diferenciarlas de las 10 fichas pioneras. La iteración empírica queda para mantenimiento posterior vía `actualizar-tendencias`.
+**Expansión v2 (2026-04-19 — fase 3 de la reforma a `video-explainer-guide`):** 7 nichos nuevos para cubrir las 12 modalidades declaradas en [docs/arquitectura/modalidades-y-ejes.md](../arquitectura/modalidades-y-ejes.md). Estas fichas son **ligeras** (análisis general del canal, sin observación VTT + WPM medido) — marcadas como tal para diferenciarlas de las 10 fichas pioneras. La iteración empírica queda para mantenimiento posterior vía `update-trends`.
 
 **Estado actual (2026-04-19):**
 - 10 fichas profundas (v1) + 3 clusters onboarding + 36 entries en research log.
@@ -39,4 +39,4 @@ Fichas de creators exitosos de YouTube en entrenamiento y divulgación, más el 
 
 ## Origen
 
-Esta ronda de investigación es la población inicial del pilar 02. Futuras actualizaciones incrementales se harán vía el skill [`actualizar-tendencias`](../../skills/actualizar-tendencias/SKILL.md). El plan rector de esta ronda está en `~/.claude/plans/adaptive-cooking-yeti.md` (privado del usuario, no versionado).
+Esta ronda de investigación es la población inicial del pilar 02. Futuras actualizaciones incrementales se harán vía el skill [`update-trends`](../../skills/update-trends/SKILL.md). El plan rector de esta ronda está en `~/.claude/plans/adaptive-cooking-yeti.md` (privado del usuario, no versionado).

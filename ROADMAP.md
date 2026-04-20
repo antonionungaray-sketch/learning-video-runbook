@@ -96,7 +96,7 @@ Subagente Claude independiente (Codex no disponible) destacó:
 
 ### Semana 1 — Sprint de pilares
 
-**Afilar pilar 2 a "medianamente completo"** (4-6h de research con `actualizar-tendencias` o manual):
+**Afilar pilar 2 a "medianamente completo"** (4-6h de research con `update-trends` o manual):
 
 - Documentar 6-8 patrones probados en 2026 con citas/casos: hook 0-3s por intención (stakes, curiosidad, promesa concreta), cadencia de cortes 2-4s para retención, subtítulos como formato primario (silent consumption), miniatura con cara + 2-3 palabras, duración objetivo por nicho (tutorial técnico: 4-8 min; divulgación: 5-10 min), B-roll density (cada 8-15s para no saturar), pattern interrupts cada 60-90s, outro CTA específico vs. genérico.
 - Anti-patrones documentados: intro de creador >10s, uniform fast cuts, B-roll decorativo no funcional, subs como after-thought.
@@ -196,8 +196,8 @@ v1 se considera exitosa si:
 
 Orden recomendado (Approach B desglosado):
 
-1. **Día 1-2:** Correr `/actualizar-tendencias` con queries específicas para los 6-8 patrones listados. Documentar en pilar 2. Marcar conflictos con pilar 1 si aparecen.
-2. **Día 3:** Correr `/actualizar-herramientas` para afilar pilar 3 con open source concreto. Documentar versiones probadas.
+1. **Día 1-2:** Correr `/update-trends` con queries específicas para los 6-8 patrones listados. Documentar en pilar 2. Marcar conflictos con pilar 1 si aparecen.
+2. **Día 3:** Correr `/update-tools` para afilar pilar 3 con open source concreto. Documentar versiones probadas.
 3. **Día 4-5:** Escribir `skills/anti-slop-guardrail/SKILL.md` + `docs/vistas-por-etapa/anti-slop.md` siguiendo el contrato de los otros skills/vistas.
 4. **Día 6:** Crear `templates/video-project/` con Makefile + README.
 5. **Día 7:** Pausa — revisar todo junto. Bump versión plugin a 0.2.0.
@@ -206,7 +206,7 @@ Orden recomendado (Approach B desglosado):
 
 ## The Assignment
 
-**Esta semana (v1, histórico):** correr `/actualizar-tendencias` con un scope explícito — "tutoriales técnicos de software 2026" — y producir un draft de pilar 2 con al menos 6 patrones citados antes del domingo. No escribas código todavía. El guion del tutorial de voz→texto espera hasta que pilar 2 esté medianamente completo. Cuando tengas el draft, invoca `/create-explainer` y prueba si el orchestrator ya te direcciona bien hacia `script-explainer` con el pilar 2 actualizado. Ese primer test te va a decir más que una semana de planning.
+**Esta semana (v1, histórico):** correr `/update-trends` con un scope explícito — "tutoriales técnicos de software 2026" — y producir un draft de pilar 2 con al menos 6 patrones citados antes del domingo. No escribas código todavía. El guion del tutorial de voz→texto espera hasta que pilar 2 esté medianamente completo. Cuando tengas el draft, invoca `/create-explainer` y prueba si el orchestrator ya te direcciona bien hacia `script-explainer` con el pilar 2 actualizado. Ese primer test te va a decir más que una semana de planning.
 
 ## Reviewer Concerns (no bloqueantes pero registrados)
 

@@ -68,9 +68,9 @@ Si después de hacerle `lock` necesitas cambiar algo (porque cambió el alcance,
 
 El plugin se mantiene a través de tres skills de mantenimiento. No las necesitas para producir un video, pero conviene correrlas con cierta periodicidad para que las recomendaciones no se vuelvan stale:
 
-- **`/actualizar-tendencias`** cada 4-8 semanas. Refresca lo que está funcionando ahora en las plataformas e incorpora fichas de creadores nuevos.
-- **`/actualizar-herramientas`** cada 2-4 semanas o tras releases mayores de tu software (DaVinci, Descript, OBS, Rodecaster, etc.).
-- **`/sincronizar-briefs`** cuando aparezca un aviso de drift. Esto pasa después de actualizar pilares: el plugin detecta que algunos briefs (las síntesis intermedias) quedaron desactualizados respecto a su fuente y te avisa para regenerarlos.
+- **`/update-trends`** cada 4-8 semanas. Refresca lo que está funcionando ahora en las plataformas e incorpora fichas de creadores nuevos.
+- **`/update-tools`** cada 2-4 semanas o tras releases mayores de tu software (DaVinci, Descript, OBS, Rodecaster, etc.).
+- **`/sync-briefs`** cuando aparezca un aviso de drift. Esto pasa después de actualizar pilares: el plugin detecta que algunos briefs (las síntesis intermedias) quedaron desactualizados respecto a su fuente y te avisa para regenerarlos.
 
 El aviso de drift sale automáticamente cuando editas un pilar gracias a un hook de Claude Code que ya viene configurado en el repo del plugin. No te tienes que acordar.
 
@@ -85,8 +85,8 @@ Si quieres saltarte el orquestador y entrar directo a una skill (porque ya sabes
 - `/record-explainer` — pre-producción y captura.
 - `/edit-explainer` — edición y post.
 - `/publish-explainer` — publicación y medición.
-- `/actualizar-tendencias` — refrescar tendencias y casos.
-- `/actualizar-herramientas` — refrescar herramientas.
-- `/sincronizar-briefs` — re-sincronizar briefs tras cambios en pilares.
+- `/update-trends` — refrescar tendencias y casos.
+- `/update-tools` — refrescar herramientas.
+- `/sync-briefs` — re-sincronizar briefs tras cambios en pilares.
 
 > **Figura 3** *(opcional, decorativa).* Los seis iconitos de las etapas dispuestos como portada arriba del título: bombilla · claqueta · encuadre · cámara · tijeras · megáfono.

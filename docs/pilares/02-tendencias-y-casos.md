@@ -2,7 +2,7 @@
 
 > **Naturaleza dinámica.** Este documento describe lo que está funcionando *ahora* en producción de contenido audiovisual de entrenamiento y divulgación. Su contenido caduca rápido —semanas o meses—. Cada item tiene fecha de última verificación. Los skills del toolkit consultan este pilar pero **siempre lo cruzan con el pilar 1 (fundamentos cognitivos)**: cuando una tendencia popular contradice un fundamento, el fundamento prevalece.
 >
-> **Cómo se actualiza.** Manualmente con asistencia: el skill `actualizar-tendencias` busca novedades en fuentes definidas, resume y propone cambios para tu aprobación.
+> **Cómo se actualiza.** Manualmente con asistencia: el skill `update-trends` busca novedades en fuentes definidas, resume y propone cambios para tu aprobación.
 >
 > **Trazabilidad de los patrones.** Todos los patrones y casos de esta versión provienen del atlas en `docs/casos-de-exito/` (fichas + research log con 36 entries al 2026-04-18). Cualquier claim aquí se puede rastrear a una entrada del research log. Si escribes o editas, mantén la regla.
 
@@ -249,7 +249,7 @@ Formatos contenedores con convenciones aprendidas. Cada uno con referencias al a
 
 > **Estado:** 2026-04-19. Fase 3 de la reforma a `video-explainer-guide` agregó cobertura para las 7 modalidades que el atlas original no tocaba explícitamente: documental narrativo, video-ensayo, periodismo analítico visual, conferencia grabada, live stream educativo, podcast audiovisual educativo, personal essay pedagógico.
 >
-> **Profundidad:** estas fichas son **análisis general** del canal (sin observación VTT + WPM medido). Son suficientes para alimentar el rediseño de briefs con ajuste por eje (fase 4) y para evitar contaminar modalidades no cubiertas. La iteración empírica (VTT + WPM + quotes exactos al nivel de las 10 fichas pioneras) queda como mantenimiento continuo vía `actualizar-tendencias`.
+> **Profundidad:** estas fichas son **análisis general** del canal (sin observación VTT + WPM medido). Son suficientes para alimentar el rediseño de briefs con ajuste por eje (fase 4) y para evitar contaminar modalidades no cubiertas. La iteración empírica (VTT + WPM + quotes exactos al nivel de las 10 fichas pioneras) queda como mantenimiento continuo vía `update-trends`.
 
 ### Cobertura por modalidad [P2-modalidades-cobertura]
 
@@ -286,7 +286,7 @@ Observaciones no-verificadas empíricamente pero inferidas del análisis general
 
 ## Fuentes para revisar al actualizar
 
-*(Lista que el skill `actualizar-tendencias` consulta)*
+*(Lista que el skill `update-trends` consulta)*
 
 **Análisis industria (prioridad alta):**
 

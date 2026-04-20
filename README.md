@@ -47,9 +47,9 @@ video-explainer-guide/
 │   ├── record-explainer/                 # Etapa 3: pre-producción y captura
 │   ├── edit-explainer/                   # Etapa 4: edición y post
 │   ├── publish-explainer/                # Etapa 5: publicación y medición
-│   ├── actualizar-tendencias/            # Mantenimiento del pilar 2
-│   ├── actualizar-herramientas/          # Mantenimiento del pilar 3
-│   └── sincronizar-briefs/               # Re-sincroniza briefs tras cambios en pilares
+│   ├── update-trends/                    # Mantenimiento del pilar 2
+│   ├── update-tools/                     # Mantenimiento del pilar 3
+│   └── sync-briefs/                      # Re-sincroniza briefs tras cambios en pilares
 ├── docs/
 │   ├── pilares/
 │   │   ├── 01-fundamentos-cognitivos.md
@@ -85,9 +85,9 @@ También puedes invocar skills directamente:
 - `/record-explainer` — grabación
 - `/edit-explainer` — edición y post
 - `/publish-explainer` — publicación y medición
-- `/actualizar-tendencias` — refrescar pilar 2
-- `/actualizar-herramientas` — refrescar pilar 3
-- `/sincronizar-briefs` — re-sincronizar briefs tras cambios en pilares
+- `/update-trends` — refrescar pilar 2
+- `/update-tools` — refrescar pilar 3
+- `/sync-briefs` — re-sincronizar briefs tras cambios en pilares
 
 ## Instalación
 
@@ -102,11 +102,11 @@ Configura Claude Code para descubrir el plugin desde esa ruta (mecanismo según 
 ## Mantenimiento
 
 Las capas dinámicas requieren revisión periódica:
-- **Pilar 2** cada 4–8 semanas → `/actualizar-tendencias`.
-- **Pilar 3** cada 2–4 semanas (o tras releases mayores) → `/actualizar-herramientas`.
+- **Pilar 2** cada 4–8 semanas → `/update-trends`.
+- **Pilar 3** cada 2–4 semanas (o tras releases mayores) → `/update-tools`.
 - **Pilar 1** 1–2 veces al año o cuando aparezca evidencia nueva relevante.
 
-Cada item en pilares dinámicos lleva fecha de última verificación. Cuando editas un pilar, el hook `PostToolUse` corre `verificar-briefs.sh --strict` automáticamente y avisa si hay briefs stale. Si aparece el aviso, invoca `/sincronizar-briefs`.
+Cada item en pilares dinámicos lleva fecha de última verificación. Cuando editas un pilar, el hook `PostToolUse` corre `verificar-briefs.sh --strict` automáticamente y avisa si hay briefs stale. Si aparece el aviso, invoca `/sync-briefs`.
 
 ## Diseño y trazabilidad
 

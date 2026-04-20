@@ -4,7 +4,7 @@
 >
 > **Agnóstico de hardware.** El toolkit no asume un sistema operativo, GPU o stack específico. Donde una herramienta tiene requisitos restrictivos, se anota. Las decisiones específicas del setup personal del creador van en la documentación de su propio proyecto, no aquí.
 >
-> **Cómo se actualiza.** Manualmente con asistencia: el skill `actualizar-herramientas` busca releases recientes, deprecations y alternativas, resume y propone cambios para tu aprobación.
+> **Cómo se actualiza.** Manualmente con asistencia: el skill `update-tools` busca releases recientes, deprecations y alternativas, resume y propone cambios para tu aprobación.
 
 ---
 
@@ -177,7 +177,7 @@ Setup para `modalidad: periodismo-analitico-visual` (ejes: heavy edit + guionado
 
 ## Fuentes para revisar al actualizar
 
-*(Lista que el skill `actualizar-herramientas` consulta)*
+*(Lista que el skill `update-tools` consulta)*
 
 - Release notes oficiales de cada herramienta listada
 - Product Hunt y Hacker News para alternativas emergentes

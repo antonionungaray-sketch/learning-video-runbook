@@ -1,6 +1,6 @@
 # Video-ensayo — Atlas de casos de éxito
 
-> Fichas de creators de la modalidad `video-ensayo`. **Nota de método:** análisis general del canal (verificado 2026-04-19), no observación VTT. Diferenciadas de las 10 fichas pioneras; iteración empírica posterior vía `actualizar-tendencias`.
+> Fichas de creators de la modalidad `video-ensayo`. **Nota de método:** análisis general del canal (verificado 2026-04-19), no observación VTT. Diferenciadas de las 10 fichas pioneras; iteración empírica posterior vía `update-trends`.
 >
 > **Modalidad:** `video-ensayo` — ejes default: arco argumentativo · objetivo formar-opinion · edición heavy · guión guionado · rol narrador-1a-persona. Ver [docs/arquitectura/modalidades-y-ejes.md](../arquitectura/modalidades-y-ejes.md).
 >

@@ -1,6 +1,6 @@
 # Podcast audiovisual educativo — Atlas de casos de éxito
 
-> Fichas de creators de la modalidad `podcast-audiovisual-educativo`. **Nota de método:** análisis general (verificado 2026-04-19), no observación VTT exhaustiva. Iteración empírica posterior vía `actualizar-tendencias`.
+> Fichas de creators de la modalidad `podcast-audiovisual-educativo`. **Nota de método:** análisis general (verificado 2026-04-19), no observación VTT exhaustiva. Iteración empírica posterior vía `update-trends`.
 >
 > **Modalidad:** `podcast-audiovisual-educativo` — ejes default: arco conversacional · objetivo orientarse · edición light · guión improvisado · rol anfitrion-de-experto. Ver [docs/arquitectura/modalidades-y-ejes.md](../arquitectura/modalidades-y-ejes.md).
 >

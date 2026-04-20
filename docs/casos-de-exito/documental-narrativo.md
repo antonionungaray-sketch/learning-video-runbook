@@ -1,6 +1,6 @@
 # Documental narrativo pedagógico — Atlas de casos de éxito
 
-> Fichas de creators de la modalidad `documental-narrativo-pedagogico`. **Nota de método:** estas fichas son **análisis general** del canal (verificado 2026-04-19), no observación directa de VTT con WPM medido como las 10 fichas pioneras del atlas. Se marcan como tal para diferenciarlas; la iteración empírica (VTT + WPM + quotes exactos) queda para mantenimiento posterior vía `actualizar-tendencias`.
+> Fichas de creators de la modalidad `documental-narrativo-pedagogico`. **Nota de método:** estas fichas son **análisis general** del canal (verificado 2026-04-19), no observación directa de VTT con WPM medido como las 10 fichas pioneras del atlas. Se marcan como tal para diferenciarlas; la iteración empírica (VTT + WPM + quotes exactos) queda para mantenimiento posterior vía `update-trends`.
 >
 > **Modalidad:** `documental-narrativo-pedagogico` — ejes default según [docs/arquitectura/modalidades-y-ejes.md](../arquitectura/modalidades-y-ejes.md#3-las-12-modalidades-como-presets): arco narrativo · objetivo orientarse · edición heavy · guión guionado · rol narrador-omnisciente.
 >

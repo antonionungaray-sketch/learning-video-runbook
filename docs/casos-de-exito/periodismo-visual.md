@@ -1,6 +1,6 @@
 # Periodismo analítico visual — Atlas de casos de éxito
 
-> Fichas de creators de la modalidad `periodismo-analitico-visual`. **Nota de método:** análisis general (verificado 2026-04-19), no observación VTT. Iteración empírica posterior vía `actualizar-tendencias`.
+> Fichas de creators de la modalidad `periodismo-analitico-visual`. **Nota de método:** análisis general (verificado 2026-04-19), no observación VTT. Iteración empírica posterior vía `update-trends`.
 >
 > **Modalidad:** `periodismo-analitico-visual` — ejes default: arco argumentativo · objetivo orientarse · edición heavy · guión guionado · rol investigador. Ver [docs/arquitectura/modalidades-y-ejes.md](../arquitectura/modalidades-y-ejes.md).
 >
