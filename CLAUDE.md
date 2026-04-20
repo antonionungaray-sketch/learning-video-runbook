@@ -79,7 +79,7 @@ Los briefs son la capa que los skills cargan en runtime. **Los skills NO leen pi
 - `regenerar-vistas.sh` — emite `docs/vistas-por-etapa/<etapa>.md` desde los frontmatters de los briefs. Vistas son artefactos derivados, **no se editan a mano.**
 - `storyboard-draft.template.html` — template HTML autocontenido (vanilla JS + rough.js embebido) que `storyboard-explainer` copia al directorio del usuario e hidrata con los datos del storyboard. Tiene vista Cómic (viñetas 16:9 sketchy) y vista Tabla (formulario por bloque); el data model incluye bloques con encuadre WS/MS/CU/ECU, variantes A/B, y **overlays auxiliares** (intro/outro, lower-third, idea-bulb, callout, separador, highlight-icono) dibujados sobre cada viñeta + chips debajo. El usuario itera visualmente, exporta YAML (con overlays serializados) y pega de vuelta al chat. UI = view, markdown = model; el HTML se regenera cada vez y nunca se commitea.
 
-Todos zero-dependency salvo el hook, que requiere `jq` para parsear stdin JSON.
+Zero-dependency. El hook parsea el stdin JSON con `python3` (preferido), con fallback a `jq` o a un parser grep/sed si ninguno está disponible.
 
 ## Vistas por etapa (derivadas)
 

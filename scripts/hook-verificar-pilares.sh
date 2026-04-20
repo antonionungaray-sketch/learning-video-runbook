@@ -12,7 +12,23 @@ set -uo pipefail
 cd "${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel 2>/dev/null)}" 2>/dev/null || exit 0
 
 INPUT=$(cat)
-FILE=$(echo "$INPUT" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo "")
+
+# Extraer .tool_input.file_path sin depender de jq. Preferimos python3 (casi
+# universal); si no está, caemos a un parser grep/sed suficientemente robusto
+# para el formato estable que Claude Code emite por este hook.
+if command -v python3 >/dev/null 2>&1; then
+  FILE=$(printf '%s' "$INPUT" | python3 -c 'import json,sys
+try:
+    d=json.load(sys.stdin)
+    print(d.get("tool_input",{}).get("file_path",""))
+except Exception:
+    pass' 2>/dev/null)
+elif command -v jq >/dev/null 2>&1; then
+  FILE=$(printf '%s' "$INPUT" | jq -r '.tool_input.file_path // empty' 2>/dev/null)
+else
+  FILE=$(printf '%s' "$INPUT" | grep -oE '"file_path"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed -E 's/.*"file_path"[[:space:]]*:[[:space:]]*"([^"]*)".*/\1/')
+fi
+
 [[ -z "$FILE" ]] && exit 0
 
 echo "$FILE" | grep -qE 'docs/pilares/' || exit 0
