@@ -84,7 +84,97 @@ Devolvé al usuario un **mini-resumen explícito** antes de abrir nada:
 Esto da al usuario control y evita preguntar por dimensiones ya
 resueltas.
 
-## Paso 0.5 — Modalidad + ejes
+## Paso 0.5 — Leer perfil de entorno
+
+Antes de recorrer las decisiones, carga el perfil de entorno del usuario (si existe) para filtrar recomendaciones de herramientas.
+
+### Carga del perfil
+
+1. **Perfil global** (siempre que exista):
+
+   ```bash
+   test -f ~/.claude/video-explainer/profile.md && cat ~/.claude/video-explainer/profile.md
+   ```
+
+2. **Override por proyecto** (opcional, en cwd del usuario):
+
+   ```bash
+   test -f ./video-explainer-profile.md && cat ./video-explainer-profile.md
+   ```
+
+3. **Si existen ambos, mergear campo por campo.** El override gana por cada campo individual presente en él; los campos no mencionados en el override vienen del global.
+
+4. **Si no existe ninguno:**
+
+   > "No encontré tu perfil de entorno. Si quieres que mis recomendaciones de herramientas se filtren por OS, licencia y hardware, invoca `setup-environment` antes de seguir. Continúo con recomendaciones generales."
+
+   Continuar el flujo del skill sin filtrar.
+
+### Filtrado de recomendaciones
+
+En cada decisión que cite una herramienta del Pilar 3 (vía ID `[P3-<seccion>]`), antes de proponer:
+
+1. **Cargar la sección del Pilar 3** y extraer todos los bullets de herramienta con sus bloques `<!-- meta: <slug> -->`. Las herramientas relevantes para esta etapa están en `docs/briefs/concepto/`.
+
+2. **Filtrar por perfil:**
+   - `os ∈ plataformas` (si el perfil tiene `os: windows` y la meta dice `plataformas: [linux, mac]`, descartar)
+   - `licencia-preferida` compatible:
+     - `open-source` exige `licencia: open-source`
+     - `free-tier` acepta `open-source` o `free-tier`
+     - `paid` acepta cualquiera con `paid` o `free-tier` (free-tier es un bonus, no una exclusión)
+     - `subscription` acepta `subscription` o `free-tier`
+     - `cualquiera` no filtra
+   - `modo-preferido` compatible:
+     - `local` exige `modo: local` o `híbrido`
+     - `cloud` exige `modo: cloud` o `híbrido`
+     - `híbrido` o `cualquiera` no filtran
+   - Si la herramienta tiene `hardware-min:` y el perfil no cumple, descartar (ej. `hardware-min: {gpu: NVIDIA-CUDA}` y el perfil dice `gpu: null` → descartar).
+
+3. **Si quedan ≥ 1 herramientas** → proponer esas al usuario con cita trazable al Pilar 3, igual que el flujo normal.
+
+4. **Si quedan 0** → disparar fallback externo (abajo).
+
+### Fallback externo
+
+Cuando el filtrado deja 0 candidatos:
+
+1. **Construir query estructurada** para WebSearch combinando:
+   - Categoría de la herramienta (derivada del ID de sección, ej. "video editor" para `[P3-edicion-editores]`).
+   - Campo `equivalentes:` de las herramientas filtradas fuera (para contexto).
+   - Parámetros del perfil: OS + licencia + modo.
+
+   Ejemplo: `"video editor for windows open-source with timeline and proxies similar to davinci-resolve kdenlive"`
+
+2. **Invocar `WebSearch`** con la query.
+
+3. **Parsear resultados y filtrar ruido.** Priorizar:
+   - Resultados del desarrollador oficial de una herramienta nombrada.
+   - Wikis de software (Wikipedia, AlternativeTo).
+   - Comparativas de nichos conocidos (Tom's Hardware, PCMag, Reddit r/videography).
+
+4. **Presentar 2-3 candidatos al usuario** en formato:
+
+   ```
+   - **<Nombre>** (<URL oficial>)
+     - Ajuste al perfil: <por qué encaja — OS, licencia, modo>
+     - Limitación conocida: <caveat relevante>
+   ```
+
+5. **El usuario elige 1 o rechaza todos.**
+   - Si elige: preguntar "¿quieres incorporarla al catálogo curado invocando `update-tools`? Así la próxima vez el filtrado la encontrará directo."
+   - Si rechaza todos: flaggear el gap ("no hay equivalente en tu entorno para esta decisión") y continuar con la siguiente decisión del brief sin recomendación en esta.
+
+6. **Si el usuario acepta persistir:** invocar `update-tools` con payload estructurado (ver Fase E).
+
+### Sin acceso a WebSearch
+
+Si WebSearch falla, no devuelve resultados útiles, o el perfil tiene `conectividad: offline`:
+
+> "No hay equivalente curado para tu entorno y no tengo búsqueda externa disponible. ¿Quieres nombrar tú una herramienta que uses o conozcas? Si la nombras, puedo ofrecerte incorporarla al catálogo."
+
+Si el usuario nombra una herramienta, ofrecer invocar `update-tools` con los datos aportados.
+
+## Paso 1 — Modalidad + ejes
 
 Antes de entrar a las 6 decisiones del flujo, el Concept Brief declara
 **qué tipo de video es** en términos de la arquitectura de modalidades
