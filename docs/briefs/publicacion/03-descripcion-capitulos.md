@@ -87,6 +87,7 @@ común: asumir que el hook no cuenta como capítulo.
 - **`shorts-vertical`:** no aplican capítulos — formato demasiado corto.
 - **`podcast-audio-primario`:** capítulos **críticos** (Spotify/Apple muestran timestamps + títulos).
 - **`live-with-vod`:** capítulos añadidos al re-upload; live no los soporta.
+- **`corporate-lms`:** estructura de capítulos = secciones SCORM/xAPI. Cada módulo es un "chapter" completo trackable por el LMS (marcas de completion independientes).
 
 ## Conflictos conocidos
 

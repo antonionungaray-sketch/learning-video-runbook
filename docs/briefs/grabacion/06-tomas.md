@@ -73,16 +73,16 @@ sostiene el esfuerzo; sin eso, se abandona.
 
 ### Por `grado-guion`
 
-- **`guionado`:** tomas segmentadas por bloque; múltiples takes por frase compleja. Normal en Nerdwriter, Kurzgesagt.
-- **`semi-guionado`:** tomas por bloque con fraseo flexible; pocos takes.
-- **`improvisado`:** una sola toma continua (live stream) o grabación larga con pocos cuts (podcast, conferencia).
+- **`guionado`:** tomas segmentadas por bloque del script; 3-8 takes por frase compleja; sesiones largas en cabina para voice-over (Nerdwriter, Kurzgesagt). El material bruto es 3-5× la duración final.
+- **`semi-guionado`:** tomas por bloque con fraseo flexible; 1-2 takes por bloque. El presentador improvisa conectores dentro de un outline.
+- **`improvisado`:** una sola toma continua sin reshoots. Live stream (zero cortes), podcast (1-3 takes sin recorte extensivo), conferencia grabada (1 take dictada por el evento).
 
 ### Por `grado-edicion`
 
-- **`heavy`:** multi-take normalizado; captura overshoot. Edit selecciona.
-- **`medium`:** takes limpios por bloque.
-- **`light`:** 1 take maestra; problemas se aceptan o se pasa.
-- **`zero`:** stream continuo.
+- **`heavy`:** multi-take normalizado; captura overshoot del 150-250% del tiempo final. Edit selecciona el mejor take de cada frase.
+- **`medium`:** 1-2 takes limpios por bloque; decisión rápida de cuál usar.
+- **`light`:** 1 take maestra + coverage multi-cámara; problemas menores se aceptan. TED edit.
+- **`zero`:** stream continuo; los "errores" son parte del formato y refuerzan credibilidad del demostrador.
 
 ## Conflictos conocidos
 

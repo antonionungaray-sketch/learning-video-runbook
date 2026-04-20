@@ -89,9 +89,11 @@ corporativo de los 90.
 
 ### Por `arco-dominante`
 
-- **`performativo`:** pantalla dominante + face-cam accesoria.
-- **`conversacional`:** face-cam de cada hablante; sin pantalla.
-- **Otros:** face-cam y B-roll según preferencia de rol.
+- **`performativo`:** pantalla dominante + face-cam accesoria (PiP o split). El encuadre de pantalla prima; la cámara complementa.
+- **`expositivo`:** face-cam estudio (centrada) o sin cara con canal visual compensatorio (animación, stock-graphics) — Fireship, Kurzgesagt.
+- **`narrativo`:** encuadre cinematográfico — establecedoras + medium + close-up; B-roll abundante; cara en cámara opcional. Documental narrativo, Matt D'Avella.
+- **`argumentativo`:** face-cam con presencia autoral + B-roll de evidencia citada (clips, documentos). Nerdwriter opera sin cara; Contrapoints con producción teatral.
+- **`conversacional`:** multi-cámara (1 por persona) + 2-shot opcional; sin pantalla ni B-roll dominante. Lex Fridman, Huberman con invitado.
 
 ## Conflictos conocidos
 

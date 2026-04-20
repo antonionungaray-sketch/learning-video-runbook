@@ -10,6 +10,7 @@ fuentes:
   - P2-ficha-coding-train      # escenas para live-coding
   - P2-ficha-mouredev          # escenas para live-coding hispano
   - P3-preprod-captura         # OBS Scene Management
+  - P3-modalidades-live        # Stream Deck + escenas live
 admite-variantes: false
 varia-por-eje: [grado-guion, grado-edicion]
 sync: 2026-04-19
@@ -83,15 +84,16 @@ por CPU/GPU saturada. Mantener ≤4 fuentes activas simultáneas
 
 ### Por `grado-guion`
 
-- **`guionado`:** escenas OBS planeadas 1:1 con el script (escena A para bloque 1, etc.); transiciones pre-programadas.
-- **`semi-guionado`:** escenas por tipo de segmento (code, talking head, Q&A); cambios manuales según presentador.
-- **`improvisado`:** escenas OBS con transiciones vía Stream Deck — el presentador las invoca en tiempo real (live stream). Layout de chat/alerts crítico.
+- **`guionado`:** escenas OBS planeadas 1:1 con el script — escena A para bloque 1, B para demo, C para cierre. Transiciones pre-programadas; el creador invoca transiciones en puntos exactos. Fireship, MoureDev estructurados.
+- **`semi-guionado`:** escenas por tipo de segmento (code view, talking head, Q&A) — el presentador decide cuándo cambiar. Veritasium, Johnny Harris.
+- **`improvisado`:** escenas OBS + Stream Deck físico para invocar cambios en tiempo real (live stream). Layout incluye chat overlay, alerts, sub/donation banners, webcam + escena de pausa. ThePrimeagen, Muratori. Ver [P3-modalidades-live].
 
 ### Por `grado-edicion`
 
-- **`heavy`:** grabación multi-toma por escena; edit selecciona. Fewer escenas, más toma.
-- **`medium` / `light`:** grabación con menos reshoots; confiar en el performance.
-- **`zero`:** la "grabación" es el stream — las escenas son herramienta de ejecución, no de corrección.
+- **`heavy`:** grabación multi-toma por escena; captura overshoot del 150-200% del tiempo final. El editor selecciona; las escenas son amplias.
+- **`medium`:** grabación con menos reshoots; 1-2 takes por bloque; confiar en el performance.
+- **`light`:** una toma maestra cubriendo todo; multi-cámara; sin recomposición estructural post. Conferencia grabada, podcast.
+- **`zero`:** la "grabación" es el stream — las escenas son herramienta de ejecución en vivo, no de corrección posterior.
 
 ## Conflictos conocidos
 

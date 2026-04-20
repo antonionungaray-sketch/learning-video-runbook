@@ -8,6 +8,7 @@ fuentes:
   - P2-meta-tutorial
   - P2-meta-divulgacion
   - P2-meta-onboarding
+  - P1-§10.3                   # estructura argumentativa del ensayo
 admite-variantes: false
 varia-por-eje: [grado-edicion, grado-guion, arco-dominante]
 sync: 2026-04-19
@@ -53,23 +54,24 @@ serie de 4-5 partes.
 
 ### Por `grado-edicion`
 
-- **`heavy` / `medium`:** segmentación explícita con chapter markers, transiciones visibles, títulos en pantalla. Bloques 2-5 min.
-- **`light`:** segmentación natural (TED tiene su propia cadencia; podcast tiene capítulos en descripción marcados post-hoc).
-- **`zero`:** segmentación emergente — el speaker la produce en vivo. Capítulos sólo existen si se re-edita para VOD.
+- **`heavy`:** segmentación explícita con chapter markers + transiciones visibles + títulos en pantalla. Bloques 2-5 min. Kurzgesagt, 3B1B, Nerdwriter operan así.
+- **`medium`:** segmentación visible pero ligera — chapter markers en descripción + transiciones sobrias (cut + nuevo encuadre). Ali Abdaal, Ali's productivity videos.
+- **`light`:** segmentación natural — TED 18 min tiene su propia cadencia (intro+3 puntos+cierre); podcast tiene capítulos en descripción marcados **post-hoc** en edición mínima.
+- **`zero`:** segmentación emergente — el speaker la produce en vivo (live stream). Capítulos existen solo si se re-edita para VOD.
 
 ### Por `grado-guion`
 
-- **`guionado`:** bloques definidos a priori, nombrados en el outline.
-- **`semi-guionado`:** bloques temáticos flexibles; el presentador decide transiciones.
-- **`improvisado`:** no hay segmentación a priori; la edición (si hay) la compone post-hoc.
+- **`guionado`:** bloques definidos a priori, nombrados en el outline. 3-5 bloques por video de 6-10 min.
+- **`semi-guionado`:** bloques temáticos flexibles; el presentador decide transiciones. Outline con puntos clave, sin fraseo.
+- **`improvisado`:** no hay segmentación a priori; la edición (si hay) la compone post-hoc desde el material. Capítulos sugeridos por highlights del chat o momentos de mayor engagement.
 
 ### Por `arco-dominante`
 
-- **`performativo`:** segmentación por pasos procedimentales (setup, step 1, step 2...).
-- **`narrativo`:** por actos (setup, complication, resolution).
-- **`argumentativo`:** por movimientos argumentativos (thesis, evidence, counter, synthesis).
-- **`expositivo`:** por sub-temas.
-- **`conversacional`:** por tópicos emergentes del diálogo.
+- **`performativo`:** segmentación por pasos procedimentales — setup, step 1, step 2, ..., verificación. Cada paso es un bloque. Tutoriales, how-to.
+- **`narrativo`:** por actos — setup, complication, resolution (3 actos) o estructura de 5 actos para formato largo. Documental, personal essay.
+- **`argumentativo`:** por movimientos argumentativos — thesis (emergente), evidencia acumulativa, contra-objeción, síntesis abierta [P1-§10.3]. Nerdwriter, Contrapoints.
+- **`expositivo`:** por sub-temas — división jerárquica del tema en partes.
+- **`conversacional`:** por tópicos emergentes del diálogo; capítulos marcados post-hoc con timestamp + tema.
 
 ## Conflictos conocidos
 

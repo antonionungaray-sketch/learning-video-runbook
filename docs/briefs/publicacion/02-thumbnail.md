@@ -88,11 +88,11 @@ performance).
 
 ### Por `plataforma`
 
-- **`long-form-horizontal`:** thumbnail 16:9 con texto grande + imagen central. A/B test vía TubeBuddy/VidIQ.
-- **`shorts-vertical`:** thumbnail 9:16; el primer frame del video importa más que el thumbnail.
-- **`podcast-audio-primario`:** thumbnail de episodio + foto del invitado (formato Spotify/Apple).
-- **`live-with-vod`:** thumbnail live genérico; el VOD post necesita thumbnail custom.
-- **`corporate-lms`:** sin thumbnail discovery — icon o number de módulo suficiente.
+- **`long-form-horizontal`:** thumbnail 1280×720 16:9 (YouTube spec). Texto grande + imagen central + expresión facial cuando aplica. A/B test vía TubeBuddy/VidIQ (3-4 variantes). Peso <2 MB JPG/PNG.
+- **`shorts-vertical`:** thumbnail 1080×1920 9:16, pero el **primer frame del video** tiene más peso que el thumbnail (YouTube autoselecciona variantes). Priorizar hook visual <1s en video, no thumbnail.
+- **`podcast-audio-primario`:** thumbnail de episodio 1400×1400 1:1 (Spotify/Apple spec). Formato estándar: nombre de invitado grande + foto + nombre del show.
+- **`live-with-vod`:** thumbnail live genérico (banner del canal); el VOD post-stream necesita thumbnail custom con hook del contenido grabado.
+- **`corporate-lms`:** sin thumbnail de discovery — icon o number de módulo ("Módulo 3 — Compliance") + imagen genérica corporativa suficiente. LMS no tiene feed algorítmico.
 
 ## Conflictos conocidos
 

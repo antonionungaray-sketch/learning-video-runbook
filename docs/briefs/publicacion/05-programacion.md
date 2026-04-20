@@ -76,11 +76,11 @@ editando.
 
 ### Por `plataforma`
 
-- **`long-form-horizontal`:** horario según audiencia primaria (YouTube Studio sugiere). Schedule con 24-48h antelación.
-- **`shorts-vertical`:** publicación frecuente (diaria o varias veces/semana); el algoritmo premia consistencia.
-- **`podcast-audio-primario`:** episodio semanal típicamente; mismo día y hora sostiene hábito de escucha.
-- **`live-with-vod`:** programación anunciada con antelación para construir audiencia live; VOD re-upload horas/días después.
-- **`corporate-lms`:** sin "horario de publicación" discovery — el curso se "lanza" y queda disponible permanentemente.
+- **`long-form-horizontal`:** horario según audiencia primaria — típicamente tarde (17-21h zona horaria de la audiencia) o weekends. YouTube Studio reporta horas de pico. Schedule con 24-48h antelación para community tab notifications. Cadencia 1-2/semana o 1/mes según nicho.
+- **`shorts-vertical`:** publicación frecuente (diaria o 3-5 veces/semana) — el algoritmo premia consistencia y frecuencia. Horarios de mayor scroll: 12-13h (lunch), 20-23h (evening).
+- **`podcast-audio-primario`:** episodio semanal típicamente (mismo día y hora consolida hábito de escucha); Lex Fridman pública viernes, Huberman lunes. Schedule a través de Spotify/Apple con antelación.
+- **`live-with-vod`:** programación anunciada con 7-14 días de antelación para construir audiencia live. Comunidad Discord/Twitter avisa. VOD re-upload 24-72h después con edición mínima o heavy (decisión del canal).
+- **`corporate-lms`:** sin "horario de publicación" discovery — el curso se "lanza" internamente con comunicación via email/Slack de HR. Queda disponible permanentemente en el LMS. Versioning vía LMS admin, no re-upload.
 
 ## Conflictos conocidos
 

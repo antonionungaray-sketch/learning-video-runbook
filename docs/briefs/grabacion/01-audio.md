@@ -10,6 +10,7 @@ fuentes:
   - P2-preprod-antipatrones    # música de fondo sobre voz
   - P3-preprod-audio           # micro dinámico USB de gama media
   - P3-modalidades-podcast     # setup multi-mic para podcast
+  - P3-modalidades-documental  # iZotope RX + restauración audio
 admite-variantes: false
 varia-por-eje: [rol-presentador]
 sync: 2026-04-19
@@ -76,9 +77,12 @@ ponerse cerca del micro (5-20cm) — mitigaciones de $0 con impacto real.
 
 ### Por `rol-presentador`
 
-- **Un presentador (`experto-neutral`, `narrador-1a-persona`, `demostrador`, `narrador-omnisciente`):** 1 micrófono dinámico USB de gama media sobre voz; LUFS target -14 / -16 según plataforma.
-- **Dos o más (`conversador`, `anfitrion-de-experto`):** multi-mic (1 por persona) + consola tipo Rodecaster Pro II o interfaz multi-canal; grabación multitrack para editar cada voz independiente. Ver [P3-modalidades-podcast].
-- **`investigador` on-location:** lavalier o shotgun + recorder portátil (Zoom H6). Ambiente controlable menos que en estudio; priorizar claridad sobre "quality".
+- **`experto-neutral`:** 1 mic dinámico USB gama media (Shure MV7, Samson Q9U, Rode PodMic USB) sobre voz en estudio controlado. LUFS target -14 (YT) / -16 (podcast) / -23 (EBU R128).
+- **`narrador-1a-persona`:** mismo setup que experto-neutral. En re-grabación de voice-over (Nerdwriter), booth tratado acústicamente o blanket-fort. Tomas múltiples para elegir.
+- **`narrador-omnisciente`:** grabación de voice-over post (no en cámara). Sesión de booth con director + revisión; suele ir a estudio profesional cuando el budget lo permite.
+- **`investigador` on-location:** lavalier clip-on + recorder portátil (Zoom H6) + shotgun de respaldo. Ambiente no controlable — priorizar claridad sobre "quality". Editar noise reduction con iZotope RX [P3-modalidades-documental].
+- **`demostrador`:** 1 mic dinámico cerca de la boca (SM7B con Cloudlifter ideal) + aislamiento del ruido del teclado/trackpad. Gaming mouse movement es fuente típica de ruido.
+- **`conversador` / `anfitrion-de-experto`:** multi-mic (1 por persona) + consola tipo Rodecaster Pro II o interfaz multi-canal; grabación multitrack para editar cada voz independiente. Remoto: Riverside.fm o SquadCast (graban local en cada extremo). Ver [P3-modalidades-podcast].
 
 ## Conflictos conocidos
 

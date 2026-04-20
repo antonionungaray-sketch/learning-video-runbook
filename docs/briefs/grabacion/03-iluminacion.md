@@ -84,8 +84,12 @@ sola familia de color temperatura.
 
 ### Por `rol-presentador`
 
-- **Con cara en cámara (`experto-neutral`, `demostrador`, `narrador-1a-persona`, `investigador`, `conversador`, `anfitrion-de-experto`):** panel LED bicolor con difusor frontal + key/fill + separación de fondo. Aplica este brief tal cual.
-- **Sin cara (`narrador-omnisciente` o modalidades animadas puras):** no aplica iluminación de sujeto; la decisión se traslada al diseño de animación o archivo.
+- **`experto-neutral` en estudio:** key + fill + light de separación del fondo; panel LED bicolor con difusor es estándar [P3-preprod-iluminacion].
+- **`narrador-1a-persona`:** iluminación consistente con el tono del canal — estudio íntimo suave (Ali Abdaal, Matt D'Avella) o más cinematográfica (Contrapoints).
+- **`narrador-omnisciente`:** **no aplica** — voice-over sin cara. La "iluminación" pasa al diseño de animación/archivo.
+- **`investigador` on-location:** luz disponible + panel portátil reflector/bounce si se puede; priorizar consistencia entre tomas del mismo día. Johnny Harris típicamente ajusta en color grading post.
+- **`demostrador`:** iluminación frontal suave sin brillos en pantalla/teclado. Cuidar reflejos en lentes.
+- **`conversador` / `anfitrion-de-experto`:** iluminación equivalente para ambos/todos los hablantes — key lights simétricos para evitar que un hablante se vea "premium" y otro "amateur" (Lex Fridman, Huberman).
 
 ## Conflictos conocidos
 

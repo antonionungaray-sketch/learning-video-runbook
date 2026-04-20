@@ -9,6 +9,8 @@ fuentes:
   - P2-ficha-fireship
   - P2-ficha-midudev
   - P2-ficha-coding-train
+  - P1-§10.3                   # evidencia visual en ensayo
+  - P1-§11.3                   # investigación visible (periodismo)
 admite-variantes: false
 varia-por-eje: [arco-dominante]
 sync: 2026-04-19
@@ -76,11 +78,11 @@ todo. Checkpoint a 0:45 = re-grabar solo 45s.
 
 ### Por `arco-dominante`
 
-- **`performativo`:** shotlist denso, 1 toma por paso procedimental; este es el caso de uso primario del brief.
-- **`expositivo`:** shotlist por concepto visual (diagramas, animaciones). Cada concepto = 1 visual bien planeado.
-- **`narrativo`:** shotlist por escena narrativa; más dramatúrgico que procedimental.
-- **`argumentativo`:** shotlist por evidencia visual (clips citados, referencias). Cada pieza de evidencia = 1 toma.
-- **`conversacional`:** **no aplica** shotlist convencional — el setup de cámaras lo cubre `grabacion/02-video-encuadre`.
+- **`performativo`:** shotlist denso — 1 toma por paso procedimental; props, código, hardware, setup de pantalla. Este es el caso primario del brief. Tutoriales Fireship, The Coding Train.
+- **`expositivo`:** shotlist por concepto visual — cada concepto/idea = 1 visual planeado (diagrama, animación, metáfora). Kurzgesagt prepara animación frase-por-frase.
+- **`narrativo`:** shotlist por escena narrativa con función dramatúrgica — establecedora, medium, closeup, emotional beat. Documental narrativo, Matt D'Avella.
+- **`argumentativo`:** shotlist por evidencia visual — clips citados de la obra analizada, screenshots de documentos, data viz. Cada pieza con función argumentativa [P1-§10.3] [P1-§11.3]. Nerdwriter, Johnny Harris.
+- **`conversacional`:** **no aplica** shotlist convencional — el setup de cámaras multi-person lo cubre `grabacion/02-video-encuadre`. La "lista" es el orden de preguntas/temas del anfitrión.
 
 ## Conflictos conocidos
 

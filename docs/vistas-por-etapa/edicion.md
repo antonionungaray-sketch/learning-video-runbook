@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/edicion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-20T01:12:10Z
+> Última regeneración: 2026-04-20T01:24:24Z
 
 ## Decisiones críticas
 
@@ -39,7 +39,7 @@
 ### 06. b-roll
 
 - **Pregunta:** ¿Dónde insertás B-roll o visuales de apoyo, y qué función cumple cada inserto?
-- **Fuentes:** P1-§2.3-#4 P1-§2.3-#5 P1-§2.3-#1 P2-edicion-patrones P2-ficha-veritasium P2-ficha-kurzgesagt P1-§10.3 
+- **Fuentes:** P1-§2.3-#4 P1-§2.3-#5 P1-§2.3-#1 P2-edicion-patrones P2-ficha-veritasium P2-ficha-kurzgesagt P1-§10.3 P1-§11.3 P1-§9.1 
 - **Brief:** [`briefs/edicion/06-b-roll.md`](../briefs/edicion/06-b-roll.md)
 
 ### 07. voiceover
@@ -63,6 +63,6 @@
 ### 10. overlays-auxiliares
 
 - **Pregunta:** ¿Qué overlays auxiliares generas en post (del catálogo de 10 tipos universales u `otro` libre) y con qué herramienta los produces?
-- **Fuentes:** P1-§2.3-#1 P1-§2.3-#2 P1-§2.3-#5 P1-§2.3-#6 P1-§2.3-#7 P1-§5.1 P1-§5.3 P1-§6.2 P1-§8 P2-edicion-patrones P2-edicion-antipatrones P2-ficha-fireship P2-ficha-kurzgesagt P2-ficha-3b1b P3-edicion-composicion 
+- **Fuentes:** P1-§2.3-#1 P1-§2.3-#2 P1-§2.3-#5 P1-§2.3-#6 P1-§2.3-#7 P1-§5.1 P1-§5.3 P1-§6.2 P1-§8 P2-edicion-patrones P2-edicion-antipatrones P2-ficha-fireship P2-ficha-kurzgesagt P2-ficha-3b1b P3-edicion-composicion P3-modalidades-live 
 - **Brief:** [`briefs/edicion/10-overlays-auxiliares.md`](../briefs/edicion/10-overlays-auxiliares.md)
 

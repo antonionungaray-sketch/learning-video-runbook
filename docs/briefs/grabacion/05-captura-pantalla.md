@@ -10,6 +10,7 @@ fuentes:
   - P2-ficha-fireship          # zoom dinámico post
   - P2-ficha-coding-train      # cursor visible live-coding
   - P2-ficha-mouredev          # cursor + ocasional callout post
+  - P1-§11.3                   # investigación visible (evidencia citada)
 admite-variantes: true
 varia-por-eje: [arco-dominante]
 sync: 2026-04-19
@@ -78,9 +79,11 @@ trabajo global.
 
 ### Por `arco-dominante`
 
-- **`performativo`:** captura de pantalla es el canal visual dominante. Cursor visible obligatorio; callouts en vivo o en edición según `grado-edicion`.
-- **`expositivo` con componente procedural:** captura accesoria sobre face-cam; cursor ligeramente resaltado.
-- **`narrativo` / `argumentativo` / `conversacional`:** **no aplica** captura de pantalla como elemento estructural (excepción: screenshot específico mostrado como evidencia).
+- **`performativo`:** captura de pantalla es el canal visual dominante. Cursor visible obligatorio (resaltado con efecto en OBS o post-grabación); callouts sobre elementos relevantes. Tutoriales, how-to, live coding.
+- **`expositivo`:** captura accesoria a face-cam o voz-over — screenshots puntuales para ilustrar un punto. Cursor ligeramente resaltado si aparece.
+- **`narrativo`:** **no aplica** captura de pantalla como elemento estructural. Excepción: screenshot específico mostrado como evidencia narrativa (Adam Curtis usa cortes de archivo + texto de computadora ocasionalmente).
+- **`argumentativo`:** captura de pantalla solo como **evidencia citada** — screenshot de paper, tuit, documento, data viz referenciada. Ver investigación visible [P1-§11.3] aplicada a periodismo visual.
+- **`conversacional`:** **no aplica** — el formato podcast/live stream conversacional no tiene pantalla como elemento dominante. Excepción: paneles que proyectan slide detrás del hablante.
 
 ## Conflictos conocidos
 

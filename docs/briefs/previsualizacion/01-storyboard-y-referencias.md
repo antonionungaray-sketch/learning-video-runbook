@@ -13,6 +13,7 @@ fuentes:
   - P2-ficha-midudev
   - P2-ficha-3b1b
   - P2-ficha-kurzgesagt
+  - P3-modalidades-live        # layout OBS como storyboard en live
 admite-variantes: false
 varia-por-eje: [grado-edicion, grado-guion]
 sync: 2026-04-19
@@ -80,15 +81,16 @@ combinación cromática contra WCAG 2.2 AA [P1-§3.2]: 4.5:1 cuerpo,
 
 ### Por `grado-edicion`
 
-- **`heavy` / `medium`:** storyboard detallado por bloque con encuadre, duración, overlays previstos. Normal.
-- **`light`:** storyboard mínimo — cobertura multi-cámara + ángulos; el ritmo lo decide el speaker. TED, conferencia.
-- **`zero`:** **no aplica** storyboard formal. Prep = escenas OBS + alertas + chat layout. En live stream el equivalente es `docs/briefs/grabacion/05-captura-pantalla` + layout.
+- **`heavy`:** storyboard detallado por bloque — encuadre específico (WS/MS/CU), duración estimada, overlays previstos, transición de entrada/salida. Kurzgesagt, Nerdwriter escriben cada frame; storyboard HTML interactivo aplicable [scripts/storyboard-draft.template.html].
+- **`medium`:** storyboard por secciones con encuadre genérico + notas de B-roll. Menos granular pero útil como guía de grabación.
+- **`light`:** storyboard mínimo — cobertura multi-cámara + ángulos principales. El ritmo lo decide el speaker en vivo. TED, conferencia.
+- **`zero`:** **no aplica** storyboard formal. Prep = escenas OBS + alertas + chat layout + Stream Deck buttons. Ver `docs/briefs/grabacion/04-escenas` y [P3-modalidades-live].
 
 ### Por `grado-guion`
 
-- **`guionado`:** storyboard 1:1 con el guión; cada frase tiene su visual asociado.
-- **`semi-guionado`:** storyboard por secciones/bloques, no por frase.
-- **`improvisado`:** **no aplica** — no hay guión para storyboardear.
+- **`guionado`:** storyboard 1:1 con el guión — cada frase tiene visual asociado con timing. Permite generar draft HTML interactivo via storyboard-explainer.
+- **`semi-guionado`:** storyboard por secciones/bloques (no por frase). Captura intención visual sin over-specification.
+- **`improvisado`:** **no aplica** — no hay guión para storyboardear. El "storyboard" emerge post-hoc en la edición del VOD (si aplica).
 
 ## Conflictos conocidos
 

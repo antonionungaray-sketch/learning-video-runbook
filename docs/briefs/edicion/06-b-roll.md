@@ -10,6 +10,8 @@ fuentes:
   - P2-ficha-veritasium        # B-roll científico alineado con narración
   - P2-ficha-kurzgesagt        # animación alineada frase-a-frase
   - P1-§10.3                   # estructura argumentativa del ensayo (B-roll evidencia)
+  - P1-§11.3                   # investigación visible (periodismo)
+  - P1-§9.1                    # modos documentales
 admite-variantes: false
 varia-por-eje: [arco-dominante, grado-edicion]
 sync: 2026-04-19
@@ -69,17 +71,18 @@ Rompe contigüidad temporal.
 
 ### Por `arco-dominante`
 
-- **`performativo`:** B-roll = screenshots + closeups funcionales. Nunca decorativo.
-- **`narrativo`:** B-roll = archivo, establecedoras, recreación (puede ser gran % del video).
-- **`argumentativo`:** B-roll = evidencia visible citada ([P1-§10.3], §11.3).
-- **`expositivo`:** B-roll = diagramas, animaciones de concepto.
-- **`conversacional`:** B-roll mínimo o nulo; graphics insert ocasional (Huberman).
+- **`performativo`:** B-roll = screenshots + closeups del hardware/código/outputs. Funcional al procedimiento; nunca decorativo [P1-§2.3-#1]. Fireship insertó 1 meme o screenshot cada 3-6s; The Coding Train muestra el output compilando.
+- **`narrativo`:** B-roll = archivo de época, establecedoras, recreación, retratos. 40-70% del video en documental. Adam Curtis operó casi enteramente con archivo BBC [P1-§9.1].
+- **`argumentativo`:** B-roll = **evidencia citada** (clips de la obra, documentos, papers, data viz). Cada pieza con función argumentativa [P1-§10.3] [P1-§11.3]. Nerdwriter cita frames exactos; Johnny Harris muestra el paper consultado.
+- **`expositivo`:** B-roll = diagramas, animaciones de concepto, metáforas visuales. Kurzgesagt isotype (personajes geométricos), 3B1B Manim (animación matemática), QuantumFracture pizarra digital.
+- **`conversacional`:** B-roll mínimo o nulo — graphics insert ocasional (Huberman corta a diagrama cuando explica un mecanismo; Lex Fridman casi nunca). El diálogo lleva la carga visual.
 
 ### Por `grado-edicion`
 
-- **`heavy`:** B-roll denso, coordinado a nivel frase-imagen.
-- **`medium`:** B-roll estratégico.
-- **`light` / `zero`:** B-roll mínimo o inexistente.
+- **`heavy`:** B-roll denso coordinado a nivel frase-imagen (Kurzgesagt anima cada frase). El editor pide shots específicos al script.
+- **`medium`:** B-roll estratégico — inserts puntuales en momentos clave (3-8 por video de 10 min).
+- **`light`:** B-roll mínimo o inexistente (TED, conferencia grabada). La cobertura es multi-cam + expresión del speaker.
+- **`zero`:** **no aplica** — el live stream no admite B-roll pre-producido.
 
 ## Conflictos conocidos
 

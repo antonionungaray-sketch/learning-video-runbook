@@ -2,7 +2,7 @@
 
 > Artefacto **auto-generado** por `scripts/regenerar-vistas.sh` a partir
 > de los frontmatters de `docs/briefs/guion/*.md`. **No editar a mano.**
-> Última regeneración: 2026-04-20T01:12:10Z
+> Última regeneración: 2026-04-20T01:24:24Z
 
 ## Decisiones críticas
 
@@ -27,7 +27,7 @@
 ### 04. segmentacion
 
 - **Pregunta:** ¿Cuántos bloques y de qué duración?
-- **Fuentes:** P1-§2.3-#6 P1-§2.4 P2-meta-tutorial P2-meta-divulgacion P2-meta-onboarding 
+- **Fuentes:** P1-§2.3-#6 P1-§2.4 P2-meta-tutorial P2-meta-divulgacion P2-meta-onboarding P1-§10.3 
 - **Brief:** [`briefs/guion/04-segmentacion.md`](../briefs/guion/04-segmentacion.md)
 
 ### 05. retrieval

@@ -70,10 +70,10 @@ debe ser transiente (aparece, marca, desaparece).
 
 ### Por `grado-edicion`
 
-- **`heavy`:** señalización planeada y densa (highlights animados, zoom dinámico, callouts sincronizados con voz).
-- **`medium`:** señalización puntual en momentos clave; sin densidad de overlays.
-- **`light`:** señalización mínima — solo lower thirds y ocasional chapter marker. TED, podcast.
-- **`zero`:** señalización en vivo vía escenas OBS (zoom escena, highlight desktop); no post-hoc.
+- **`heavy`:** señalización planeada densa — callouts animados, zoom dinámico digital sobre zona explicada, highlight vectorial sincronizado frase-por-frase. 3-6 señalizaciones/min en formato denso (Fireship). Coherencia Mayer [P1-§2.3-#1] obliga: cada callout con función, nunca decorativo.
+- **`medium`:** señalización puntual — callout en momentos clave (introducción de término, cambio de tema), sin overlay continuo. 1-2/min típicamente.
+- **`light`:** señalización mínima — lower thirds para presentación de speaker + 1-2 chapter markers visibles. Sin elementos gráficos competidores con el speaker. TED, conferencia.
+- **`zero`:** señalización en vivo vía escenas OBS — zoom escena, highlight del cursor, alertas. La señalización es decisión de ejecución, no post-producción.
 
 ## Conflictos conocidos
 

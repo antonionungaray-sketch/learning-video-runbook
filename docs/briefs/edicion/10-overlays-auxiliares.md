@@ -18,6 +18,7 @@ fuentes:
   - P2-ficha-kurzgesagt
   - P2-ficha-3b1b
   - P3-edicion-composicion
+  - P3-modalidades-live        # overlays en vivo via OBS
 admite-variantes: true
 varia-por-eje: [grado-edicion]
 sync: 2026-04-19
@@ -78,10 +79,10 @@ fuera del tercio inferior o tapando el rostro viola [P1-§5.3].
 
 ### Por `grado-edicion`
 
-- **`heavy`:** catálogo completo de overlays disponible (lower-third, callout, chapter-marker, stat-callout, pull-quote, progress-indicator, question-prompt/answer-reveal, idea-bulb, separador). Uso denso pero funcional.
-- **`medium`:** subset — lower-third + chapter-marker + ocasional callout. Evitar overlays decorativos.
-- **`light`:** overlays mínimos — lower-third + chapter-marker.
-- **`zero`:** overlays en vivo vía OBS (browser sources, chat overlay, alerts). No post-hoc.
+- **`heavy`:** catálogo completo de overlays — lower-third, callout, chapter-marker, stat-callout, pull-quote, progress-indicator, question-prompt/answer-reveal, idea-bulb, separador. Uso denso pero funcional; cada overlay pasa el test de coherencia [P1-§2.3-#1]. Kurzgesagt y Nerdwriter operan aquí.
+- **`medium`:** subset principal — lower-third (identificación de persona), chapter-marker (segmentación), callout ocasional. Evitar overlays decorativos (stickers, emojis animados sin función). Ali Abdaal, Matt D'Avella operan aquí.
+- **`light`:** overlays mínimos — lower-third al presentar speaker o invitado + chapter-marker por tema. Sin callouts. TED, conferencia grabada, podcast audiovisual.
+- **`zero`:** overlays en vivo vía OBS — browser sources (chat overlay, alerts), overlays de streaming (Streamlabs, StreamElements). No hay post-producción; los overlays son decisión de ejecución en vivo. Ver [P3-modalidades-live].
 
 ## Conflictos conocidos
 

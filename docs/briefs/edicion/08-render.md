@@ -67,11 +67,11 @@ Siempre export CFR (constant frame rate) explícito, verificable con
 
 ### Por `plataforma`
 
-- **`long-form-horizontal`:** 1920×1080 o 3840×2160 16:9, H.264/H.265, bitrate según duración y calidad.
-- **`shorts-vertical`:** 1080×1920 9:16, H.264, subtítulos burned-in.
-- **`podcast-audio-primario`:** render audio primario a -16 LUFS (WAV/FLAC); video acompañante en 1920×1080.
-- **`live-with-vod`:** live en stream-ready (RTMP encoder OBS); VOD re-render a long-form.
-- **`corporate-lms`:** render SCORM-compliant o MP4 con metadata para tracking; burned-in subs y transcript attach.
+- **`long-form-horizontal`:** 1920×1080 (FHD) o 3840×2160 (4K UHD) 16:9, H.264 (máx compatibilidad) o H.265/HEVC (mejor compresión). Bitrate: 8-12 Mbps FHD, 35-45 Mbps 4K. Audio AAC 192-320 kbps stereo. Target YouTube/Vimeo.
+- **`shorts-vertical`:** 1080×1920 9:16, H.264, bitrate 4-8 Mbps. Subtítulos burned-in obligatorios (consumo silencioso). Duración ≤90s hard-clamp del encoder.
+- **`podcast-audio-primario`:** render audio primario a -16 LUFS WAV/FLAC 48kHz; video acompañante en 1920×1080 H.264 baja complejidad (talking heads = poco movimiento, bitrate bajo acceptable).
+- **`live-with-vod`:** live en RTMP con OBS encoder (NVENC/x264), bitrate 6000-9000 kbps YouTube Live, 3500-6000 Twitch. VOD re-render a long-form con normalización LUFS + cleanup.
+- **`corporate-lms`:** render SCORM-compliant (paquete ZIP con manifest XML) o MP4 con metadata xAPI (tracking granular). Burned-in subs + transcript attach para WCAG AA compliance.
 
 ## Conflictos conocidos
 

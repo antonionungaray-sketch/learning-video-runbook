@@ -11,6 +11,9 @@ fuentes:
   - P2-ficha-veritasium        # B-roll documental pre-producido
   - P2-ficha-fireship          # screenshots + memes
   - P2-ficha-kurzgesagt        # animación pre-producida por equipo
+  - P1-§9.1                    # modos documentales (arco narrativo)
+  - P1-§10.3                   # evidencia visual en ensayo argumentativo
+  - P1-§11.3                   # investigación visible (periodismo)
 admite-variantes: false
 varia-por-eje: [grado-edicion, arco-dominante]
 sync: 2026-04-19
@@ -75,18 +78,18 @@ a resolución nativa o superior.
 
 ### Por `grado-edicion`
 
-- **`heavy`:** B-roll abundante y planeado (Veritasium, Kurzgesagt). Shotlist paralelo al script.
-- **`medium`:** B-roll estratégico — inserts para momentos clave.
-- **`light`:** B-roll mínimo o inexistente (TED).
-- **`zero`:** **no aplica** — no hay B-roll en live stream.
+- **`heavy`:** B-roll abundante y planeado — shotlist paralelo al script. 30-60% del tiempo final en pantalla es B-roll (Veritasium, Kurzgesagt, Johnny Harris). Requiere presupuesto significativo: producción documental, motion graphics, archivo licenciado.
+- **`medium`:** B-roll estratégico — inserts para momentos clave (3-8 por video de 10 min). Stock genérico aceptable si es específico al punto.
+- **`light`:** B-roll mínimo o inexistente (TED, conferencia, podcast multi-cam). Cobertura visual = multi-cámara + expresión del speaker.
+- **`zero`:** **no aplica** — el live stream no permite B-roll pre-producido. Imágenes ilustrativas vía browser source en OBS, en vivo.
 
 ### Por `arco-dominante`
 
-- **`performativo`:** B-roll = screenshots de contexto + closeups del hardware/código. Funcional, no decorativo.
-- **`narrativo`:** B-roll narrativo (archivo, recreación, establecedoras). Gran porcentaje del video.
-- **`argumentativo`:** B-roll de evidencia (clips citados, documentos, referencias) — ver pilar 1 §10.3 y §11.3.
-- **`expositivo`:** B-roll ilustrativo (diagramas, animaciones de concepto).
-- **`conversacional`:** B-roll raro (graphics insert ocasional en podcast con inserts, Huberman).
+- **`performativo`:** B-roll = screenshots del flujo + closeups del hardware/código + capturas de outputs. Funcional al procedimiento; nunca decorativo [P1-§2.3-#1].
+- **`narrativo`:** B-roll narrativo extenso — archivo, recreación, establecedoras, retratos. 40-70% del video en documental. Ver modos documentales [P1-§9.1].
+- **`argumentativo`:** B-roll de **evidencia citada** — clips de la obra analizada, documentos, papers, datos visualizados. Cada pieza con función argumentativa; ver pilar 1 §10.3 y §11.3.
+- **`expositivo`:** B-roll ilustrativo — diagramas, animaciones de concepto, metáforas visuales (Kurzgesagt isotype, 3B1B Manim).
+- **`conversacional`:** B-roll raro — graphics insert ocasional (Huberman con diagramas mid-conversación); Lex Fridman rara vez usa B-roll.
 
 ## Conflictos conocidos
 

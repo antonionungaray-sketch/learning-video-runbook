@@ -79,9 +79,10 @@ sostiene visualmente, el pacing no es viable. Evaluar juntos.
 
 ### Por `grado-edicion`
 
-- **`heavy` / `medium`:** pacing estimado por bloque calibrado en edición; márgenes de 10-20% por bloque.
-- **`light`:** pacing = duración real del speaker ensayado (TED 18 min); el margen lo da la práctica previa, no el editor.
-- **`zero`:** **no aplica** estimación a priori. El pacing es el tiempo real del live; se observa post-hoc.
+- **`heavy`:** pacing estimado al detalle — 5-15 cortes/min formato denso (Fireship); animación calibrada frase-por-frase (Kurzgesagt, 3B1B). Márgenes de 10-20% por bloque.
+- **`medium`:** pacing estimado a nivel de bloque — 2-4 min por segmento con cortes rítmicos menos densos; margen ~15%.
+- **`light`:** pacing = duración real del speaker ensayado (TED 18 min hard limit, conferencia académica 45-60 min); el margen lo da el ensayo previo, no el editor.
+- **`zero`:** **no aplica** estimación a priori. El pacing es el tiempo real de la sesión live (1-6h típico); se observa post-hoc.
 
 ## Conflictos conocidos
 
