@@ -2,7 +2,7 @@
 
 Source: diálogo de design 2026-04-19, plan file `/home/antonio/.claude/plans/desafortunadamente-este-proyecto-est-bubbly-charm.md`
 Branch: main
-Status: IN PROGRESS (fases 0-3 cerradas, fase 4a cerrada, 4b + 5-6 pendientes)
+Status: IN PROGRESS (fases 0-4 cerradas, fases 5-6 pendientes)
 Mode: Reform
 
 ## Problem Statement
@@ -19,7 +19,7 @@ La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad co
 | 1 | Diseño formal del modelo de 5 ejes estructurales + 12 presets de modalidad | 1 sesión | **Cerrada 2026-04-19** — `docs/arquitectura/modalidades-y-ejes.md`. Commit `84a243f`. Evolución: 5 ejes (no 4; `grado-guion` se separó de `grado-edicion`); `narrador-omnisciente` agregado; Shorts = atributo de plataforma. |
 | 2 | Expansión del pilar 1: agregar teoría documental (Nichols), ensayo fílmico (Rascaroli), retórica visual (Cairo, Tufte), active learning (Freeman, Mazur), manteniendo Mayer/Sweller como núcleo | 3-5 sesiones | **Cerrada 2026-04-19** — secciones §9-§12 agregadas a `docs/pilares/01-fundamentos-cognitivos.md` (321→590 líneas). Commit `8723454`. Verificación: 0 drift, 0 IDs huérfanos. |
 | 3 | Expansión de pilares 2 y 3 con fichas de creators y herramientas para modalidades nuevas | 2-3 sesiones | **Cerrada 2026-04-19** — 7 archivos nuevos en docs/casos-de-exito/ con 14 fichas ligeras cubriendo las 7 modalidades ampliadas. Pilar 2 con sección [P2-modalidades-ampliadas]; pilar 3 con sección [P3-modalidades] (live, podcast multi-mic, documental, data viz). Commit `706524e`. Las fichas ligeras son "análisis general" — iteración empírica (VTT+WPM) queda como mantenimiento continuo. |
-| 4 | Rediseño de los 43 briefs con bloques "Ajuste por eje" + marcado de universales | 3-4 sesiones | **4a cerrada 2026-04-19** — los 43 briefs tienen `varia-por-eje:` en frontmatter. 13 briefs priority con bloques detallados, 23 con bloques compactos, 7 universales. Commit `8077ff5`. **4b pendiente**: profundizar los 23 bloques compactos. |
+| 4 | Rediseño de los 43 briefs con bloques "Ajuste por eje" + marcado de universales | 3-4 sesiones | **Cerrada 2026-04-19** — 4a: los 43 briefs con `varia-por-eje:` en frontmatter + bloques Ajuste por eje (commit `8077ff5`). 4b: profundización de los 23 bloques compactos con completitud de valores, heurísticas numéricas, citas al pilar 1 expandido (§9-§12) y ejemplos (commit `9bbcbcb`). Verificación 0 drift. |
 | 5 | Adaptación de los 7 skills al Concept Brief con campo `modalidad` + ejes | 1-2 sesiones | Pendiente |
 | 6 | Verificación end-to-end, vistas regeneradas, cierre | 1 sesión | Pendiente |
 
