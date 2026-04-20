@@ -79,7 +79,7 @@ El skill `setup-environment` construye un perfil persistente del entorno del usu
 
 **Archivos:**
 - Global por máquina: `~/.claude/video-explainer/profile.md` (no se commitea).
-- Override por proyecto: `.video-explainer/profile.md` en la raíz del proyecto de video (opcional; si existe, se mezcla con el global — los valores del override tienen precedencia).
+- Override por proyecto: `./video-explainer-profile.md` en la raíz del proyecto de video (opcional; si existe, se mezcla con el global — los valores del override tienen precedencia).
 
 **Cuándo invocar:** antes del primer sprint de producción en una máquina nueva. Re-invocar si cambia el OS, el hardware, o las preferencias de licencia.
 

@@ -8,7 +8,7 @@ Todas las versiones relevantes de este proyecto se registran acá. Formato basad
 
 ### Added
 
-- **Skill `setup-environment`** — construye y actualiza el perfil de entorno del usuario (OS, preferencias, hardware, restricciones, herramientas ya elegidas) en `~/.claude/video-explainer/profile.md`. Re-invocable. Soporta override por proyecto (`.video-explainer/profile.md`).
+- **Skill `setup-environment`** — construye y actualiza el perfil de entorno del usuario (OS, preferencias, hardware, restricciones, herramientas ya elegidas) en `~/.claude/video-explainer/profile.md`. Re-invocable. Soporta override por proyecto (`./video-explainer-profile.md`).
 - **Paso 0.5 en 4 skills de etapa** (`concept-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`) — lectura del perfil de entorno al inicio de cada skill para filtrar recomendaciones de herramientas según OS, licencia y hardware; fallback a WebSearch si la herramienta óptima no está en Pilar 3.
 - **Metadata estructurada en Pilar 3** — cada bullet de herramienta en `docs/pilares/03-herramientas.md` tiene un bloque `<!-- meta: <slug> -->` con campos `plataformas`, `licencia`, `modo`, `hardware-min?`, `equivalentes`.
 - **Script `scripts/validar-metadata-pilar3.sh`** — valida integridad de los bloques `<!-- meta -->` en Pilar 3 (campos obligatorios, valores permitidos, duplicados).
