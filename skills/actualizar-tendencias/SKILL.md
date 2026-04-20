@@ -1,6 +1,6 @@
 ---
 name: actualizar-tendencias
-description: "Use when the user wants to refresh, update, or revisit the trends and success cases knowledge layer (pilar 2) of the training video toolkit. Busca novedades en fuentes definidas, resume y actualiza el documento con aprobación del usuario."
+description: "Use when the user wants to refresh, update, or revisit the trends and success cases knowledge layer (pilar 2) of the video-explainer-guide. Busca novedades en fuentes definidas, resume y actualiza el documento con aprobación del usuario."
 ---
 
 # Actualizar tendencias y casos de éxito (pilar 2)

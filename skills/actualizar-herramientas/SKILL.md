@@ -1,6 +1,6 @@
 ---
 name: actualizar-herramientas
-description: "Use when the user wants to refresh, update, or revisit the tools knowledge layer (pilar 3) of the training video toolkit. Busca releases, deprecations y alternativas nuevas, y actualiza el documento con aprobación del usuario."
+description: "Use when the user wants to refresh, update, or revisit the tools knowledge layer (pilar 3) of the video-explainer-guide. Busca releases, deprecations y alternativas nuevas, y actualiza el documento con aprobación del usuario."
 ---
 
 # Actualizar herramientas (pilar 3)
