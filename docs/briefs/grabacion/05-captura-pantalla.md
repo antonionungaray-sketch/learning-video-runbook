@@ -13,7 +13,7 @@ fuentes:
   - P1-§11.3                   # investigación visible (evidencia citada)
 admite-variantes: true
 varia-por-eje: [arco-dominante]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 2
 ---
 

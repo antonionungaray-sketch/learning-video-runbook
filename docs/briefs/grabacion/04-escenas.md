@@ -13,7 +13,7 @@ fuentes:
   - P3-modalidades-live        # Stream Deck + escenas live
 admite-variantes: false
 varia-por-eje: [grado-guion, grado-edicion]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 3
 ---
 

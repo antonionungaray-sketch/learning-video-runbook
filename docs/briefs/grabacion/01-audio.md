@@ -13,7 +13,7 @@ fuentes:
   - P3-modalidades-documental  # iZotope RX + restauración audio
 admite-variantes: false
 varia-por-eje: [rol-presentador]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 2
 ---
 

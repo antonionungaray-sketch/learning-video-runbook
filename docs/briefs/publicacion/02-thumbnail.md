@@ -16,7 +16,7 @@ fuentes:
   - P3-publicacion-analitica   # TubeBuddy / VidIQ A/B test
 admite-variantes: true
 varia-por-eje: [plataforma]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 2
 ---
 

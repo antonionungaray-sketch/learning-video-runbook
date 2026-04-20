@@ -14,7 +14,7 @@ fuentes:
   - P3-preprod-iluminacion     # panel LED bicolor con difusor
 admite-variantes: false
 varia-por-eje: [rol-presentador]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 2
 ---
 

@@ -9,7 +9,7 @@ fuentes:
   - P3-edicion-voiceover       # ElevenLabs / Coqui / Piper
 admite-variantes: true
 varia-por-eje: [rol-presentador, grado-edicion]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 2
 ---
 

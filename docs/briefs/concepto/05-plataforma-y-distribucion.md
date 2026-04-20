@@ -13,7 +13,7 @@ fuentes:
   - P2-ficha-plataformas-hispanas # caso Platzi/Crehana
 admite-variantes: false
 varia-por-eje: [plataforma]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 2
 ---
 

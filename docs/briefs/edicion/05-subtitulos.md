@@ -14,7 +14,7 @@ fuentes:
   - P2-ficha-quantumfracture   # open captions + closed
 admite-variantes: false
 varia-por-eje: [plataforma]
-sync: 2026-04-19
+sync: 2026-04-20
 version: 2
 ---
 
