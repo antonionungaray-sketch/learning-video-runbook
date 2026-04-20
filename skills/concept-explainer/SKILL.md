@@ -164,7 +164,7 @@ Cuando el filtrado deja 0 candidatos:
    - Si elige: preguntar "¿quieres incorporarla al catálogo curado invocando `update-tools`? Así la próxima vez el filtrado la encontrará directo."
    - Si rechaza todos: flaggear el gap ("no hay equivalente en tu entorno para esta decisión") y continuar con la siguiente decisión del brief sin recomendación en esta.
 
-6. **Si el usuario acepta persistir:** invocar `update-tools` con payload estructurado (ver Fase E).
+6. **Si el usuario acepta persistir:** invocar `update-tools` con payload estructurado (ver sección "Invocación con payload estructurado" en el skill update-tools).
 
 ### Sin acceso a WebSearch
 
