@@ -265,7 +265,250 @@ El diseño orientado a maximizar métricas de plataforma puede divergir del dise
 
 ---
 
-## Bibliografía
+> **Nota de alcance (§9-§12).** Las cuatro secciones siguientes expanden este pilar más allá del núcleo de cognición multimedia instruccional (Mayer, Sweller, Bjork, Roediger) hacia cuatro cuerpos teóricos que informan modalidades no puramente instruccionales: cine documental, ensayo fílmico, retórica visual / periodismo de datos, y conferencia efectiva. La convocatoria de estas tradiciones no sustituye al núcleo cognitivo; lo complementa cuando el video no es un tutorial. Las secciones §1-§8 siguen siendo la base universal; §9-§12 son la capa genérica que permite calibrar decisiones por modalidad (ver `docs/arquitectura/modalidades-y-ejes.md`).
+
+---
+
+## 9. Teoría del cine documental [P1-§9]
+
+Los fundamentos cognitivos por sí solos no bastan para diseñar un documental narrativo pedagógico. La tradición del documental —un siglo de práctica y unas décadas de teoría— ofrece un vocabulario específico para decisiones que el modelo instruccional no cubre: cómo se relaciona la voz autoral con el mundo representado, qué modos de dirigirse al espectador existen, qué problemas éticos plantean el archivo y la recreación. Esta sección sintetiza lo aplicable a video con intención pedagógica cuando el `arco-dominante` es narrativo o el `rol-presentador` es narrador-omnisciente / investigador.
+
+### 9.1 Los seis modos documentales de Nichols [P1-§9.1]
+
+Nichols (2001/2017, *Introduction to Documentary*) propone seis **modos documentales** que describen diferentes posturas del cineasta frente al mundo representado. Cada modo implica convenciones distintas de voz, estructura y relación con el espectador.
+
+| Modo | Postura autoral | Ejemplos | Ejes asociados |
+|---|---|---|---|
+| **Poético** | Evocación, fragmentación, ritmo visual antes que argumento. | Koyaanisqatsi; experimentales pedagógicos. | arco narrativo, objetivo apreciar |
+| **Expositivo** | Voz de autoridad dirige al espectador con argumento directo. Voice-of-god. | Docus BBC clásicos; Cosmos de Sagan; Kurzgesagt largos. | arco expositivo o narrativo, rol narrador-omnisciente |
+| **Observacional** | Cámara como mosca en la pared; mínima intervención. | Frederick Wiseman; direct cinema. | Rara vez pedagógico puro; raramente aplicable al scope |
+| **Participativo** | El cineasta aparece e interactúa con los sujetos. | Michael Moore; Louis Theroux; Vice docs. | rol investigador, arco argumentativo |
+| **Reflexivo** | El documental comenta sobre su propia construcción. | Man with a Movie Camera; ciertos video-ensayos reflexivos. | rol narrador-1a-persona, arco argumentativo |
+| **Performativo** | Experiencia subjetiva, emocional, en primera persona; el cineasta es el material. | Agnès Varda; personal essay documental. | rol narrador-1a-persona, arco narrativo |
+
+**Implicación de diseño.** La elección de modo es una decisión estructural que antecede al guión: configura qué puede y no puede hacer el video. Un expositivo que de pronto se vuelve participativo sin preparación quiebra el contrato tácito con el espectador. El modo debería quedar declarado como parte del Concept Brief (vía el eje `rol-presentador` y `arco-dominante`).
+
+**Atención al matiz.** Los modos son *tendencias dominantes*, no etiquetas puras. La mayoría de los documentales modernos mezclan (Kurzgesagt: expositivo + poético; Johnny Harris: participativo + expositivo). La utilidad del vocabulario es nombrar la combinación dominante y las desviaciones conscientes.
+
+### 9.2 La voz del documental: autoridad vs encuentro [P1-§9.2]
+
+Nichols distingue dos grandes posturas de la voz autoral documental:
+
+- **Voice-of-god (voz de dios).** 3a persona, fuera de cuadro, tono autoritativo, ocultación del proceso de investigación. Asume un punto de vista objetivo. Es el default del modo expositivo. Ventaja cognitiva: maximiza el principio de coherencia (Mayer #1) — ninguna distracción por el cineasta como personaje. Desventaja: invisibiliza la subjetividad real del corte y la edición, puede sonar dogmática.
+
+- **Voice of encounter (voz de encuentro).** 1a persona, visible o escuchable, revela el proceso. El espectador ve al cineasta preguntar, dudar, ajustar su tesis. Es característica de los modos participativo y performativo. Ventaja: transparencia epistémica, identificación emocional. Desventaja: suma carga extraña si el cineasta compite con el contenido central.
+
+**Implicación.** Para videos con `objetivo-cognitivo: orientarse` (divulgación, periodismo visual), la voz de encuentro funciona cuando el cineasta es parte del descubrimiento (Johnny Harris investigando). Para `objetivo: corregir-intuicion` (Veritasium), la voz expositiva o semi-participativa suele ser más eficiente: el cineasta interviene para desafiar al espectador, no para narrar su propio proceso. Para `arco: argumentativo` + `rol: narrador-1a-persona` (video-ensayo), la voz de encuentro es inherente al género.
+
+**Relación con §2.3-#11 (voz de Mayer).** El principio de voz de Mayer opera en la dimensión prosódica (cálida vs sintética). La dimensión autoral de Nichols opera en la dimensión enunciativa (quién habla, desde dónde). Son ortogonales: un voice-of-god puede ser cálido; un voice-of-encounter puede ser plano. Ambas dimensiones afectan la recepción.
+
+### 9.3 Las cuatro tendencias de Renov [P1-§9.3]
+
+Renov (2004, *The Subject of Documentary*) identifica cuatro **tendencias fundamentales** del modo documental, que funcionan como propósitos retóricos superpuestos:
+
+1. **Registrar / revelar / preservar.** Función archivística; el documental como testimonio. Base de docus históricos, de memoria colectiva. Objetivo cognitivo dominante: `orientarse`.
+2. **Persuadir / promover.** Función retórica; el documental argumenta una tesis o promueve una causa. Base del video-ensayo político, documental de campaña. Objetivo: `formar-opinion`.
+3. **Analizar / interrogar.** Función epistémica; el documental pregunta y examina. Base del periodismo visual, investigativo. Objetivo: `orientarse` con matiz argumentativo.
+4. **Expresar.** Función estética y subjetiva; el documental como vehículo de expresión autoral. Base del ensayo fílmico, personal essay. Objetivo: `apreciar` o `formar-opinion`.
+
+Renov argumenta que estas cuatro tendencias están *siempre presentes* en cualquier documental, en proporciones distintas. El diseño deliberado del Concept Brief debería declarar cuál es la dominante y cuáles son las subordinadas, para evitar videos que persiguen todas a la vez y no logran ninguna.
+
+**Implicación de diseño.** El campo `objetivo-cognitivo` del Concept Brief mapea aproximadamente a la tendencia dominante de Renov. Los briefs de fase 4 pueden referenciar esta sección cuando la decisión varíe por objetivo (retrieval, CTA, métricas de efecto, voz-registro).
+
+### 9.4 Ética documental y honestidad material [P1-§9.4]
+
+La tradición documental ha codificado, con grados variables de consenso, una serie de principios éticos que aplican a cualquier video con pretensión factual —incluidos divulgación, periodismo visual y documental narrativo pedagógico:
+
+- **Distinción explícita entre material original, archivo y recreación.** Una toma de archivo presentada como observación directa del presente, o una recreación presentada como documento, viola el contrato factual. La convención profesional es etiquetar archivo ("Archivo · 1987") y recreación ("Recreación") en pantalla cuando haya ambigüedad.
+- **Consentimiento informado de sujetos.** Personas identificables filmadas deben entender que serán parte del material. En contextos pedagógicos con menores, vulnerables o contextos sensibles, el estándar es más estricto.
+- **Fidelidad al sentido del material.** Editar una cita de un entrevistado de modo que distorsione su posición es una falta documental tradicional, independientemente de si las palabras literales aparecen. Aplica también a clips descontextualizados de archivo.
+- **Declaración de conflictos de interés.** Un video que promueve un producto, una institución o una tesis con interés comercial o político del creador debe declararlo —no por corrección externa, sino porque el espectador no puede evaluar el argumento sin esa información.
+
+**Relación con fundamentos cognitivos.** La ética documental no es un anexo moralista — es una condición de posibilidad del aprendizaje. Un espectador que descubre que fue engañado sobre la fuente del material experimenta un error de predicción masivo (§1.3) que contamina retrospectivamente todo lo aprendido. El costo reputacional es para el creador; el costo cognitivo es para el espectador.
+
+---
+
+## 10. Teoría del ensayo fílmico [P1-§10]
+
+El video-ensayo, el personal essay pedagógico y ciertos tramos de divulgación con voz autoral fuerte caen en la categoría del **ensayo fílmico** (*essay film*). Esta tradición tiene su propia teoría —distinta de la documental— que ilumina decisiones que la cognición multimedia no cubre: cómo estructurar un argumento sin resolverlo dogmáticamente, cómo fusionar la voz del autor con la del narrador, cómo consolidar sin examinar.
+
+### 10.1 El ensayo como cine del pensamiento [P1-§10.1]
+
+Rascaroli (2009, *The Personal Camera*; 2017, *How the Essay Film Thinks*) caracteriza el ensayo fílmico como **cine que piensa en alta voz**. No presenta conclusiones cerradas; exhibe el proceso de pensamiento del autor. Es un género **interstitial**: entre documental y ficción, entre narrativa y argumento, entre exposición y poesía.
+
+Corrigan (2011, *The Essay Film*) complementa con tres componentes constitutivos:
+
+1. **Subjetividad expresiva** — una voz autoral reconocible y presente; el ensayista como personaje.
+2. **Experiencia pública** — el ensayo se ocupa de un objeto del mundo (una película, un fenómeno social, una idea), no solo de la interioridad del autor. Es un *pensar sobre algo*, no un diario.
+3. **Pensamiento en proceso** — el ensayo piensa mientras avanza; no presenta un resultado pre-formado. El espectador acompaña el razonamiento, no lo recibe.
+
+**Implicación de diseño.** El ensayo fílmico es estructuralmente distinto al tutorial o al expositivo. Aplicar principios instruccionales clásicos (pre-entrenamiento completo, retrieval explícito, CTA de aplicación) produce un híbrido desafortunado — ni piensa bien ni enseña bien. Los briefs deben poder diferenciar.
+
+### 10.2 La voz autoral en el ensayo [P1-§10.2]
+
+El ensayo exige **enunciación en primera persona**: "yo pienso", "yo observo", "me parece". Esta no es la voz del presentador didáctico en 2a persona ("tú aprenderás") sino la voz del pensador que invita al espectador a acompañarlo ("conmigo").
+
+Consecuencias operativas:
+
+- **Fusión de autor y narrador.** A diferencia del documental expositivo —donde la voice-of-god suena despersonalizada— en el ensayo la voz es inseparable de la persona. El tono, las dudas, los cambios de ritmo son rasgos autorales.
+- **Direct address al espectador.** El ensayo habla al espectador como interlocutor, no como audiencia pasiva. Contrapoints interpela; Nerdwriter piensa con el espectador. Esto no viola el principio de personalización de Mayer (#10) — lo amplifica en una dirección distinta.
+- **Contradicción y digresión como recursos.** El ensayista puede contradecirse deliberadamente, abrir una digresión aparente y volver, porque el objeto del video es el proceso de pensamiento, no la conclusión.
+
+**Relación con cognición multimedia.** El principio de coherencia (Mayer #1) no se viola por las digresiones del ensayo si tienen función argumentativa o expresiva. Lo que el principio prohíbe son distracciones sin función — las digresiones del buen ensayista sí tienen función, aunque no sea obvia en el momento. Los briefs deben reconocer esta distinción.
+
+### 10.3 Estructura argumentativa del ensayo [P1-§10.3]
+
+El ensayo no sigue la estructura del tutorial (intro → paso 1 → paso 2 → ... → cierre) ni la del documental narrativo (arco temporal de tres actos). Suele organizarse como:
+
+1. **Apertura como entrada al problema.** Una imagen, una cita, una pregunta concreta que introduce el objeto sin declarar la tesis final.
+2. **Exploración dialéctica.** Presentación de posiciones, ejemplos, contra-ejemplos. El ensayista avanza argumentos, se detiene a considerar objeciones, gira el ángulo.
+3. **Acumulación retórica.** Capas sucesivas que refuerzan, complejizan o matizan el argumento central, que puede no haberse declarado todavía.
+4. **Síntesis abierta.** El cierre no resuelve dogmáticamente; propone una forma de ver el objeto, deja la decisión final al espectador.
+
+Esta estructura es **argumentativa pero no deductiva**. No va de premisas a conclusión; acumula evidencia y puntos de vista que convergen hacia una posición que el espectador debe completar.
+
+**Implicación para briefs.** La segmentación (Mayer #6) sigue aplicando, pero los segmentos no son pasos procedimentales — son movimientos de pensamiento. El brief de estructura (`guion/03-estructura`) debería ofrecer este template alternativo cuando `arco-dominante: argumentativo` + `rol-presentador: narrador-1a-persona`.
+
+### 10.4 Consolidación retórica vs retrieval instruccional [P1-§10.4]
+
+La práctica de recuperación activa (§6.3, §8.1) —preguntar al espectador, insertar micro-ejercicios, pausar para reflexionar— es la práctica óptima de consolidación para `objetivo: adquirir-habilidad` o `corregir-intuicion`. Es **contraproducente** para `objetivo: formar-opinion` o `apreciar`.
+
+El ensayo consolida por **resonancia retórica**, no por testeo cognitivo:
+
+- **Retorno a la imagen inicial.** El ensayo vuelve al objeto de la apertura con la densidad acumulada del argumento. El espectador "re-ve" la imagen transformada.
+- **Cita culminante.** Una frase, una referencia, una imagen que cristaliza el argumento sin resumirlo.
+- **Eco temático.** Elementos recurrentes a lo largo del video se cierran al final con un significado nuevo.
+
+Un ensayo que termina con "¿entendiste? Responde estas 3 preguntas" rompe el pacto retórico del género. El espectador no vino a ser examinado; vino a pensar con el ensayista. La consolidación es interna y posterior al video.
+
+**Implicación para briefs.** El brief de retrieval/consolidación (`guion/05-retrieval`) debe declarar `varia-por-eje: [objetivo-cognitivo, arco-dominante]` y ofrecer al menos dos sub-bloques: uno para objetivo-cognitivo ∈ {adquirir-habilidad, corregir-intuicion} (retrieval explícito) y otro para {formar-opinion, apreciar} (consolidación retórica, sin testeo). El brief de métricas de efecto (`publicacion/08-metricas-aprendizaje`) tiene el mismo problema: el éxito del ensayo se mide por resonancia (shares, comentarios reflexivos, cambio de posición), no por post-test.
+
+---
+
+## 11. Retórica visual y periodismo de datos [P1-§11]
+
+Los videos con alto componente de datos —periodismo analítico visual (Johnny Harris, Vox Atlas), divulgación cuantitativa (Veritasium con estadísticas), explainer comercial con evidencia de mercado— exigen decisiones que la cognición multimedia atiende sólo parcialmente. La tradición del **periodismo de datos** y la **retórica visual** ofrece principios más específicos.
+
+### 11.1 Gramática visual de datos [P1-§11.1]
+
+Cleveland & McGill (1984) establecieron la **jerarquía de precepción perceptual** para encoding cuantitativo, confirmada y refinada por Ware (2021, *Information Visualization*). De mayor a menor precisión de decodificación:
+
+1. **Posición en escala común.** Gráfico de barras horizontal, puntos en eje.
+2. **Posición en escalas no alineadas.** Small multiples con distintos rangos.
+3. **Longitud.** Barras sin escala común.
+4. **Ángulo / pendiente.** Líneas de tendencia.
+5. **Área.** Círculos, treemaps.
+6. **Volumen / color saturación / color hue.** Lo más impreciso.
+
+**Implicación.** Cuando el creador debe transmitir un valor cuantitativo preciso, debe elegir el encoding más alto de la jerarquía que el caso permita. Un pie chart (encoding por ángulo) es peor que un gráfico de barras (longitud) para comparación precisa; un mapa de calor (hue) es peor que ambos.
+
+Ware agrega el concepto de **preattentive processing**: ciertas propiedades visuales (color saturado, orientación distinta, tamaño muy dispar) se procesan en <200ms sin foco atencional consciente. Usar estas propiedades para señalar el dato clave (vs el contexto) acelera dramáticamente la lectura.
+
+### 11.2 Data-ink ratio y el principio de minimalismo funcional [P1-§11.2]
+
+Tufte (1983/2001, *The Visual Display of Quantitative Information*) propone el **data-ink ratio**: la proporción de tinta (pixeles, elementos gráficos) que codifica datos, vs tinta decorativa. Principio: maximizar data-ink, minimizar todo lo demás.
+
+Su corolario —**eliminar chartjunk**— se refiere a: gridlines prominentes, bordes innecesarios, gradientes decorativos, iconos figurativos sin información, 3D en gráficos 2D, colores aleatorios que no codifican categorías.
+
+**Relación con Mayer (#1 coherencia).** Tufte y Mayer convergen: lo decorativo no-funcional degrada la comunicación. Tufte opera en la dimensión gráfica; Mayer en la cognitiva. Ambos prohíben lo mismo.
+
+**Matiz: anotación.** Tufte prohíbe chartjunk pero **requiere** anotación narrativa. En periodismo visual la anotación es parte del dato. Ver Cairo (2016, *The Truthful Art*, capítulo sobre "insightful charts"): el gráfico que no dice qué significa es incompleto.
+
+### 11.3 Investigación visible: el método mostrado [P1-§11.3]
+
+El periodismo analítico visual (Johnny Harris, Vox Atlas, Bloomberg Originals) ha popularizado una convención retórica: **mostrar el proceso de investigación**. No sólo la conclusión sino cómo se llegó.
+
+Elementos típicos:
+- **On-screen lookups.** El presentador aparece consultando un documento, una base de datos, un archivo.
+- **Map zoom / data zoom.** Animaciones que muestran cómo se acotó el objeto de análisis.
+- **Citas visibles.** URLs, nombres de fuentes, fechas sobreimpresas.
+- **Dudas del presentador.** "Esto me sorprendió", "no esperaba esto".
+
+**Función cognitiva.** Hace visible el trabajo epistémico del análisis. El espectador aprende no solo el resultado sino **cómo se sabe** — que es la mitad de la alfabetización mediática. Tiene base en la idea de Cairo (2016) de "enlightening charts": las visualizaciones que enseñan algo sobre el mundo, incluidas las limitaciones de lo que muestran.
+
+**Implicación para `rol-presentador: investigador`.** El brief de b-roll (`edicion/06-b-roll`) debería prescribir, para esta modalidad, material que documenta el proceso (screenshots de fuentes, tomas del presentador investigando, etc.), no stock b-roll genérico. El brief de hook (`guion/02-hook`) puede abrir con el momento de descubrimiento, no con la tesis.
+
+### 11.4 Ética del dato visual [P1-§11.4]
+
+Cairo (2019, *How Charts Lie*) y Tufte codifican los principales vicios del dato visual:
+
+- **Truncated axis.** Eje Y que no empieza en cero para inflar diferencias pequeñas. Legítimo si declarado explícitamente y el caso lo amerita; engañoso si oculto.
+- **Dual Y-axis.** Dos escalas distintas en un mismo gráfico generan correlaciones espurias.
+- **Inconsistent aspect ratio.** Estirar un gráfico horizontal o verticalmente altera la percepción de la pendiente.
+- **Cherry-picked range temporal.** Mostrar un intervalo que confirma la tesis y omitir el contexto más amplio.
+- **Escalas no lineales sin etiquetar.** Logarítmica, exponencial sin aviso.
+- **3D decorativo.** Distorsiona percepción de magnitud.
+
+**Implicación ética y cognitiva.** Estas son violaciones del contrato factual (§9.4). Son también violaciones cognitivas — generan interpretaciones erróneas que luego son difíciles de corregir (ver §6.1 sobre cambio conceptual: los misconceptions persisten si no se desafían).
+
+**Briefs aplicables.** Overlays auxiliares (`edicion/10-overlays-auxiliares`) con visualizaciones de datos deberían auto-verificar estas condiciones o declarar explícitamente cuando un gráfico usa truncamiento intencional por razones narrativas.
+
+---
+
+## 12. Active learning y conferencia efectiva [P1-§12]
+
+La conferencia grabada (TED, keynote, ponencia académica) y —en menor medida— el live stream educativo son modalidades donde el formato de exposición se parece más a la clase magistral tradicional que al video editado heavy. La pregunta es: ¿qué hace que esa exposición en vivo funcione cuando se graba y se convierte en video? La respuesta involucra evidencia de active learning y principios de retórica oral.
+
+### 12.1 La meta-evidencia contra la lectura pasiva [P1-§12.1]
+
+Freeman et al. (2014, *PNAS*) realizaron un meta-análisis de **225 estudios** comparando métodos de enseñanza pasiva (lectura tradicional) con métodos activos (peer instruction, ConcepTests, discusión estructurada, problem solving) en cursos STEM universitarios. Resultados:
+
+- Las tasas de fracaso (F en el curso) aumentaron **55%** en clases con enseñanza tradicional comparado con clases con aprendizaje activo.
+- El efecto se sostiene a través de disciplinas, tipos de examen y tamaños de clase.
+- Los autores concluyen que "la evidencia disponible es tan fuerte que se podría considerar que las clases tradicionales son el tratamiento control contra el cual las intervenciones deben demostrar su efectividad."
+
+**Implicación para video educativo.** Un video que es esencialmente *una clase tradicional grabada* —talking head + bullets + voz explicativa sin interacción ni retrieval— opera en el modo con **peor evidencia** que existe. La modalidad "conferencia grabada" es mejor que no haber sesión, pero es peor que cualquier variante que incorpore elementos activos: ConcepTests intercalados, pausas para predicción, ejercicios guiados.
+
+### 12.2 Peer instruction y el ConcepTest (Mazur) [P1-§12.2]
+
+Mazur (1997, *Peer Instruction*) desarrolló en Harvard el método **ConcepTest**: la clase se interrumpe periódicamente con una pregunta conceptual que los estudiantes responden individualmente (clickers, papeles de colores), luego discuten con un compañero, luego re-responden. La conversión de respuestas correctas tras la discusión es el indicador central.
+
+Este método codifica varios principios cognitivos simultáneamente:
+- **Retrieval practice** (§6.3): el estudiante debe recuperar para responder.
+- **Generation effect**: producir la respuesta propia antes de ver la correcta mejora la retención.
+- **Peer explanation**: explicar a otro consolida más que escuchar la explicación correcta.
+- **Feedback inmediato**: la comparación individual-vs-consenso cierra el loop predictivo (§1.3).
+
+**Aplicabilidad en video.** El peer instruction puro (discusión entre espectadores) es impracticable en video asincrónico, pero los componentes individuales sí lo son:
+- **Pregunta antes de respuesta.** El video plantea la pregunta, pausa o hace explícita la invitación a responder antes de dar la solución.
+- **Predicción con feedback.** El video pide predecir un resultado, muestra el resultado real, explica la discrepancia si la hay.
+- **Auto-explicación inducida.** El video pide al espectador formular su respuesta en voz alta o por escrito antes de continuar.
+
+**Por qué el live stream degrada este patrón.** El live stream es `grado-guion: improvisado`, lo que hace difícil planear ConcepTests. Pero un streamer con práctica puede incorporar peer instruction vía chat ("¿qué creen que va a pasar? Pongan en el chat"), logrando una aproximación que es más fuerte que la conferencia pasiva.
+
+### 12.3 Conferencia grabada: especificidades [P1-§12.3]
+
+La charla TED, la keynote corporativa, la ponencia académica grabada comparten condiciones que las distinguen del video editado heavy:
+
+- **El pacing está en manos del speaker, no del editor.** No hay jump cuts que compriman pausas. El silencio, la respiración, el ritmo conversacional son parte del performance. Un video editado-heavy puede comprimirlos; una conferencia grabada no puede sin destruir el performance.
+- **El guión está memorizado o ensayado.** `grado-guion: guionado` pero ejecutado en vivo. La preparación del speaker es crítica — los TED talks excelentes son resultado de semanas de ensayo con audiencias pequeñas.
+- **La audiencia co-produce la charla.** Risas, aplausos, preguntas en vivo configuran el ritmo. Una charla grabada ante sala vacía se nota.
+- **Edición mínima es estándar.** `grado-edicion: light` — cortes multicámara limpios, cleanup de audio, quizás capítulos. No cambios estructurales; no se re-compone la charla post-hoc.
+
+**TED template (implícito).** La práctica editorial de TED ha codificado un formato: (1) una idea que merece ser compartida (*idea worth spreading*); (2) abrir con una historia personal o imagen concreta; (3) desarrollar vía tres puntos con evidencia y anécdota; (4) cerrar con una invitación o imagen resonante. Es un arco argumentativo condensado en 12-18 minutos. No es "la" fórmula válida, pero es la convención contra la cual se lee una charla.
+
+**Implicación para briefs.** Los briefs de grabación (todos) cambian sustancialmente para `modalidad: conferencia-grabada`: setup multi-cámara, audio de sala, no reshoots, no inserts post-hoc. El brief de pacing (`edicion/01-pacing`) no aplica — el pacing es pre-grabación, no post. El brief de voiceover (`edicion/07-voiceover`) no aplica.
+
+### 12.4 El framework SUCCES de Heath & Heath [P1-§12.4]
+
+Heath & Heath (2007, *Made to Stick*) proponen un framework de seis propiedades que distinguen ideas que se recuerdan y transfieren de las que se olvidan. El framework es prescriptivo-práctico, no experimental, pero está anclado en psicología cognitiva establecida:
+
+| Propiedad | Principio | Base cognitiva |
+|---|---|---|
+| **Simple** | Reducir a la esencia; pensar "la frase que si el espectador recuerda una sola, recuerda esta." | Carga intrínseca (§2.1); limitación de memoria de trabajo. |
+| **Unexpected** | Romper el esquema esperado; abrir brecha de curiosidad. | Error de predicción (§1.3); gap theory of curiosity (Loewenstein 1994). |
+| **Concrete** | Anclar en objetos, acciones, imágenes sensoriales; evitar abstracción pura. | Codificación dual (§2.2); efecto de superioridad de la imagen. |
+| **Credible** | Fuentes, datos, detalles verificables; o autoridad vivida. | Transferencia (§6.4); confianza epistémica. |
+| **Emotional** | Conectar con personas concretas, no estadísticas abstractas. | Transportación narrativa (§6.2); identificable-victim effect. |
+| **Stories** | Estructurar como narrativa, no como manual. | Arco narrativo facilita retención; Green & Brock (§6.2). |
+
+**Curse of knowledge.** Heath & Heath enfatizan un sesgo clave del comunicador experto: **olvidar cómo era no saber lo que ahora sabe**. El experto explica con abstracciones que asume familiares; el espectador, que no las tiene, se pierde. El framework SUCCES es en buena parte una defensa contra este sesgo.
+
+**Gap theory of curiosity** (Loewenstein 1994, *Psychological Bulletin*). La curiosidad se activa específicamente cuando el espectador percibe un gap entre lo que sabe y lo que podría saber, y el gap es perceptible como cierre posible. Ni muy chico (trivial) ni muy grande (abrumador). Aplica directamente al diseño del hook y de los open loops (§6.2).
+
+**Implicación para briefs.** El framework SUCCES es especialmente relevante para `modalidad: conferencia-grabada` (donde el speaker tiene pocos recursos multimedia y depende de la construcción retórica), pero también para los hooks de cualquier modalidad. El brief de hook (`guion/02-hook`) puede usar SUCCES como checklist de autoverificación.
+
+---
 
 **Atención y neurociencia cognitiva**
 
@@ -319,3 +562,29 @@ El diseño orientado a maximizar métricas de plataforma puede divergir del dise
 - W3C (2023). *Web Content Accessibility Guidelines (WCAG) 2.2*. https://www.w3.org/TR/WCAG22/
 - BBC. *Subtitle Guidelines*. https://bbc.github.io/subtitle-guidelines/
 - Netflix. *Timed Text Style Guide: General Requirements*. https://partnerhelp.netflixstudios.com/
+
+**Cine documental y teoría del documental**
+
+- Nichols, B. (2017). *Introduction to Documentary* (3rd ed.). Indiana University Press.
+- Renov, M. (2004). *The Subject of Documentary*. University of Minnesota Press.
+
+**Ensayo fílmico**
+
+- Corrigan, T. (2011). *The Essay Film: From Montaigne, After Marker*. Oxford University Press.
+- Rascaroli, L. (2009). *The Personal Camera: Subjective Cinema and the Essay Film*. Wallflower Press.
+- Rascaroli, L. (2017). *How the Essay Film Thinks*. Oxford University Press.
+
+**Retórica visual y periodismo de datos**
+
+- Cairo, A. (2016). *The Truthful Art: Data, Charts, and Maps for Communication*. New Riders.
+- Cairo, A. (2019). *How Charts Lie: Getting Smarter about Visual Information*. W. W. Norton.
+- Cleveland, W. S. & McGill, R. (1984). Graphical perception: Theory, experimentation, and application to the development of graphical methods. *Journal of the American Statistical Association*, 79(387), 531-554.
+- Tufte, E. R. (2001). *The Visual Display of Quantitative Information* (2nd ed.). Graphics Press.
+- Ware, C. (2021). *Information Visualization: Perception for Design* (4th ed.). Morgan Kaufmann.
+
+**Active learning y conferencia efectiva**
+
+- Freeman, S., Eddy, S. L., McDonough, M., Smith, M. K., Okoroafor, N., Jordt, H. & Wenderoth, M. P. (2014). Active learning increases student performance in science, engineering, and mathematics. *Proceedings of the National Academy of Sciences*, 111(23), 8410-8415.
+- Heath, C. & Heath, D. (2007). *Made to Stick: Why Some Ideas Survive and Others Die*. Random House.
+- Loewenstein, G. (1994). The psychology of curiosity: A review and reinterpretation. *Psychological Bulletin*, 116(1), 75-98.
+- Mazur, E. (1997). *Peer Instruction: A User's Manual*. Prentice Hall.
