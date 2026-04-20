@@ -1,5 +1,5 @@
 ---
-name: actualizar-tendencias
+name: update-trends
 description: "Use when the user wants to refresh, update, or revisit the trends and success cases knowledge layer (pilar 2) of the video-explainer-guide. Busca novedades en fuentes definidas, resume y actualiza el documento con aprobación del usuario."
 ---
 
