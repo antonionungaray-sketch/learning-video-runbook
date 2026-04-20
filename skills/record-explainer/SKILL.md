@@ -14,7 +14,7 @@ Antes de proponer cualquier decisión, **lee todos los briefs de esta
 etapa**:
 
 ```
-docs/briefs/grabacion/*.md
+${CLAUDE_PLUGIN_ROOT}/docs/briefs/grabacion/*.md
 ```
 
 (7 archivos de 78-89 líneas cada uno. Orden alfabético = orden de flujo:
@@ -74,14 +74,14 @@ solo lo referencia. Cambios se anotan en **Notas de Producción**.
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información con trazabilidad vía IDs estables. Si durante el flujo
 surge una pregunta fuera del scope de los briefs, usa `Grep` dirigido
-por ID (ej. `grep "P3-preprod-audio"
-docs/pilares/03-herramientas.md`), no `Read` del archivo completo.
+por ID (ej. `grep "P3-preprod-audio" "${CLAUDE_PLUGIN_ROOT}/docs/pilares/03-herramientas.md"`),
+no `Read` del archivo completo.
 
 ## Lectura de ejes para routing
 
 El Concept Brief contiene sección **0.5 Modalidad y ejes** con `preset`,
 los 5 `ejes` y `plataforma`. Referencia:
-`docs/arquitectura/modalidades-y-ejes.md`.
+`${CLAUDE_PLUGIN_ROOT}/docs/arquitectura/modalidades-y-ejes.md`.
 
 **Cada decisión del flujo** se resuelve así:
 1. Leer el brief correspondiente.
@@ -132,7 +132,7 @@ Antes de recorrer las decisiones, carga el perfil de entorno del usuario (si exi
 
 En cada decisión que cite una herramienta del Pilar 3 (vía ID `[P3-<seccion>]`), antes de proponer:
 
-1. **Cargar la sección del Pilar 3** y extraer todos los bullets de herramienta con sus bloques `<!-- meta: <slug> -->`. Las herramientas relevantes para esta etapa están en `docs/briefs/grabacion/`.
+1. **Cargar la sección del Pilar 3** y extraer todos los bullets de herramienta con sus bloques `<!-- meta: <slug> -->`. Las herramientas relevantes para esta etapa están en `${CLAUDE_PLUGIN_ROOT}/docs/briefs/grabacion/`.
 
 2. **Filtrar por perfil:**
    - `os ∈ plataformas` (si el perfil tiene `os: windows` y la meta dice `plataformas: [linux, mac]`, descartar)
@@ -152,7 +152,7 @@ En cada decisión que cite una herramienta del Pilar 3 (vía ID `[P3-<seccion>]`
 
 4. **Si quedan 0** → disparar fallback externo (abajo).
 
-**Nota sobre captura de pantalla (OS-segmented):** el brief `docs/briefs/grabacion/05-captura-pantalla.md` ya incluye una tabla inline segmentada por OS con herramientas para cada plataforma. Este Paso 0.5 es **complementario** a esa tabla, no la reemplaza — ambos pueden mostrarse juntos: la tabla provee la recomendación base por OS, y el filtrado del perfil la refina por licencia, modo y hardware.
+**Nota sobre captura de pantalla (OS-segmented):** el brief `${CLAUDE_PLUGIN_ROOT}/docs/briefs/grabacion/05-captura-pantalla.md` ya incluye una tabla inline segmentada por OS con herramientas para cada plataforma. Este Paso 0.5 es **complementario** a esa tabla, no la reemplaza — ambos pueden mostrarse juntos: la tabla provee la recomendación base por OS, y el filtrado del perfil la refina por licencia, modo y hardware.
 
 ### Fallback externo
 

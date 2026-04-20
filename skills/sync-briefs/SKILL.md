@@ -5,9 +5,33 @@ description: "Use when the user wants to sync briefs after the pilares have chan
 
 # Sincronizar briefs con pilares
 
-Mantiene la capa de briefs (`docs/briefs/<etapa>/*.md`) sincronizada con
-los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
-`docs/casos-de-exito/`.
+Mantiene la capa de briefs (`${CLAUDE_PLUGIN_ROOT}/docs/briefs/<etapa>/*.md`) sincronizada con
+los pilares (`${CLAUDE_PLUGIN_ROOT}/docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
+`${CLAUDE_PLUGIN_ROOT}/docs/casos-de-exito/`.
+
+## Chequeo previo: modo de ejecución
+
+Este skill edita briefs que viajan dentro del plugin. Si se corre sobre un plugin instalado vía marketplace, los cambios se pierden en la próxima actualización — es una skill de autor, no de consumo.
+
+Antes de continuar, ejecuta:
+
+```bash
+if [[ -z "${CLAUDE_PLUGIN_ROOT:-}" ]] || [[ ! -d "${CLAUDE_PLUGIN_ROOT}/.git" ]]; then
+  echo "INSTALLED_MODE"
+else
+  echo "DEV_MODE"
+fi
+```
+
+Si el output es **`INSTALLED_MODE`**, detente y di al usuario:
+
+> Este skill es para el autor del plugin `video-explainer-guide` — re-sincroniza la capa de briefs cuando los pilares cambian. No aplica a instalaciones consumidoras del plugin; los cambios viven en `$CLAUDE_PLUGIN_ROOT` y se sobrescriben al actualizar.
+>
+> Si querías **usar el toolkit** para producir un video, invoca `/create-explainer`. Si encontraste un brief desactualizado, abre un issue en https://github.com/antonionungaray-sketch/video-explainer-guide.
+
+No continuar con el flujo. Terminar acá.
+
+Si el output es **`DEV_MODE`**, continuar con el flujo normal abajo.
 
 ## Cuándo invocar
 
@@ -22,7 +46,7 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
 
 1. **Ejecutá el script de detección**:
    ```bash
-   bash scripts/verificar-briefs.sh
+   bash "${CLAUDE_PLUGIN_ROOT}/scripts/verificar-briefs.sh"
    ```
    El output reporta tres contadores:
    - `Total briefs stale: N` — briefs cuya sección citada en el pilar
@@ -68,10 +92,10 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
        reporte final.
 
 5. **Después de procesar todos los briefs stale:**
-   - Corre de nuevo `bash scripts/verificar-briefs.sh` y verifica que
+   - Corre de nuevo `bash "${CLAUDE_PLUGIN_ROOT}/scripts/verificar-briefs.sh"` y verifica que
      ahora los briefs procesados ya no aparecen stale (los diferidos
      seguirán apareciendo, eso es OK).
-   - Corre `bash scripts/regenerar-vistas.sh` si alguno de los briefs
+   - Corre `bash "${CLAUDE_PLUGIN_ROOT}/scripts/regenerar-vistas.sh"` si alguno de los briefs
      editados cambió su `pregunta:` o `fuentes:` (cambios que la vista
      derivada refleja).
 

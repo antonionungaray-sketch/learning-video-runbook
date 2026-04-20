@@ -14,7 +14,7 @@ disponibles.
 Antes de proponer cualquier decisión, **lee todos los briefs de esta etapa**:
 
 ```
-docs/briefs/guion/*.md
+${CLAUDE_PLUGIN_ROOT}/docs/briefs/guion/*.md
 ```
 
 (8 archivos de 40-80 líneas cada uno. Orden alfabético = orden de flujo:
@@ -25,7 +25,7 @@ docs/briefs/guion/*.md
 información pertinente con trazabilidad al pilar vía IDs estables
 (`[P1-§X.Y]`, `[P2-ficha-<slug>]`). Si durante el flujo surge una pregunta
 del usuario fuera del scope de los briefs, usa `Grep` dirigido por ID
-(ej. `grep "P1-§6.4" docs/pilares/01-fundamentos-cognitivos.md`), no
+(ej. `grep "P1-§6.4" "${CLAUDE_PLUGIN_ROOT}/docs/pilares/01-fundamentos-cognitivos.md"`), no
 `Read` del archivo completo.
 
 ## Paso 0 — Concept Brief (si existe)
@@ -78,7 +78,7 @@ El Concept Brief contiene una sección **0.5 Modalidad y ejes** con:
 Si el Concept Brief **no tiene** sección 0.5 (versión anterior a la
 reforma), pregunta al usuario los 5 ejes + plataforma antes de
 continuar. Sin ejes no hay routing coherente. Referencia:
-`docs/arquitectura/modalidades-y-ejes.md`.
+`${CLAUDE_PLUGIN_ROOT}/docs/arquitectura/modalidades-y-ejes.md`.
 
 **Flag de inconsistencia:** si los ejes contradicen una decisión
 previa del Concept Brief (ej. `arco-dominante: performativo` pero

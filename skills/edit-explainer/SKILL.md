@@ -14,7 +14,7 @@ señalización, y cumple estándares técnicos objetivos.
 Antes de proponer cualquier decisión, **lee todos los briefs de esta etapa**:
 
 ```
-docs/briefs/edicion/*.md
+${CLAUDE_PLUGIN_ROOT}/docs/briefs/edicion/*.md
 ```
 
 (10 archivos de 40-100 líneas cada uno. Orden alfabético = orden de flujo:
@@ -25,15 +25,14 @@ docs/briefs/edicion/*.md
 **NO leer pilares completos en runtime.** Los briefs ya sintetizan la
 información pertinente con trazabilidad al pilar vía IDs estables. Si
 durante el flujo surge una pregunta del usuario fuera del scope de los
-briefs, usa `Grep` dirigido por ID (ej. `grep "P1-§3.2"
-docs/pilares/01-fundamentos-cognitivos.md`), no `Read` del archivo
-completo.
+briefs, usa `Grep` dirigido por ID (ej. `grep "P1-§3.2" "${CLAUDE_PLUGIN_ROOT}/docs/pilares/01-fundamentos-cognitivos.md"`),
+no `Read` del archivo completo.
 
 ## Lectura de ejes para routing
 
 El Concept Brief contiene sección **0.5 Modalidad y ejes** con `preset`,
 los 5 `ejes` y `plataforma`. Referencia:
-`docs/arquitectura/modalidades-y-ejes.md`.
+`${CLAUDE_PLUGIN_ROOT}/docs/arquitectura/modalidades-y-ejes.md`.
 
 **Cada decisión del flujo** se resuelve así:
 1. Leer el brief correspondiente.
@@ -87,7 +86,7 @@ Antes de recorrer las decisiones, carga el perfil de entorno del usuario (si exi
 
 En cada decisión que cite una herramienta del Pilar 3 (vía ID `[P3-<seccion>]`), antes de proponer:
 
-1. **Cargar la sección del Pilar 3** y extraer todos los bullets de herramienta con sus bloques `<!-- meta: <slug> -->`. Las herramientas relevantes para esta etapa están en `docs/briefs/edicion/`.
+1. **Cargar la sección del Pilar 3** y extraer todos los bullets de herramienta con sus bloques `<!-- meta: <slug> -->`. Las herramientas relevantes para esta etapa están en `${CLAUDE_PLUGIN_ROOT}/docs/briefs/edicion/`.
 
 2. **Filtrar por perfil:**
    - `os ∈ plataformas` (si el perfil tiene `os: windows` y la meta dice `plataformas: [linux, mac]`, descartar)

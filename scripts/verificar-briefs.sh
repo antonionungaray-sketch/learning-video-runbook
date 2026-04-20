@@ -42,11 +42,9 @@ for arg in "$@"; do
   esac
 done
 
-REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
-  echo "ERROR: no estás dentro de un repo git" >&2
-  exit 1
-}
-cd "$REPO_ROOT"
+# Resolver raíz del plugin (soporta plugin instalado + dev desde git).
+# shellcheck source=lib/resolve-plugin-root.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/resolve-plugin-root.sh"
 
 map_fuente_to_file() {
   local fuente="$1"

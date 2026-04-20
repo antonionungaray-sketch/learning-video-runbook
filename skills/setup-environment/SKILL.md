@@ -136,7 +136,7 @@ version: 1
 - **Español de México** en prosa y preguntas, consistente con el resto del plugin.
 - **No asumir.** Si un dato no es verificable sin molestar al usuario, preguntar antes que adivinar. Si es verificable con un comando rápido, confirmar con el usuario después de correr.
 - **El perfil es declarativo.** No verificar activamente que las herramientas listadas estén realmente instaladas (ej. no correr `which ffmpeg`). El usuario declara, el plugin confía.
-- **Herramientas fuera del catálogo Pilar 3:** si el usuario menciona una herramienta que no está en `docs/pilares/03-herramientas.md`, avisar "esa herramienta no está en mi catálogo curado; puedes invocar `update-tools` para agregarla con ficha formal. De todos modos la guardo en tu perfil."
+- **Herramientas fuera del catálogo Pilar 3:** si el usuario menciona una herramienta que no está en `${CLAUDE_PLUGIN_ROOT}/docs/pilares/03-herramientas.md`, avisar "esa herramienta no está en mi catálogo curado; puedes invocar `update-tools` para agregarla con ficha formal. De todos modos la guardo en tu perfil."
 
 ## Después del setup
 

@@ -36,8 +36,8 @@ Antes de proponer cualquier decisión, **lee los briefs de esta etapa y
 el documento de arquitectura de modalidades**:
 
 ```
-docs/briefs/concepto/*.md
-docs/arquitectura/modalidades-y-ejes.md
+${CLAUDE_PLUGIN_ROOT}/docs/briefs/concepto/*.md
+${CLAUDE_PLUGIN_ROOT}/docs/arquitectura/modalidades-y-ejes.md
 ```
 
 (6 briefs. Orden alfabético = orden de flujo:
@@ -54,7 +54,7 @@ grado-edicion, grado-guion, rol-presentador). Los consumes en el paso
 información con trazabilidad vía IDs estables (`[P1-§X.Y]`,
 `[P2-ficha-<slug>]`). Si surge una pregunta fuera del scope de los
 briefs, usa `Grep` dirigido por ID
-(ej. `grep "P2-meta-onboarding" docs/pilares/02-tendencias-y-casos.md`),
+(ej. `grep "P2-meta-onboarding" "${CLAUDE_PLUGIN_ROOT}/docs/pilares/02-tendencias-y-casos.md"`),
 no `Read` del archivo completo.
 
 ## Paso 0 — Diagnóstico de claridad
@@ -114,7 +114,7 @@ Antes de recorrer las decisiones, carga el perfil de entorno del usuario (si exi
 
 En cada decisión que cite una herramienta del Pilar 3 (vía ID `[P3-<seccion>]`), antes de proponer:
 
-1. **Cargar la sección del Pilar 3** y extraer todos los bullets de herramienta con sus bloques `<!-- meta: <slug> -->`. Las herramientas relevantes para esta etapa están en `docs/briefs/concepto/`.
+1. **Cargar la sección del Pilar 3** y extraer todos los bullets de herramienta con sus bloques `<!-- meta: <slug> -->`. Las herramientas relevantes para esta etapa están en `${CLAUDE_PLUGIN_ROOT}/docs/briefs/concepto/`.
 
 2. **Filtrar por perfil:**
    - `os ∈ plataformas` (si el perfil tiene `os: windows` y la meta dice `plataformas: [linux, mac]`, descartar)
@@ -178,7 +178,7 @@ Si el usuario nombra una herramienta, ofrecer invocar `update-tools` con los dat
 
 Antes de entrar a las 6 decisiones del flujo, el Concept Brief declara
 **qué tipo de video es** en términos de la arquitectura de modalidades
-(ver `docs/arquitectura/modalidades-y-ejes.md`).
+(ver `${CLAUDE_PLUGIN_ROOT}/docs/arquitectura/modalidades-y-ejes.md`).
 
 **Flujo:**
 

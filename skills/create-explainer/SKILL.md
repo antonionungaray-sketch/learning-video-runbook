@@ -11,7 +11,7 @@ Este skill es el punto de entrada del `video-explainer-guide`. Su trabajo es **i
 
 3 capas: **pilares** (source of truth) → **briefs** (síntesis precomputada con IDs estables citando los pilares) → **skills de etapa** (consumen briefs).
 
-Este orquestador **NO lee pilares en runtime**. Su único trabajo es identificar etapa + formato y delegar al skill de etapa correspondiente. Los pilares viven en `docs/pilares/`:
+Este orquestador **NO lee pilares en runtime**. Su único trabajo es identificar etapa + formato y delegar al skill de etapa correspondiente. Los pilares viven en `${CLAUDE_PLUGIN_ROOT}/docs/pilares/`:
 
 - Pilar 1 (estable) — `01-fundamentos-cognitivos.md` — ciencia cognitiva, prevalece ante conflicto.
 - Pilar 2 (dinámico) — `02-tendencias-y-casos.md` — tendencias y casos actuales.
@@ -39,7 +39,7 @@ Si el usuario acepta, invocar `setup-environment` primero. Si rechaza, seguir co
    - **Edición y post** — material crudo capturado, está editando.
    - **Publicación y medición** — video editado, está por publicar o iterando con métricas.
 
-2. **Identificar la modalidad** (si no es obvia). El toolkit declara **12 presets de modalidad + 5 ejes estructurales + atributo plataforma** formalmente en `docs/arquitectura/modalidades-y-ejes.md`. Los 12 presets:
+2. **Identificar la modalidad** (si no es obvia). El toolkit declara **12 presets de modalidad + 5 ejes estructurales + atributo plataforma** formalmente en `${CLAUDE_PLUGIN_ROOT}/docs/arquitectura/modalidades-y-ejes.md`. Los 12 presets:
    - *Instruccional:* `instruccional` · `how-to` · `onboarding` · `explainer-comercial`
    - *Divulgativa:* `divulgativa`
    - *Narrativa autoral:* `documental-narrativo-pedagogico` · `video-ensayo` · `personal-essay-pedagogico`

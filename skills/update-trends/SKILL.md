@@ -7,9 +7,33 @@ description: "Use when the user wants to refresh, update, or revisit the trends 
 
 Mantenimiento del **pilar 2 — Tendencias y casos de éxito** del toolkit. Este pilar caduca rápido (semanas/meses), por eso necesita revisiones periódicas.
 
+## Chequeo previo: modo de ejecución
+
+Este skill edita un archivo que viaja dentro del plugin (`docs/pilares/02-tendencias-y-casos.md`). Si se corre sobre un plugin instalado vía marketplace, los cambios se pierden en la próxima actualización del plugin — es una skill de autor, no de consumo.
+
+Antes de continuar, ejecuta:
+
+```bash
+if [[ -z "${CLAUDE_PLUGIN_ROOT:-}" ]] || [[ ! -d "${CLAUDE_PLUGIN_ROOT}/.git" ]]; then
+  echo "INSTALLED_MODE"
+else
+  echo "DEV_MODE"
+fi
+```
+
+Si el output es **`INSTALLED_MODE`**, detente y di al usuario:
+
+> Este skill es para el autor del plugin `video-explainer-guide` — mantiene las tendencias y casos de éxito (pilar 2). Los cambios viven en el directorio de instalación (`$CLAUDE_PLUGIN_ROOT`) y se sobrescriben cuando el plugin se actualiza.
+>
+> Si querías **usar el toolkit** para producir un video, invoca `/create-explainer`. Si quieres **proponer una tendencia o caso nuevo**, abre un issue en https://github.com/antonionungaray-sketch/video-explainer-guide.
+
+No continuar con el flujo. Terminar acá.
+
+Si el output es **`DEV_MODE`**, continuar con el flujo normal abajo.
+
 ## Carga obligatoria
 
-1. **Documento a actualizar**: `docs/pilares/02-tendencias-y-casos.md`. Léelo completo primero para entender qué hay y qué fechas de frescura tiene.
+1. **Documento a actualizar**: `${CLAUDE_PLUGIN_ROOT}/docs/pilares/02-tendencias-y-casos.md`. Léelo completo primero para entender qué hay y qué fechas de frescura tiene.
 
 ## Flujo
 
@@ -50,7 +74,7 @@ Mantenimiento del **pilar 2 — Tendencias y casos de éxito** del toolkit. Este
 Al terminar los cambios aprobados al pilar 2, ejecuta:
 
 ```bash
-bash scripts/verificar-briefs.sh
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/verificar-briefs.sh"
 ```
 
 Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde acá.** Reporta al usuario la lista y sugiere:

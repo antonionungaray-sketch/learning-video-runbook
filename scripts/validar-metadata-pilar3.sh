@@ -9,7 +9,11 @@
 
 set -euo pipefail
 
-PILAR="docs/pilares/03-herramientas.md"
+# Resolver raíz del plugin (soporta plugin instalado + dev desde git).
+# shellcheck source=lib/resolve-plugin-root.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib/resolve-plugin-root.sh"
+
+PILAR="$PLUGIN_ROOT/docs/pilares/03-herramientas.md"
 
 if [ ! -f "$PILAR" ]; then
   echo "ERROR: $PILAR no existe" >&2

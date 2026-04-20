@@ -33,7 +33,7 @@ fi
 
 echo "$FILE" | grep -qE 'docs/pilares/' || exit 0
 
-OUTPUT=$(bash scripts/verificar-briefs.sh --strict 2>&1)
+OUTPUT=$(bash "${CLAUDE_PROJECT_DIR:-.}/scripts/verificar-briefs.sh" --strict 2>&1)
 STATUS=$?
 
 if [[ "$STATUS" -ne 0 ]]; then

@@ -9,7 +9,7 @@
     {
       "name": "video-explainer-guide",
       "description": "Guía estructurada para producir explainer videos con intención pedagógica: tutoriales, divulgación, video-ensayo, documental, periodismo analítico, explainer comercial, onboarding, podcast audiovisual, live stream educativo y más. Basada en 3 pilares: fundamentos cognitivos + teoría del medio, tendencias con fichas de creators, herramientas actuales.",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "source": "./",
       "author": {
         "name": "Antonio Nungaray",

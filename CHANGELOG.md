@@ -2,6 +2,26 @@
 
 Todas las versiones relevantes de este proyecto se registran acá. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado siguiendo [SemVer](https://semver.org/lang/es/).
 
+## [1.3.0] — 2026-04-20
+
+**Fix de path resolution para plugin instalado vía marketplace.** Antes, todas las skills fallaban al invocarse desde el cwd del usuario (su proyecto de video), porque referenciaban archivos empaquetados con rutas relativas. Claude Code no las resolvía contra la raíz del plugin instalado.
+
+### Fixed
+
+- Las 11 skills referencian contenido empaquetado con `${CLAUDE_PLUGIN_ROOT}` en vez de paths relativos al cwd del usuario. Aplica a lecturas de `docs/pilares/`, `docs/briefs/`, `docs/arquitectura/modalidades-y-ejes.md`, `docs/casos-de-exito/` y a invocaciones de scripts bajo `scripts/`. Afectaba `update-tools`, `update-trends`, `sync-briefs` y todas las skills de etapa (`concept-explainer`, `script-explainer`, `storyboard-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`, `create-explainer`, `setup-environment`).
+- Los scripts bash (`verificar-briefs.sh`, `regenerar-vistas.sh`, `validar-metadata-pilar3.sh`) derivan su ubicación vía el helper `scripts/lib/resolve-plugin-root.sh`, que prefiere `$CLAUDE_PLUGIN_ROOT` y cae a `${BASH_SOURCE[0]}` + git toplevel como fallback. Antes usaban `git rev-parse --show-toplevel` a secas, que en una instalación de marketplace devuelve el repo del usuario o nada.
+- `hook-verificar-pilares.sh` invoca `verificar-briefs.sh` por path absoluto para no depender del cwd.
+
+### Added
+
+- **`scripts/lib/resolve-plugin-root.sh`** — helper sourceable que resuelve `$PLUGIN_ROOT` y hace `cd` a la raíz del plugin. Reusado por los tres scripts de mantenimiento.
+- **Gate de modo instalado** en `update-tools`, `update-trends` y `sync-briefs` — detectan si el plugin corre como instalación de marketplace (sin `.git/` en `$CLAUDE_PLUGIN_ROOT`) y, en ese caso, cierran con mensaje amable sugiriendo `/create-explainer` o abrir un issue. Previene que un usuario edite por error el directorio de instalación (cuyos cambios se perderían al actualizar el plugin).
+
+### Technical notes
+
+- Bump de versión 1.2.0 → 1.3.0. Fix crítico: sin esto, el plugin era inusable para cualquier usuario que lo instalara vía marketplace en otra máquina (el log original del bug mostraba Glob fallando en `docs/pilares/03-herramientas.md` con cwd en el proyecto del usuario).
+- `${CLAUDE_PLUGIN_ROOT}` es la variable oficial documentada por Claude Code para plugins — ver [plugins-reference#environment-variables](https://code.claude.com/docs/en/plugins-reference#environment-variables).
+
 ## [1.2.0] — 2026-04-20
 
 **Fase 7 — Portabilidad y perfil de entorno.** El plugin ahora es portable entre OS vía perfil de entorno persistente que los skills de etapa leen para filtrar recomendaciones de herramientas.
