@@ -54,8 +54,8 @@ Los skills de etapa (`concept-explainer`, `script-explainer`, `storyboard-explai
 
 ## Si el usuario quiere actualizar las capas dinámicas
 
-- Tendencias / casos de éxito → invoca `actualizar-tendencias`
-- Herramientas → invoca `actualizar-herramientas`
+- Tendencias / casos de éxito → invoca `update-trends`
+- Herramientas → invoca `update-tools`
 
 ## Reglas firmes
 

@@ -55,6 +55,6 @@ bash scripts/verificar-briefs.sh
 
 Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde acá.** Reporta al usuario la lista y sugiere:
 
-> "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 2: [lista]. Para re-sincronizarlos de forma guiada, invoca la skill `sincronizar-briefs`."
+> "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 2: [lista]. Para re-sincronizarlos de forma guiada, invoca la skill `sync-briefs`."
 
 Si 0 stale: reporta "briefs al día" y termina.
