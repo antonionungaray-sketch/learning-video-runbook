@@ -2,7 +2,7 @@
 
 Source: diálogo de design 2026-04-19, plan file `/home/antonio/.claude/plans/desafortunadamente-este-proyecto-est-bubbly-charm.md`
 Branch: main
-Status: IN PROGRESS (fases 0-2 cerradas, fases 3-6 pendientes)
+Status: IN PROGRESS (fases 0-3 cerradas, fases 4-6 pendientes)
 Mode: Reform
 
 ## Problem Statement
@@ -18,7 +18,7 @@ La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad co
 | 0 | Rebrand semántico superficial — nombre del paquete, repo, 7 skills, copy en README/CLAUDE/ROADMAP/configs/HTML/onboarding | 1-2 sesiones | **Cerrada 2026-04-19** (ver `CHANGELOG.md [1.0.0]`). Pendiente: renombre de carpeta local y rename del repo en GitHub (diferido; el repo vive como `training-video-toolkit` en GitHub pero el plugin ya se llama `video-explainer-guide`). |
 | 1 | Diseño formal del modelo de 5 ejes estructurales + 12 presets de modalidad | 1 sesión | **Cerrada 2026-04-19** — `docs/arquitectura/modalidades-y-ejes.md`. Commit `84a243f`. Evolución: 5 ejes (no 4; `grado-guion` se separó de `grado-edicion`); `narrador-omnisciente` agregado; Shorts = atributo de plataforma. |
 | 2 | Expansión del pilar 1: agregar teoría documental (Nichols), ensayo fílmico (Rascaroli), retórica visual (Cairo, Tufte), active learning (Freeman, Mazur), manteniendo Mayer/Sweller como núcleo | 3-5 sesiones | **Cerrada 2026-04-19** — secciones §9-§12 agregadas a `docs/pilares/01-fundamentos-cognitivos.md` (321→590 líneas). Commit `8723454`. Verificación: 0 drift, 0 IDs huérfanos. |
-| 3 | Expansión de pilares 2 y 3 con fichas de creators y herramientas para modalidades nuevas | 2-3 sesiones | Pendiente |
+| 3 | Expansión de pilares 2 y 3 con fichas de creators y herramientas para modalidades nuevas | 2-3 sesiones | **Cerrada 2026-04-19** — 7 archivos nuevos en docs/casos-de-exito/ con 14 fichas ligeras cubriendo las 7 modalidades ampliadas. Pilar 2 con sección [P2-modalidades-ampliadas]; pilar 3 con sección [P3-modalidades] (live, podcast multi-mic, documental, data viz). Commit `706524e`. Las fichas ligeras son "análisis general" — iteración empírica (VTT+WPM) queda como mantenimiento continuo. |
 | 4 | Rediseño de los 43 briefs con bloques "Ajuste por eje" + marcado de universales | 3-4 sesiones | Pendiente |
 | 5 | Adaptación de los 7 skills al Concept Brief con campo `modalidad` + ejes | 1-2 sesiones | Pendiente |
 | 6 | Verificación end-to-end, vistas regeneradas, cierre | 1 sesión | Pendiente |
