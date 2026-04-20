@@ -438,43 +438,143 @@ Remotion si ya hay stack React y el licenciamiento no es problema; Motion Canvas
 Setup para `modalidad: live-stream-educativo` (ejes: zero edit + improvisado + demostrador). La decisión técnica dominante es **capturar, mostrar, interactuar** en tiempo real sin post.
 
 - **OBS Studio** — ya listado en [P3-preprod-captura]; es la base del streaming open source. Configuración típica live incluye 2-3 escenas (intro / código / stand-up) + transiciones + browser sources (chat overlay, alerts). *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: obs-studio-live -->
+  - plataformas: [linux, mac, windows]
+  - licencia: open-source
+  - modo: local
+  - equivalentes: [streamlabs]
 - **Stream Deck (Elgato)** — controlador físico de 6-32 botones programables. Cambia escenas, activa alertas, inicia/pausa grabación sin salir del foco técnico. Integraciones nativas con OBS. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: stream-deck -->
+  - plataformas: [mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: []
 - **StreamYard** — SaaS cloud-based para streaming multi-plataforma simultáneo (YouTube + Twitch + LinkedIn). Fortalece entrevistas remotas con invitados sin setup técnico propio. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: streamyard -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [restream]
 - **Restream** — análogo a StreamYard con foco en multi-destination; útil cuando el creator sube el mismo stream a 5+ plataformas. *Status: estable. Verificado: 2026-04-19.*
-- **Cuándo elegir qué.** OBS + Stream Deck para streamer técnico solo (ThePrimeagen, Muratori-style). StreamYard/Restream para podcast en vivo con invitados o conferencias híbridas. Claude Code live debugging / pair coding: OBS + Stream Deck son la norma.
+  <!-- meta: restream -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [streamyard]
+
+OBS + Stream Deck para streamer técnico solo (ThePrimeagen, Muratori-style). StreamYard/Restream para podcast en vivo con invitados o conferencias híbridas. Claude Code live debugging / pair coding: OBS + Stream Deck son la norma.
 
 ### Podcast audiovisual multi-mic [P3-modalidades-podcast]
 
 Setup para `modalidad: podcast-audiovisual-educativo` (ejes: light edit + improvisado + anfitrion-de-experto). Dos o más hablantes en mismo estudio o remotos; audio es primario, video secundario.
 
 - **Rodecaster Pro II** — consola de audio dedicada a podcast, 4 canales mic con procesado on-device (compresión, EQ, noise gate), multitrack USB al DAW. Estándar de facto en podcast audiovisual 2024-2025. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: rodecaster-pro-2 -->
+  - plataformas: [linux, mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: [zoom-h6-h8]
 - **Shure SM7B + interfaz con Cloudlifter** — micrófono dinámico de referencia para voz hablada en estudio. SM7B requiere preamp con alto gain (Cloudlifter agrega +25dB limpios). Usado por Lex Fridman, Huberman, Rogan. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: shure-sm7b-cloudlifter -->
+  - plataformas: [linux, mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: []
 - **Zoom H6 / H8** — grabador portátil multi-pista para podcast on-location o backup simultáneo a la consola. 4-8 XLR + phantom + SD card. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: zoom-h6-h8 -->
+  - plataformas: [linux, mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: [rodecaster-pro-2]
 - **Riverside.fm** — SaaS de grabación multi-participante remota, graba localmente en cada extremo (no comprimido por Zoom/Meet) y sube al cloud. Salida multi-track + video por cámara. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: riverside-fm -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [squadcast]
 - **SquadCast (ahora Descript)** — análogo a Riverside, integración nativa con edit-by-transcription de Descript. *Status: estable (adquirido por Descript 2023). Verificado: 2026-04-19.*
-- **Cuándo elegir qué.** In-studio multi-mic: Rodecaster Pro II + SM7B. Remoto con invitados: Riverside o SquadCast (evitar Zoom/Meet — comprimen audio). On-location entrevista única: Zoom H6 portátil + shotgun + lav. El video 4K multi-cam (estilo Lex Fridman) se suma *encima* de este audio baseline; invertir el orden produce episodios visualmente pulidos con audio amateur.
+  <!-- meta: squadcast -->
+  - plataformas: [cloud]
+  - licencia: subscription
+  - modo: cloud
+  - equivalentes: [riverside-fm]
+
+In-studio multi-mic: Rodecaster Pro II + SM7B. Remoto con invitados: Riverside o SquadCast (evitar Zoom/Meet — comprimen audio). On-location entrevista única: Zoom H6 portátil + shotgun + lav. El video 4K multi-cam (estilo Lex Fridman) se suma *encima* de este audio baseline; invertir el orden produce episodios visualmente pulidos con audio amateur.
 
 ### Documental narrativo — color grading, mezcla y edición avanzada [P3-modalidades-documental]
 
 Setup para `modalidad: documental-narrativo-pedagogico` (ejes: heavy edit + guionado + narrador-omnisciente). La especificidad viene en **color, sonido mezclado cinematográficamente y gestión de archivo**.
 
 - **DaVinci Resolve Studio** — ya listado en [P3-edicion-editores]; en el contexto documental importa especialmente **Color Page** (color grading profesional con curves, qualifiers, tracker, Power Windows) y **Fairlight Page** (mix-to-picture con bus routing y ADR). La versión Studio (pago único ~$295) desbloquea neural engine, surround, noise reduction. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: davinci-resolve-studio -->
+  - plataformas: [linux, mac, windows]
+  - licencia: paid
+  - modo: local
+  - hardware-min: {gpu: any-discrete, ram-gb: 32}
+  - equivalentes: [davinci-resolve, premiere]
 - **Pro Tools (Avid)** — DAW estándar industrial para mezcla cinematográfica y doblaje. Usado en post-producción de documentales de difusión. Suscripción. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: pro-tools -->
+  - plataformas: [mac, windows]
+  - licencia: subscription
+  - modo: local
+  - equivalentes: []
 - **iZotope RX** — suite de restauración de audio (noise removal, dialogue isolation, de-click). Imprescindible para documental con archivo de audio degradado. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: izotope-rx -->
+  - plataformas: [mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: []
 - **Kyno / Post Haste / Adobe Bridge** — gestión de archivo y metadata. Documental largo con cientos de horas de raw footage requiere sistema de logging + transcripción + tagging desde el inicio. *Status: estable. Verificado: 2026-04-19.*
-- **Cuándo elegir qué.** DaVinci Resolve Studio cubre ~90% del pipeline documental en un solo tool (edición + color + Fairlight). Pro Tools sólo cuando el mix va a cine/broadcast con estándares Dolby Atmos. iZotope RX es obligatorio en cualquier documental con archivo; skip produce audio sucio imposible de rescatar en mezcla final.
+  <!-- meta: kyno-posthaste-bridge -->
+  - plataformas: [mac, windows]
+  - licencia: paid
+  - modo: local
+  - equivalentes: []
+
+DaVinci Resolve Studio cubre ~90% del pipeline documental en un solo tool (edición + color + Fairlight). Pro Tools sólo cuando el mix va a cine/broadcast con estándares Dolby Atmos. iZotope RX es obligatorio en cualquier documental con archivo; skip produce audio sucio imposible de rescatar en mezcla final.
 
 ### Periodismo de datos y data viz programable [P3-modalidades-data-viz]
 
 Setup para `modalidad: periodismo-analitico-visual` (ejes: heavy edit + guionado + investigador). La especificidad es **visualización de datos narrativos, no dashboards**.
 
 - **Flourish** — SaaS web-based para crear charts y scrollytelling interactivos. Formato "explainable visualization" con plantillas (bar chart races, maps, networks, Gantt). Exporta video o HTML interactivo. Usado ampliamente en periodismo visual. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: flourish -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [datawrapper]
 - **Datawrapper** — análogo a Flourish con foco en charts publication-ready rápidos (sin interactividad compleja). Estándar en newsrooms. Integración nativa con CMS. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: datawrapper -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: [flourish]
 - **After Effects + Data-Driven Animation (expressions, JSON input)** — permite alimentar animaciones AE desde un JSON con datos, generando animaciones de datos programáticas (bar chart races, trayectorias). *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: after-effects-data -->
+  - plataformas: [mac, windows]
+  - licencia: subscription
+  - modo: local
+  - equivalentes: [lottie]
 - **Lottie (dotLottie)** — formato de animación vectorial JSON exportable desde After Effects o Rive. Ligero para web + video; útil para data viz animada que se inserta en edit final. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: lottie -->
+  - plataformas: [linux, mac, windows, wsl, cloud]
+  - licencia: open-source
+  - modo: híbrido
+  - equivalentes: []
 - **Mapbox / Mapbox Studio** — mapas custom con zoom animado, capas temáticas, estilos programables. Usado por Johnny Harris, Vox Atlas, Bloomberg Originals. *Status: estable. Verificado: 2026-04-19.*
+  <!-- meta: mapbox -->
+  - plataformas: [cloud]
+  - licencia: free-tier
+  - modo: cloud
+  - equivalentes: []
 - **D3.js / Observable** — librería JavaScript para data viz web programable. Observable es notebook-based y facilita prototipado + export a video via headless rendering. *Status: estable. Verificado: 2026-04-19.*
-- **Cuándo elegir qué.** Flourish para charts rápidos con plantillas. Datawrapper para charts publication-grade embebidos. AE + JSON cuando la anim es parte del montaje de video heavy-edit (Kurzgesagt-style, Johnny Harris). Mapbox para cualquier video con mapas como elemento estructural. D3 cuando se necesita control total y hay dev con skills front-end.
+  <!-- meta: d3-observable -->
+  - plataformas: [linux, mac, windows, wsl, cloud]
+  - licencia: open-source
+  - modo: híbrido
+  - equivalentes: []
+
+Flourish para charts rápidos con plantillas. Datawrapper para charts publication-grade embebidos. AE + JSON cuando la anim es parte del montaje de video heavy-edit (Kurzgesagt-style, Johnny Harris). Mapbox para cualquier video con mapas como elemento estructural. D3 cuando se necesita control total y hay dev con skills front-end.
 
 ---
 
