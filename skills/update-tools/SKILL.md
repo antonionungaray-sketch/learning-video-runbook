@@ -59,3 +59,38 @@ Si el output reporta **briefs stale**, es porque los cambios afectaron secciones
 > "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 3: [lista]. Para re-sincronizarlos de forma guiada, invoca la skill `sync-briefs`."
 
 Si 0 stale: reporta "briefs al día" y termina.
+
+## Invocación con payload estructurado (desde fallback externo)
+
+Cuando un skill de etapa (`record-explainer`, `edit-explainer`, `publish-explainer`) dispara su fallback externo y el usuario elige una herramienta nueva, puede invocar a este skill con un payload pre-poblado:
+
+```yaml
+payload:
+  nombre: "Shotcut"
+  url-oficial: "https://www.shotcut.org"
+  seccion-destino: P3-edicion-editores
+  plataformas: [linux, mac, windows]
+  licencia: open-source
+  modo: local
+  hardware-min: null
+  equivalentes: [kdenlive, davinci-resolve]
+  contexto: "Fallback externo desde edit-explainer brief edicion/02-nle.md; perfil pedía windows + open-source y no había candidatos curados."
+```
+
+**Flujo con payload:**
+
+1. Confirmar con el usuario los campos del payload (algunos pueden ser tentativos).
+2. **Pedir los datos que faltan**:
+   - Casos de uso concretos (2-3 proyectos donde encaja).
+   - Cita a principio del Pilar 1 si aplica (ej. "encaja con [P1-§2.3-#8]").
+   - Contraindicaciones conocidas (cuándo NO usarla).
+3. **Escribir la ficha formal al Pilar 3** en la sección `seccion-destino`, con:
+   - Bullet de herramienta con descripción breve.
+   - Bloque `<!-- meta: <slug> -->` con todos los campos del payload.
+   - Fecha de verificación: fecha de hoy.
+4. **Correr verificaciones**:
+   ```bash
+   bash scripts/validar-metadata-pilar3.sh
+   bash scripts/verificar-briefs.sh --strict
+   ```
+5. **Reportar al usuario**: "Agregada al catálogo como `<slug>` en `<seccion-destino>`. La próxima vez que un skill de etapa evalúe esa sección, la encontrará en el filtrado."
