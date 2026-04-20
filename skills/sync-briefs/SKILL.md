@@ -1,6 +1,6 @@
 ---
-name: sincronizar-briefs
-description: "Use when the user wants to sync briefs after the pilares have changed, or after running actualizar-tendencias / actualizar-herramientas. Detects drift between briefs and pilares, guides re-sync decisions, and commits. Mantenimiento de la capa de briefs."
+name: sync-briefs
+description: "Use when the user wants to sync briefs after the pilares have changed, or after running update-trends / update-tools. Detects drift between briefs and pilares, guides re-sync decisions, and commits. Mantenimiento de la capa de briefs."
 ---
 
 # Sincronizar briefs con pilares
@@ -11,7 +11,7 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
 
 ## Cuándo invocar
 
-- Después de correr `actualizar-tendencias` o `actualizar-herramientas`
+- Después de correr `update-trends` o `update-tools`
   (ambos flaggean al final que briefs pueden haber quedado stale).
 - Después de cualquier edición manual de pilares hecha fuera de los
   skills `actualizar-*`.
@@ -97,7 +97,7 @@ los pilares (`docs/pilares/0{1,2,3}-*.md`) y sus fichas asociadas en
 - **No inventar contenido.** Los briefs sólo contienen lo que ya está
   en el pilar. Si durante el re-sync descubres información nueva que
   debería estar en el pilar pero no está, **detente** y sugiere al
-  usuario invocar `actualizar-tendencias` o `actualizar-herramientas`
+  usuario invocar `update-trends` o `update-tools`
   primero.
 
 - **Un brief por vez.** No proceses varios briefs en paralelo ni
