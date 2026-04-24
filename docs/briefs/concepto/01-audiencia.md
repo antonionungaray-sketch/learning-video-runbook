@@ -25,7 +25,7 @@ calibrar nada downstream: ni cadencia, ni vocabulario asumido, ni
 profundidad técnica, ni qué necesita pre-entrenamiento [P1-§2.3-#7].
 
 Este brief vive **upstream** del objetivo medible (que se decide en 02).
-Acá solo se nombra al perfil con nivel previo. La acción medible viene
+Aquí solo se nombra al perfil con nivel previo. La acción medible viene
 después, encadenada a esta definición.
 
 ## Casos
@@ -51,7 +51,7 @@ básico para los avanzados y demasiado rápido para los novatos.
 Correlaciona con caídas de retention por ambos extremos.
 
 **Confundir "audiencia objetivo" con "audiencia que llega"**: la primera
-se decide acá; la segunda se mide en publicación (CCN fit). Mezclarlas
+se decide aquí; la segunda se mide en publicación (CCN fit). Mezclarlas
 en concepto produce hooks que no encajan con nadie.
 
 ## Heurística numérica
@@ -60,7 +60,7 @@ en concepto produce hooks que no encajan con nadie.
   para senior") explotan la modalidad dual sin ganancia [P2-meta-tutorial].
 - **Pre-entrenamiento bound:** si el guión que va a salir necesita
   >20% del audio inicial explicando términos, la audiencia definida
-  acá no coincide con la audiencia real del contenido [P1-§2.3-#7].
+  aquí no coincide con la audiencia real del contenido [P1-§2.3-#7].
 - **Edad y idioma como ejes silenciosos:** registro hispano junior
   tolera anglicismos (`deploy`, `commit`); divulgación general no
   [P2-meta-divulgacion].

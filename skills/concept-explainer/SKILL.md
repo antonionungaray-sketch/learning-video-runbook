@@ -25,7 +25,7 @@ nuevo. El usuario puede saltarla de dos formas:
 2. **Afirmando claridad explícita** ("ya tengo el concepto, vamos a
    guión"). En ese caso, el orquestador deriva un Concept Brief
    `draft` desde el input y va directo a `script-explainer`. La
-   primera oportunidad para volver acá es si guión detecta huecos.
+   primera oportunidad para volver aquí es si guión detecta huecos.
 
 Una vez invocado este skill, corre hasta el final — no hay lógica de
 bypass interna.
@@ -259,7 +259,7 @@ Para cada decisión:
    ```
    subagent_type: general-purpose
    prompt:
-     Sos un ideador divergente. Tarea: generar N variantes del artefacto
+     Eres un ideador divergente. Tarea: generar N variantes del artefacto
      <decision>.
 
      CONTEXTO ACUMULADO (decisiones previas aprobadas):
@@ -337,7 +337,7 @@ Al terminar este video, [audiencia] podrá [acción observable].
 
 ## 6. Tono y restricciones
 - Registro: [formal | cercano | casual técnico | instructor-cert]
-- Persona gramatical: [tú | vos | usted | vosotros | nosotros]
+- Persona gramatical: [tú | usted | vosotros | nosotros]
 - Branding: [paleta + tipografía + contraste verificado vs WCAG AA]
 - Accesibilidad obligatoria: [subs + idioma; AD si aplica]
 - Recursos y plazos: [equipo, software, fecha de entrega target]
@@ -417,7 +417,7 @@ Ninguna etapa downstream modifica el Concept Brief; solo lo lee.
   0 es contrato con el usuario; respetarlo.
 - **Variantes solo cuando el test de determinismo las habilita.** No
   ofrecer variantes por default en cada decisión — fatiga de decisión.
-- **No producir guión, storyboard ni nada operacional acá.** El
+- **No producir guión, storyboard ni nada operacional aquí.** El
   Concept Brief es upstream — define qué se va a hacer, no cómo se
   ejecuta. La ejecución es responsabilidad de las etapas siguientes.
 - **Evitar pseudociencia:** ningún claim sobre "8 segundos de atención",

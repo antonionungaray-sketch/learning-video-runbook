@@ -189,7 +189,7 @@ Task(
   subagent_type="general-purpose",
   description="Generar N variantes de <decision>",
   prompt="""
-Sos un ideador divergente. Tarea: generar N variantes del artefacto <X>.
+Eres un ideador divergente. Tarea: generar N variantes del artefacto <X>.
 
 CONTEXTO ACUMULADO (decisiones previas tomadas):
 - [literal de cada decisión aprobada previamente]

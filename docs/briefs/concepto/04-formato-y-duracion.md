@@ -36,7 +36,7 @@ respetan el ceiling de Guo et al. con estrategias distintas: compresión
 radical, segmentación serial, segmentación natural dentro del video
 largo, o edit-down.
 
-El **ratio de aspecto** se decide acá porque condiciona todo lo
+El **ratio de aspecto** se decide aquí porque condiciona todo lo
 downstream: 16:9 horizontal (YouTube long), 9:16 vertical (Shorts /
 Reels / TikTok), cuadrado (LinkedIn feed). El ratio influye en
 encuadre, ubicación de overlays, y cómo se consume — silencioso o no.

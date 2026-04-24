@@ -2,6 +2,28 @@
 
 Todas las versiones relevantes de este proyecto se registran aquí. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado siguiendo [SemVer](https://semver.org/lang/es/).
 
+## [1.3.3] — 2026-04-23
+
+**Follow-up del cleanup de rioplatense de v1.3.1.** El barrido original dejó residuos que el grep de entonces no capturó: `acá` (patrón más frecuente, 14 ocurrencias), y pocas ocurrencias de `Sos`/`vos`/`imaginá`/`Mirá`/`querés`/`dale`/`buscá`/`Revisá` en archivos que aquella pasada no cubrió (template HTML de storyboard, planes/specs de superpowers, briefs y skills adicionales).
+
+### Fixed
+
+- `acá` → `aquí` (14 ocurrencias): briefs `concepto/01-audiencia`, `concepto/04-formato-y-duracion`, `concepto/05-plataforma-y-distribucion`, `concepto/06-tono-y-restricciones`, `edicion/09-transiciones`; skills `concept-explainer`, `create-explainer` (×3), `edit-explainer`, `sync-briefs`, `update-tools` (×2), `update-trends`; `docs/arquitectura/dry-run-fase-6.md`.
+- `Sos` → `Eres` (3): `skills/concept-explainer/SKILL.md`, plan piloto fase A (`docs/superpowers/plans/2026-04-18-fase-a-piloto-guion.md`), spec capa de briefs (`docs/superpowers/specs/2026-04-18-capa-de-briefs-design.md`).
+- `vos` removido del enum de persona gramatical (×2): `skills/concept-explainer/SKILL.md` y brief `concepto/06-tono-y-restricciones`. Enum canónico final: `[tú | usted | vosotros | ustedes | nosotros]`.
+- `imaginá` → `imagina` (2): brief `guion/07-voz-registro`, plan piloto fase A.
+- `Mirá` → `Observa` / `Atención` (2): plan piloto fase A (`Mirá lo que podemos hacer…` → `Observa lo que podemos hacer…`), brief `edicion/02-senalizacion` (callout `"¡Mirá!"` → `"¡Atención!"`).
+- `querés` → `quieres` (1): `dry-run-fase-6.md`.
+- `buscá el cursor` → `busca el cursor` (1): brief `edicion/02-senalizacion`.
+- `dale a exportar` → `haz clic en Exportar` (1): brief `previsualizacion/03-shotlist-demos`.
+- `dale like` → `deja like` (1): `docs/casos-de-exito/tutoriales-tecnicos.md`.
+- `Revisá` → `Revisa` (1): hint de `scripts/storyboard-draft.template.html`.
+
+### Technical notes
+
+- Verificación post-cleanup: `grep -riEn '\b(acá|vos|sos|querés|tenés|mirá|imaginá|revisá|buscá|dale)\b' docs/ skills/ scripts/ --include='*.md' --include='*.html'` devuelve 0 matches (excluyendo `docs/vistas-por-etapa/` que son artefactos auto-generados sin contenido propio).
+- Cero cambios de lógica, frontmatter o IDs estables. Solo texto en prosa y un enum ampliado. `verificar-briefs.sh --strict` no se ejecutó aquí porque los cambios no tocan citas; el único stale preexistente (`concepto/04-formato-y-duracion` vs `P2-meta-transversales` desde 2026-04-20) permanece, pendiente de `sync-briefs`.
+
 ## [1.3.2] — 2026-04-23
 
 **Enriquecimiento de Pilar 3 (`auto-editor`, refresh HyperFrames) y apertura de Pilar 2 al patrón emergente de pipelines agente-orquestados.** Evaluación de dos herramientas mostradas en un demo público del canal Atomic Treehouse (Hyperframes + video-use) contra la línea editorial "open-source primero con licencia declarada". HyperFrames ya estaba en Pilar 3 pero con status obsoleto; video-use no pasa el filtro (sin licencia declarada al 2026-04-23). Se documenta el patrón que video-use representa y se incorporan alternativas maduras con licencia limpia.

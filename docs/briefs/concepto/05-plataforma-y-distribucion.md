@@ -62,7 +62,7 @@ espera estructura formal. Mezclar "80% completion LMS" con "40% APV
 YouTube" es error categorial — métricas no comparables.
 
 **"Vamos a hacerlo viral"** sin definir nicho ni canal
-[P2-publicacion-patrones]. La distribución se define acá; postergar
+[P2-publicacion-patrones]. La distribución se define aquí; postergar
 rompe la relación entre packaging y ROI del CTA.
 
 **Sponsor genérico sin afinidad temática**

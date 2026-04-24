@@ -179,7 +179,7 @@ Para cada decisión:
 
 ## Estándares técnicos objetivos (no negociables)
 
-Estos viven inline en los briefs pero los repito acá para énfasis:
+Estos viven inline en los briefs pero los repito aquí para énfasis:
 
 - **Loudness** (brief 03): -14 LUFS integrated YouTube/redes; -16 LUFS
   podcast; -23 LUFS broadcast EBU R128. True peak ≤ -1 dBTP.

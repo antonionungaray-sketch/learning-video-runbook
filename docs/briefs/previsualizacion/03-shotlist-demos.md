@@ -56,7 +56,7 @@ bloque como `demo-pantalla` ni `mixto`. El Production Brief registra
 produce inconsistencia entre tomas. Siempre declarar archivos,
 datos, versión.
 
-**Orden de clicks no especificado.** "Abre el menú y dale a exportar"
+**Orden de clicks no especificado.** "Abre el menú y haz clic en Exportar"
 deja improvisar — cursor pasea, narración desfasa. Declarar numerado:
 1. File → 2. Export → 3. PDF.
 

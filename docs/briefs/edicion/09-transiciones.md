@@ -73,7 +73,7 @@ una transición elaborada.
 - **Transiciones animadas por video:** ≤2, y solo si cumplen función
   explícita (open loop, cambio de capítulo).
 - **Frecuencia de cortes:** derivada de `edicion/01-pacing`, no se
-  decide acá [P1-§4.4].
+  decide aquí [P1-§4.4].
 
 ## Conflictos conocidos
 

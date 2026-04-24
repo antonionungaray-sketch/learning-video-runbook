@@ -17,7 +17,7 @@ Este orquestador **NO lee pilares en runtime**. Su único trabajo es identificar
 - Pilar 2 (dinámico) — `02-tendencias-y-casos.md` — tendencias y casos actuales.
 - Pilar 3 (dinámico) — `03-herramientas.md` — herramientas vigentes.
 
-Los skills de etapa (`concept-explainer`, `script-explainer`, `storyboard-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`) son los únicos que tocan material pedagógico: consumen sus briefs y, si aparece una pregunta fuera del brief, hacen `Grep` dirigido por ID estable. **Los conflictos P2 vs P1 se detectan y flaggean en los skills de etapa, no acá.**
+Los skills de etapa (`concept-explainer`, `script-explainer`, `storyboard-explainer`, `record-explainer`, `edit-explainer`, `publish-explainer`) son los únicos que tocan material pedagógico: consumen sus briefs y, si aparece una pregunta fuera del brief, hacen `Grep` dirigido por ID estable. **Los conflictos P2 vs P1 se detectan y flaggean en los skills de etapa, no aquí.**
 
 ## Paso pre-flujo (opcional, recomendado en primera instalación): configurar entorno
 
@@ -58,7 +58,7 @@ Si el usuario acepta, invocar `setup-environment` primero. Si rechaza, seguir co
 
 4. **Default ON de concepto al inicio del flujo.** Cuando el usuario arranca un proyecto nuevo (no menciona que ya tiene guión, ni Concept Brief, ni Production Brief), invoca `concept-explainer` por default — incluso si el usuario describió la idea con cierto detalle. El skill mismo hace un diagnóstico de claridad y salta dimensiones ya cubiertas (no es redundante para usuarios con idea sólida). Dos formas de saltarlo:
    - **Usuario pasa Concept Brief existente** (locked o draft): registra la ruta y pasa directo a `script-explainer`, que lo consumirá.
-   - **Usuario afirma claridad explícita** ("ya tengo el concepto, vamos directo a guión"): respeta la elección, pasa a `script-explainer`. Documenta la decisión — si guión detecta huecos, puede sugerir volver acá. **No volver a preguntar** en la misma sesión.
+   - **Usuario afirma claridad explícita** ("ya tengo el concepto, vamos directo a guión"): respeta la elección, pasa a `script-explainer`. Documenta la decisión — si guión detecta huecos, puede sugerir volver aquí. **No volver a preguntar** en la misma sesión.
 
 5. **Puente guión → grabación.** Si el usuario cerró guión y dice ir directo a grabación, ofrece una vez la etapa intermedia: "Antes de grabar, ¿quieres pasar por `storyboard-explainer` para fijar storyboard, pacing y shotlist? Reduce riesgo de re-grabar. También puedes saltarla si es re-shoot de un formato ya conocido, un live stream, o un podcast audiovisual donde el storyboard visual no aplica." Si el usuario salta, continuar a `record-explainer` sin bloquear; registrar la elección en Notas de Producción del guión. **No volver a preguntar** en la misma sesión.
 
@@ -69,7 +69,7 @@ Si el usuario acepta, invocar `setup-environment` primero. Si rechaza, seguir co
 
 ## Reglas firmes
 
-- **No leer pilares ni briefs.** Este orquestador no consume material pedagógico. Identifica etapa + modalidad y delega. Si haces `Read` de un pilar o un brief acá, estás violando el contrato.
+- **No leer pilares ni briefs.** Este orquestador no consume material pedagógico. Identifica etapa + modalidad y delega. Si haces `Read` de un pilar o un brief aquí, estás violando el contrato.
 - **No tomar decisiones de la etapa tú mismo** — esa es función del skill específico, que consume briefs y tiene el material pedagógico cargado.
 - **Si el usuario menciona varias etapas en un mismo proyecto**, atenderlas en orden: concepto (opcional, default ON) → guión → storyboard (opcional) → grabación → edición → publicación. No saltar etapas, excepto concepto y storyboard que son opcionales por diseño.
 - **Conflictos entre pilares**: cuando un skill de etapa flaggee un conflicto, no resolverlo por defecto. Presentar el conflicto al usuario, recordar que el pilar 1 (ciencia y teoría del medio) prevalece, y dejar la decisión final al usuario.

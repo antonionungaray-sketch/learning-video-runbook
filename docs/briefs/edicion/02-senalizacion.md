@@ -28,14 +28,14 @@ ya cargado.
 Técnicas como zoom dinámico sobre la zona relevante o highlight
 animado guían sin pedir esfuerzo metacognitivo.
 
-**Coherencia** [P1-§2.3-#1]: señalización decorativa (callouts "¡Mirá!",
+**Coherencia** [P1-§2.3-#1]: señalización decorativa (callouts "¡Atención!",
 efectos de partículas sin función) es carga extraña.
 
 ## Casos
 
 - **Fireship** [P2-ficha-fireship]: zoom dinámico digital sobre la zona
   del editor donde aparece el código relevante. Evita pedir al viewer
-  "buscá el cursor" [P2-edicion-patrones].
+  "busca el cursor" [P2-edicion-patrones].
 - **The Coding Train** [P2-ficha-coding-train]: highlight tipográfico
   (background amarillo) sobre la línea de código que está explicando
   en ese momento.

@@ -48,7 +48,7 @@ grabación o edición produce re-trabajo.
   con pausas explícitas.
 - **Instructor-certificación formal** [P2-ficha-mike-meyers]: registro
   profesoral, vocabulario técnico explícito y consistente con syllabus
-  oficial (CompTIA, etc.). El registro formal acá tiene función:
+  oficial (CompTIA, etc.). El registro formal aquí tiene función:
   preparación de examen.
 
 ## Anti-patrón
@@ -69,13 +69,12 @@ AA), descubrirlo en edición fuerza re-design o degrada accesibilidad.
 
 - **Contraste mínimo no negociable:** 4.5:1 cuerpo, 3:1 texto grande
   (WCAG 2.2 AA) [P1-§3.2]. Cualquier branding que no cumpla queda
-  flaggeado acá.
+  flaggeado aquí.
 - **Subtítulos:** 15-20 CPS, ≤2 líneas, 37-42 chars/línea
   [P1-§5.2]. Si la audiencia incluye no-nativos, bajar al límite
   inferior.
-- **Registro:** segunda persona singular hispana ("tú" o "vos") o
-  plural ("vosotros") según mercado destino — definir acá, no en
-  guión.
+- **Registro:** segunda persona singular ("tú") o plural ("vosotros" /
+  "ustedes") según mercado destino — definir aquí, no en guión.
 
 ## Ajuste por eje
 
@@ -85,7 +84,7 @@ AA), descubrirlo en edición fuerza re-design o degrada accesibilidad.
 - **`narrador-1a-persona`:** registro íntimo-autoral, "yo pienso / descubrí / propongo". Admite pausas, dudas, digresiones funcionales. Nerdwriter, Contrapoints, Matt D'Avella.
 - **`narrador-omnisciente`:** registro impersonal formal, 3a persona, voice-of-god documental. Sin inflexiones personales; control prosódico alto [P1-§9.2].
 - **`investigador`:** registro semi-autoral — aparece "yo descubrí X" pero dominante es exposición. Dudas mostradas como parte del método [P1-§11.3].
-- **`demostrador`:** registro cercano, 2a persona, imperfecto ("vamos a ver", "me equivoqué acá"). Modela metacognición y errores honestos [P2-ficha-mouredev].
+- **`demostrador`:** registro cercano, 2a persona, imperfecto ("vamos a ver", "me equivoqué aquí"). Modela metacognición y errores honestos [P2-ficha-mouredev].
 - **`conversador`:** tono emergente del diálogo; no se prescribe. Pilar 1 §9.2 sobre voice of encounter.
 - **`anfitrion-de-experto`:** registro de introducción formal + humildad curiosa. Lex Fridman, Huberman con invitado.
 
@@ -115,7 +114,7 @@ flaggeada como decisión consciente.
 Cinco datos:
 
 - **Registro:** "[formal | cercano | casual técnico | instructor-cert]".
-- **Persona gramatical:** "[tú | vos | usted | vosotros | nosotros]".
+- **Persona gramatical:** "[tú | usted | vosotros | ustedes | nosotros]".
 - **Branding:** "[paleta + tipografía + contraste verificado vs WCAG AA]".
 - **Accesibilidad obligatoria:** "[subs sí/no + idioma; AD si aplica;
   excepción al principio de redundancia justificada]".

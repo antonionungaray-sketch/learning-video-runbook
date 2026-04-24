@@ -1121,7 +1121,7 @@ version: 1
 ## Principio aplicable
 
 **Personalización** [P1-§2.3-#10]: lenguaje conversacional ("tú",
-"nosotros", "imaginá que…") supera a lenguaje formal para aprendizaje.
+"nosotros", "imagina que…") supera a lenguaje formal para aprendizaje.
 El cerebro procesa la personalización como diálogo, activando más áreas
 de comprensión social.
 
@@ -1144,7 +1144,7 @@ en aprendizaje profundo.
 ## Anti-patrón
 
 **Registro formal/corporativo en contenido personal.** "En este video
-procederemos a examinar…" degrada engagement vs "Mirá lo que podemos
+procederemos a examinar…" degrada engagement vs "Observa lo que podemos
 hacer con…". El registro formal tiene su lugar (compliance, legal), no
 en tutorial ni divulgación.
 
@@ -1168,7 +1168,7 @@ en tutorial ni divulgación.
 - Registro explícito (cercano conversacional / profesional cercano /
   profesional formal).
 - WPM objetivo con justificación del canal visual que lo acompaña.
-- Nota sobre uso de segunda persona ("vos", "tú") o primera plural
+- Nota sobre uso de segunda persona ("tú") o primera plural
   ("nosotros") — consistente a lo largo del video.
 ```
 
@@ -1405,7 +1405,7 @@ Para cada decisión:
    ```
    subagent_type: general-purpose
    prompt:
-     Sos un ideador divergente. Tarea: generar N variantes del artefacto
+     Eres un ideador divergente. Tarea: generar N variantes del artefacto
      <decision>.
 
      CONTEXTO ACUMULADO (decisiones previas aprobadas):

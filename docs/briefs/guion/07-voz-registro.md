@@ -24,7 +24,7 @@ version: 2
 ## Principio aplicable
 
 **Personalización** [P1-§2.3-#10]: lenguaje conversacional ("tú",
-"nosotros", "imaginá que…") supera a lenguaje formal para aprendizaje.
+"nosotros", "imagina que…") supera a lenguaje formal para aprendizaje.
 El cerebro procesa la personalización como diálogo, activando más áreas
 de comprensión social.
 
@@ -95,5 +95,5 @@ en tutorial ni divulgación.
 - Registro explícito (cercano conversacional / profesional cercano /
   profesional formal).
 - WPM objetivo con justificación del canal visual que lo acompaña.
-- Nota sobre uso de segunda persona ("vos", "tú") o primera plural
+- Nota sobre uso de segunda persona ("tú") o primera plural
   ("nosotros") — consistente a lo largo del video.

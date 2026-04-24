@@ -29,7 +29,7 @@ Si el output es **`INSTALLED_MODE`**, detente y di al usuario:
 >
 > Si querías **usar el toolkit** para producir un video, invoca `/create-explainer`. Si encontraste un brief desactualizado, abre un issue en https://github.com/antonionungaray-sketch/video-explainer-guide.
 
-No continuar con el flujo. Terminar acá.
+No continuar con el flujo. Terminar aquí.
 
 Si el output es **`DEV_MODE`**, continuar con el flujo normal abajo.
 

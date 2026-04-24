@@ -29,7 +29,7 @@ Fecha: 2026-04-19 · Cierre reforma: fases 0-5 ejecutadas; esta fase verifica co
 
 | Brief | `varia-por-eje` | Sub-bloque aplicable | Qué prescribe |
 |---|---|---|---|
-| `guion/05-retrieval` | `[objetivo-cognitivo, grado-guion, arco-dominante]` | objetivo: adquirir-habilidad · guion: guionado · arco: performativo | Retrieval explícito tras cada bloque de código (preguntas tipo "¿qué nodo conectarías acá?"), pausas de auto-explicación. |
+| `guion/05-retrieval` | `[objetivo-cognitivo, grado-guion, arco-dominante]` | objetivo: adquirir-habilidad · guion: guionado · arco: performativo | Retrieval explícito tras cada bloque de código (preguntas tipo "¿qué nodo conectarías aquí?"), pausas de auto-explicación. |
 | `guion/08-cta` | `[objetivo-cognitivo, rol-presentador]` | adquirir-habilidad · demostrador | CTA de **aplicación inmediata** ("abre ComfyUI y replica el workflow"). |
 | `grabacion/02-video-encuadre` | `[rol-presentador, plataforma]` | demostrador · long-form-horizontal | Screen capture dominante + face-cam PiP pequeña. |
 | `edicion/01-pacing` | `[arco-dominante, grado-edicion]` | performativo · heavy | Cortes 8-12/min, zooms a UI, podar dead-air. |
@@ -142,7 +142,7 @@ El skill identifica que el proyecto **no tiene intención pedagógica**: es narr
 
 Respuesta esperada:
 
-> "Un vlog de viaje no calza con el scope de este toolkit — los principios (retrieval practice, ajuste por eje cognitivo, métricas de aprendizaje) están calibrados para videos con intención pedagógica (enseñar algo, corregir una intuición, transferir habilidad). Para un vlog afectivo te va a contaminar la producción más que ayudar. Sugerencia: usa una guía de producción general de vlogs, no este toolkit. Si en cambio lo que querés es hacer un **documental breve sobre cocina oaxaqueña** o un **explainer sobre la historia del mezcal**, eso sí calza — contámelo con ese framing y arrancamos."
+> "Un vlog de viaje no calza con el scope de este toolkit — los principios (retrieval practice, ajuste por eje cognitivo, métricas de aprendizaje) están calibrados para videos con intención pedagógica (enseñar algo, corregir una intuición, transferir habilidad). Para un vlog afectivo te va a contaminar la producción más que ayudar. Sugerencia: usa una guía de producción general de vlogs, no este toolkit. Si en cambio lo que quieres es hacer un **documental breve sobre cocina oaxaqueña** o un **explainer sobre la historia del mezcal**, eso sí calza — contámelo con ese framing y arrancamos."
 
 **Resultado:** filtro funciona; no se fuerza un Concept Brief falso.
 

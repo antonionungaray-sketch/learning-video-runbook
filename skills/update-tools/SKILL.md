@@ -23,11 +23,11 @@ fi
 
 Si el output es **`INSTALLED_MODE`**, detente y di al usuario:
 
-> Este skill es para el autor del plugin `video-explainer-guide` — mantiene el catálogo de herramientas (pilar 3). Los cambios viven en el directorio de instalación (`$CLAUDE_PLUGIN_ROOT`) y se sobrescriben cuando el plugin se actualiza, así que no conviene editarlos desde acá.
+> Este skill es para el autor del plugin `video-explainer-guide` — mantiene el catálogo de herramientas (pilar 3). Los cambios viven en el directorio de instalación (`$CLAUDE_PLUGIN_ROOT`) y se sobrescriben cuando el plugin se actualiza, así que no conviene editarlos desde aquí.
 >
 > Si querías **usar el toolkit** para producir un video, invoca `/create-explainer`. Si querías **configurar tu perfil de herramientas locales**, invoca `/setup-environment`. Si quieres **proponer un cambio al catálogo**, abre un issue en https://github.com/antonionungaray-sketch/video-explainer-guide.
 
-No continuar con el flujo. Terminar acá.
+No continuar con el flujo. Terminar aquí.
 
 Si el output es **`DEV_MODE`**, continuar con el flujo normal abajo.
 
@@ -78,7 +78,7 @@ Al terminar los cambios aprobados al pilar 3, ejecuta:
 bash "${CLAUDE_PLUGIN_ROOT}/scripts/verificar-briefs.sh"
 ```
 
-Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde acá.** Reporta al usuario la lista y sugiere:
+Si el output reporta **briefs stale**, es porque los cambios afectaron secciones citadas por briefs. **No editar los briefs desde aquí.** Reporta al usuario la lista y sugiere:
 
 > "Los siguientes briefs pueden haber quedado desactualizados tras los cambios al pilar 3: [lista]. Para re-sincronizarlos de forma guiada, invoca la skill `sync-briefs`."
 
