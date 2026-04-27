@@ -29,7 +29,21 @@ Si el usuario acepta, invocar `setup-environment` primero. Si rechaza, seguir co
 
 **Señal de "primera vez":** `~/.claude/video-explainer/profile.md` no existe.
 
-## Flujo del orquestador
+## Bifurcación inicial — video vs material estático
+
+Antes de identificar la etapa de video, preguntar al usuario:
+
+> "¿Vas a producir un **video explainer** o **material didáctico estático** (láminas didácticas, slides para presentar, long-form escrito)?"
+
+- Si **video** → continuar al flujo de orquestador estándar (abajo). Filtro de scope se aplica antes de delegar.
+- Si **material estático** → invocar `material-explainer` y terminar. La skill `material-explainer` es standalone; no requiere paso por `concept-explainer` ni por las etapas de video. Filtro de scope se aplica también antes de delegar.
+
+Si el usuario no menciona el formato explícitamente, inferir por las pistas:
+- Menciona "video", "grabar", "editar metraje", "YouTube", "Shorts", "podcast audiovisual" → **video**.
+- Menciona "presentación", "slides", "infografía", "lámina", "artículo", "post", "long-form", "carrusel" → **material**.
+- Borderline o ambiguo: preguntar.
+
+## Flujo del orquestador (cuando es video)
 
 1. **Identificar la etapa** del ciclo de producción donde está el creador. Pregunta solo si no es claro:
    - **Idea / concepto (opcional, recomendada por default)** — el usuario llega con una idea (vaga o no) y todavía no tiene Concept Brief que defina audiencia, objetivo, promesa, formato, plataforma y tono. Default ON al inicio del flujo.
@@ -76,7 +90,7 @@ Si el usuario acepta, invocar `setup-environment` primero. Si rechaza, seguir co
 
 ## Filtro de scope
 
-Antes de delegar, verificar que el proyecto del usuario tiene **intención pedagógica** (el espectador debe aprender algo, cambiar una intuición, entender un procedimiento, decidir mejor informado, internalizar una habilidad, reestructurar una creencia con evidencia).
+Antes de delegar (a `material-explainer` o a las etapas de video), verificar que el proyecto del usuario tiene **intención pedagógica** (el espectador o lector debe aprender algo, cambiar una intuición, entender un procedimiento, decidir mejor informado, internalizar una habilidad, reestructurar una creencia con evidencia).
 
 **Casos fuera de scope — sugerir no usar este toolkit:**
 - Vlog personal o de viaje (narrativa afectiva sin concepto que transferir).
@@ -90,5 +104,6 @@ Antes de delegar, verificar que el proyecto del usuario tiene **intención pedag
 - Video-arte experimental.
 - Trailer / teaser / promo.
 - Contenido publicitario directo sin componente explicativo.
+- Memes, posters decorativos sin contenido secuencial, anuncios puros sin explicación (aplica especialmente al flujo de material estático).
 
 Si el caso es borderline (ej. reseña que puede ser pedagógica o solo opinión; documental contemplativo vs documental didáctico; podcast que varía entre conversacional libre y conversación pedagógica), **preguntar al usuario** si hay intención de que el espectador aprenda/entienda algo específico. Si la respuesta es sí, continuar. Si no, recomendar una guía de producción general en vez de este toolkit.
