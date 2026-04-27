@@ -23,6 +23,7 @@ La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad co
 | 5 | Adaptación de los 7 skills al Concept Brief con campo `modalidad` + ejes | 1-2 sesiones | **Cerrada 2026-04-19** — concept-explainer con paso 0.5 (preset + ejes + plataforma); los 5 skills de etapa con bloque "Lectura de ejes para routing"; create-explainer con 12 presets formales; CLAUDE.md recalibrado. Commit `cf6ece1`. |
 | 6 | Verificación end-to-end, vistas regeneradas, cierre | 1 sesión | **Cerrada 2026-04-19** — `verificar-briefs.sh --strict` exit 0 (0 stale, 0 huérfanos, 0 undeclared); vistas regeneradas; dry-run documentado en `docs/arquitectura/dry-run-fase-6.md` cubriendo tutorial-técnico, documental-narrativo, podcast-audiovisual, live-stream y filtro fuera-de-scope (vlog). Bump a 1.1.0 en `plugin.json`. |
 | 7 | Portabilidad y perfil de entorno — skill `setup-environment`, metadata estructurada en pilar 3, integración en 4 skills de etapa | 1 sesión | **Cerrada 2026-04-20** — ver detalle abajo. |
+| 8 | Ampliación a material didáctico no-video — skill `material-explainer`, 7 briefs nuevos en `docs/briefs/material/`, 5 presets de estilo, bifurcación inicial en orquestador | 1 sesión | **Cerrada 2026-04-26** — ver detalle abajo. |
 
 ## Fase 7 — Portabilidad y perfil de entorno (2026-04-20)
 
@@ -34,6 +35,24 @@ La reforma es amplia: 7 fases, 12-18 sesiones estimadas. Rompe compatibilidad co
 - Integración en 4 skills de etapa (concept/record/edit/publish) con Paso 0.5 (lectura de perfil + filtrado de herramientas + fallback externo vía WebSearch).
 - `update-tools` ampliado para aceptar payload estructurado desde fallback externo.
 - Plugin versionado a 1.2.0.
+
+## Fase 8 — Ampliación a material didáctico no-video (2026-04-26)
+
+**Estado:** completada.
+
+**Disparador.** Antonio generó un set de 9 láminas didácticas sobre "El origen del yoga" (capítulos numerados, paneles ilustrados, cajas de "concepto clave", footer "para estudiar", paleta cromática que codifica épocas) usando un prompt curado a mano. El set resultó muy efectivo. La fase 8 sistematiza ese trabajo y lo extiende a otros formatos no-video sin tocar el flujo de video.
+
+**Cambios:**
+
+- **Skill nueva `material-explainer`** — produce material didáctico no-video desde un mismo Didactic Brief en uno o varios formatos: láminas didácticas (`prompts-laminas.md`), slides para presentar en vivo (`slides.md` formato Marp), long-form escrito (`articulo.md`). La generación de imágenes se delega a herramientas externas (Claude artifact, GPT image, Midjourney) — la skill produce los prompts.
+- **Etapa nueva `docs/briefs/material/`** con 7 briefs precomputados que citan el Pilar 1: 01-secuenciacion-conceptual, 02-densidad-y-bloque, 03-soporte-visual, 04-retrieval-y-consolidacion, 05-estilo-visual-coherencia, 06-adaptacion-formato, 07-prompts-imagen-IA. Total ahora: 50 briefs (43 video + 7 material).
+- **5 presets de estilo visual** definidos en brief 05: `historico-grabado`, `tecnico-flat`, `cientifico-informativo`, `narrativo-comic`, `editorial-periodico`. Cada uno como meta-prompt verbatim que se inyecta a cada output para coherencia visual entre piezas del set.
+- **Bifurcación inicial en `create-explainer`** — pregunta "video o material estático" antes de identificar etapa. Si material, delega a `material-explainer` (standalone, no pasa por `concept-explainer`). Filtro de scope se aplica a ambos flujos.
+- **`scripts/regenerar-vistas.sh` extendido** — agrega `material` al array de etapas. `verificar-briefs.sh` ya escanea recursivamente, no requirió cambios.
+- **Pseudo-eje `formato`** en briefs 02/04/06 con valores `lamina | slide | long-form` — ad-hoc para esta etapa, no formalizado en `docs/arquitectura/modalidades-y-ejes.md` (follow-up futuro).
+- Plugin versionado a 1.3.0.
+
+**Limpieza colateral.** Pre-fase 8 había 8 briefs stale por edits a pilares 2 y 3 del 2026-04-23 que no se habían sincronizado. Resueltos vía sync-bump (cambios cosméticos o no afectaban contenido sustantivo de los briefs afectados).
 
 ## Decisiones ya tomadas
 
