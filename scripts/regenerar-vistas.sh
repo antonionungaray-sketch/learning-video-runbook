@@ -11,7 +11,7 @@ set -euo pipefail
 # shellcheck source=lib/resolve-plugin-root.sh
 source "$(dirname "${BASH_SOURCE[0]}")/lib/resolve-plugin-root.sh"
 
-ETAPAS=(concepto guion previsualizacion grabacion edicion publicacion)
+ETAPAS=(concepto guion previsualizacion grabacion edicion publicacion material)
 STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 for etapa in "${ETAPAS[@]}"; do
