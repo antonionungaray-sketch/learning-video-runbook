@@ -2,6 +2,37 @@
 
 Todas las versiones relevantes de este proyecto se registran aquí. Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versionado siguiendo [SemVer](https://semver.org/lang/es/).
 
+## [1.4.0] — 2026-04-26
+
+**Ampliación del toolkit a material didáctico no-video.** El plugin ahora produce, además de explainer videos, material didáctico estático que aprovecha los pilares 1 y 2: láminas didácticas secuenciales (estilo el set "El origen del yoga"), slides para presentar en vivo (formato Marp), y long-form escrito con visualizaciones embebidas. Disparador: Antonio generó un set de 9 láminas sobre el origen del yoga con un prompt curado a mano y el resultado fue muy efectivo; esta versión sistematiza ese trabajo.
+
+### Añadido
+
+- **Skill `material-explainer`** — produce material didáctico no-video desde un mismo Didactic Brief. Standalone (no invoca `concept-explainer`); tiene su propio paso 0 ligero (4 preguntas: concepto + audiencia + objetivo cognitivo + restricciones). Si encuentra un Concept Brief de video preexistente, ofrece reutilizar audiencia/objetivo/restricciones. Gate de lock entre paso 1 (generar Brief) y paso 2 (materializar). La generación de imágenes se delega a herramientas externas (Claude artifact, GPT image, Midjourney) — la skill produce los prompts.
+- **Etapa nueva `docs/briefs/material/`** con 7 briefs precomputados: 01-secuenciacion-conceptual (orden de conceptos), 02-densidad-y-bloque (cuánta info por bloque), 03-soporte-visual (taxonomía mapa/diagrama-causal/comparativo/timeline/etc.), 04-retrieval-y-consolidacion (cajas concepto-clave + glosario "para estudiar"), 05-estilo-visual-coherencia (5 presets nombrados), 06-adaptacion-formato (ajuste por lámina/slide/long-form), 07-prompts-imagen-IA (anatomía de prompt para set coherente).
+- **5 presets de estilo visual** definidos en brief 05: `historico-grabado` (paleta sepia + grabado + libro de historia), `tecnico-flat` (sans-serif moderno + ilustración vectorial flat), `cientifico-informativo` (Tufte minimalista + Nature vibe), `narrativo-comic` (viñetas con personajes), `editorial-periodico` (serif editorial + NYT/Atlantic vibe). Cada preset es un meta-prompt verbatim que se inyecta a cada output del paso 2 — ese verbatim es lo que da consistencia visual entre piezas del set.
+- **Vista `docs/vistas-por-etapa/material.md`** auto-generada por `regenerar-vistas.sh` desde los frontmatters de los 7 briefs nuevos.
+
+### Cambiado
+
+- **`create-explainer`** — agrega bifurcación inicial "video o material estático" antes de identificar etapa de video. Si material, delega a `material-explainer`. El filtro de scope (intención pedagógica) se aplica a ambos flujos. Lista de fuera-de-scope ampliada con memes, posters decorativos sin contenido secuencial y anuncios puros sin componente explicativo.
+- **`scripts/regenerar-vistas.sh`** — agrega `material` al array `ETAPAS`. Cambio de una línea.
+- **`CLAUDE.md`** — sección "Skills layout" documenta `material-explainer` y la bifurcación del orquestador. Sección "Layer 2 — Briefs" actualiza el conteo (43 → 50 briefs, agrega 7 de material/) y vistas por etapa incluye material.
+
+### Notas técnicas
+
+- **`scripts/verificar-briefs.sh` no requirió cambios** — escanea recursivamente `docs/briefs/**/*.md` y reconoce la nueva carpeta automáticamente.
+- **Pseudo-eje `formato`** en briefs 02/04/06 con valores `lamina | slide | long-form` — ad-hoc para esta etapa, no formalizado en `docs/arquitectura/modalidades-y-ejes.md`. Follow-up futuro: si crece su uso, formalizar como atributo separado (estilo `plataforma`) o como eje pleno.
+- **`material-explainer` no invoca `concept-explainer`** — diseño consciente para mantener el flujo de material limpio sin forzar al usuario por el paso 0.5 de modalidad/ejes/plataforma del flujo de video.
+- **Limpieza colateral previa al release**: 8 briefs stale pre-existentes (por edits a pilares 2 y 3 del 2026-04-23 sin sincronizar) resueltos vía sync-bump tras verificar que ninguno requería edición sustantiva del contenido.
+
+### Verificación
+
+- `bash scripts/verificar-briefs.sh --strict` cierra exit 0 (0 stale, 0 missing, 0 inline missing) tras los 7 briefs nuevos.
+- `bash scripts/regenerar-vistas.sh` regenera las 7 vistas (incluye `material.md`) sin errores.
+- 7 briefs con frontmatter válido, citas inline declaradas en `fuentes:`, longitud entre 69-116 líneas.
+- Pendiente (Fase E del plan): smoke tests humano-en-loop con casos yoga (calibrador), OAuth (técnico) y Coriolis (científico).
+
 ## [1.3.3] — 2026-04-23
 
 **Follow-up del cleanup de rioplatense de v1.3.1.** El barrido original dejó residuos que el grep de entonces no capturó: `acá` (patrón más frecuente, 14 ocurrencias), y pocas ocurrencias de `Sos`/`vos`/`imaginá`/`Mirá`/`querés`/`dale`/`buscá`/`Revisá` en archivos que aquella pasada no cubrió (template HTML de storyboard, planes/specs de superpowers, briefs y skills adicionales).
