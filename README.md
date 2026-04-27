@@ -1,12 +1,15 @@
 # video-explainer-guide
 
-Guía estructurada, en forma de plugin de Claude Code, para producir **explainer videos con intención pedagógica** — tutoriales técnicos, divulgación científica, video-ensayo, documental narrativo, periodismo analítico visual, explainer comercial, how-to, onboarding, conferencia grabada, live stream educativo, podcast audiovisual, personal essay con intención de enseñar — basada en evidencia cognitiva, teoría del medio y casos actuales.
+Guía estructurada, en forma de plugin de Claude Code, para producir contenido **con intención pedagógica** — basada en evidencia cognitiva, teoría del medio y casos actuales. Cubre dos familias de output:
+
+- **Explainer videos** — tutoriales técnicos, divulgación científica, video-ensayo, documental narrativo, periodismo analítico visual, explainer comercial, how-to, onboarding, conferencia grabada, live stream educativo, podcast audiovisual, personal essay con intención de enseñar.
+- **Material didáctico no-video** *(desde v1.4.0)* — láminas didácticas secuenciales (estilo libro de historia ilustrado), slides para presentar en vivo (formato Marp), long-form escrito con visualizaciones embebidas. Útil para explicar conceptos difíciles a audiencias sin experiencia.
 
 ## Qué problema resuelve
 
-Hacer un buen explainer video es una cadena larga de decisiones acopladas: a quién le hablas, cuál es la promesa, cómo abres, cómo estructuras, qué muestras encuadre por encuadre, qué grabas, cómo editas, cómo publicas. Cada decisión tiene consecuencias cognitivas, narrativas y técnicas. Esta guía te acompaña decisión por decisión con justificación citable a fuente.
+Producir buen contenido pedagógico —video o estático— es una cadena larga de decisiones acopladas: a quién le hablas, cuál es la promesa, cómo abres, cómo estructuras, qué muestras encuadre por encuadre o panel por panel, cómo lo aterrizas. Cada decisión tiene consecuencias cognitivas, narrativas y técnicas. Esta guía te acompaña decisión por decisión con justificación citable a fuente.
 
-**No** cubre vlogs, reacciones, gameplay, entretenimiento puro, videoclips musicales ni contenido donde no hay un concepto o habilidad para transferir al espectador.
+**No** cubre vlogs, reacciones, gameplay, entretenimiento puro, videoclips musicales, memes, anuncios puros sin componente explicativo, ni contenido donde no hay un concepto o habilidad para transferir al espectador o lector.
 
 ## Filosofía
 
@@ -22,7 +25,7 @@ Todo claim tiene un **ID estable** (`[P1-§2.3-#8]`, `[P2-ficha-fireship]`, `[P3
 
 ### Capa 2 — Briefs (síntesis precomputada)
 
-43 briefs en `docs/briefs/<etapa>/NN-slug.md` (6+8+4+7+10+8), uno por decisión crítica. Cada brief es un ensamblaje denso de 40–100 líneas con contrato estricto: principio cognitivo + 2–3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. ≥5 citas a IDs estables por brief.
+50 briefs en `docs/briefs/<etapa>/NN-slug.md` (6 concepto + 8 guion + 4 previsualización + 7 grabación + 10 edición + 8 publicación + 7 material), uno por decisión crítica. Cada brief es un ensamblaje denso de 40–120 líneas con contrato estricto: principio cognitivo + 2–3 casos concretos + anti-patrón + heurística numérica + conflictos conocidos + salida esperada. ≥5 citas a IDs estables por brief.
 
 Los briefs son la capa que los skills consumen en runtime. **Los skills NO leen pilares completos.**
 
@@ -30,7 +33,12 @@ Los briefs son la capa que los skills consumen en runtime. **Los skills NO leen 
 
 Uno por etapa de producción. Cada skill carga los briefs de su etapa, camina al creador por las decisiones en orden, propone con cita trazable, flaggea conflictos, espera aprobación.
 
-**Contrato con estado (storyboard).** El Production Brief que produce `storyboard-explainer` lleva un header `estado: draft | locked` + `locked-at: YYYY-MM-DD`. Mientras está `draft`, es iterable. Una vez `locked`, es el contrato firme que `record-explainer` y `edit-explainer` consumen sin re-discutir (requisitos de captura, mapa de escenas, transiciones por bloque). Cambios post-lock vuelven explícitamente al storyboard.
+**Contrato con estado (briefs lockeables).** Tres skills producen briefs con header `estado: draft | locked` + `locked-at: YYYY-MM-DD`:
+- `concept-explainer` produce un **Concept Brief** (audiencia, objetivo, promesa, ángulo, formato, plataforma, tono, restricciones) que el resto del flujo de video consume read-only.
+- `storyboard-explainer` produce un **Production Brief** (storyboard, pacing, shotlist, requisitos de captura) que `record-explainer` y `edit-explainer` consumen.
+- `material-explainer` produce un **Didactic Brief** (concepto, audiencia, objetivo cognitivo, mapa conceptual, secuencia didáctica, estilo visual) que se materializa en uno o varios formatos (láminas / slides / long-form).
+
+Mientras está `draft`, el brief es iterable. Una vez `locked`, es contrato firme; cambios post-lock requieren re-invocar la skill correspondiente.
 
 ## Estructura
 
@@ -40,13 +48,15 @@ video-explainer-guide/
 │   ├── plugin.json
 │   └── marketplace.json
 ├── skills/
-│   ├── create-explainer/                 # Orquestador (entry point)
-│   ├── concept-explainer/                # Etapa 0: idea → Concept Brief
-│   ├── script-explainer/                 # Etapa 1: Concept Brief → guión
-│   ├── storyboard-explainer/             # Etapa 2 opcional: Production Brief
-│   ├── record-explainer/                 # Etapa 3: pre-producción y captura
-│   ├── edit-explainer/                   # Etapa 4: edición y post
-│   ├── publish-explainer/                # Etapa 5: publicación y medición
+│   ├── create-explainer/                 # Orquestador (entry point) — bifurca video vs material
+│   ├── concept-explainer/                # Video etapa 0: idea → Concept Brief
+│   ├── script-explainer/                 # Video etapa 1: Concept Brief → guión
+│   ├── storyboard-explainer/             # Video etapa 2 opcional: Production Brief
+│   ├── record-explainer/                 # Video etapa 3: pre-producción y captura
+│   ├── edit-explainer/                   # Video etapa 4: edición y post
+│   ├── publish-explainer/                # Video etapa 5: publicación y medición
+│   ├── material-explainer/               # Material no-video: Didactic Brief → láminas / slides / long-form
+│   ├── setup-environment/                # Perfil de entorno (OS, hardware, herramientas)
 │   ├── update-trends/                    # Mantenimiento del pilar 2
 │   ├── update-tools/                     # Mantenimiento del pilar 3
 │   └── sync-briefs/                      # Re-sincroniza briefs tras cambios en pilares
@@ -55,9 +65,10 @@ video-explainer-guide/
 │   │   ├── 01-fundamentos-cognitivos.md
 │   │   ├── 02-tendencias-y-casos.md
 │   │   └── 03-herramientas.md
-│   ├── briefs/<etapa>/NN-slug.md         # 43 briefs con contrato estricto
+│   ├── briefs/<etapa>/NN-slug.md         # 50 briefs con contrato estricto (incluye material/)
 │   ├── casos-de-exito/                   # Fichas de creators por nicho
-│   └── vistas-por-etapa/                 # Índices auto-generados
+│   ├── vistas-por-etapa/                 # Índices auto-generados (incluye material.md)
+│   └── arquitectura/                     # 5 ejes + 12 modalidades
 ├── scripts/
 │   ├── verificar-briefs.sh               # Detecta drift brief ↔ pilar (--strict para hooks/CI)
 │   ├── regenerar-vistas.sh               # Regenera vistas-por-etapa
@@ -67,9 +78,9 @@ video-explainer-guide/
 
 ## Uso
 
-Al iniciar una conversación sobre crear un explainer video con intención pedagógica, el skill `create-explainer` se auto-invoca. Identifica la etapa y delega al skill específico.
+Al iniciar una conversación sobre crear contenido pedagógico, el skill `create-explainer` se auto-invoca. Pregunta primero **video vs material estático** y luego delega al flujo correspondiente.
 
-Ejemplos que detonan el orquestador:
+Ejemplos que detonan el orquestador hacia **video**:
 - "Quiero hacer un tutorial sobre X"
 - "Voy a grabar un explainer de 3 minutos sobre Y"
 - "Estoy preparando un video-ensayo argumentando Z"
@@ -78,13 +89,26 @@ Ejemplos que detonan el orquestador:
 - "Estoy editando un video-lección y no sé dónde cortar"
 - "Voy a publicar y dudo del thumbnail"
 
+Ejemplos que detonan el orquestador hacia **material no-video**:
+- "Quiero explicar [concepto difícil] a alguien sin experiencia"
+- "Necesito una presentación de 30 min sobre X para una audiencia técnica"
+- "Voy a hacer una serie de láminas didácticas sobre Y"
+- "Quiero escribir un long-form que explique Z con visualizaciones"
+
 También puedes invocar skills directamente:
+
+**Flujo de video:**
 - `/concept-explainer` — idea → Concept Brief (audiencia, objetivo, promesa, ángulo, formato, plataforma, tono, restricciones)
 - `/script-explainer` — Concept Brief → guión
 - `/storyboard-explainer` — storyboard + pacing + shotlist (opcional, recomendado cuando hay plano visual)
 - `/record-explainer` — grabación
 - `/edit-explainer` — edición y post
 - `/publish-explainer` — publicación y medición
+
+**Flujo de material no-video:**
+- `/material-explainer` — concepto + audiencia + objetivo cognitivo → Didactic Brief → materializar en láminas didácticas (`prompts-laminas.md`), slides para presentar en vivo (`slides.md` formato Marp), o long-form escrito (`articulo.md`). La generación de imágenes se delega a herramientas externas (Claude artifact, GPT image, Midjourney) — la skill produce los prompts.
+
+**Mantenimiento y configuración:**
 - `/setup-environment` — configurar o actualizar tu perfil de entorno (OS, preferencias, hardware, herramientas). Los skills de etapa lo leen para adaptar recomendaciones a tu setup.
 - `/update-trends` — refrescar pilar 2
 - `/update-tools` — refrescar pilar 3

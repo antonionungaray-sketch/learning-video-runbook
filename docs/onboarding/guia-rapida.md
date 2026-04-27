@@ -1,10 +1,17 @@
 # Guía rápida — `video-explainer-guide`
 
-Plugin de Claude Code que te acompaña a producir un explainer video con intención pedagógica de principio a fin. Cubre seis etapas (concepto, guión, previsualización opcional, grabación, edición, publicación) y cada decisión que te propone va citada a evidencia: ciencia cognitiva del aprendizaje (Mayer, Sweller, Bjork), teoría del medio aplicable a cada modalidad (documental, ensayo fílmico, retórica visual, active learning) y casos actuales de creadores que están funcionando hoy. No te impone un estilo: te pone enfrente las opciones y los tradeoffs, tú decides.
+Plugin de Claude Code que te acompaña a producir contenido pedagógico de principio a fin. Cubre dos familias de output:
 
-## Qué videos cubre (y cuáles no)
+- **Explainer videos** vía seis etapas (concepto, guión, previsualización opcional, grabación, edición, publicación).
+- **Material didáctico no-video** *(desde v1.4.0)* — láminas didácticas secuenciales, slides para presentar en vivo (formato Marp), long-form escrito con visualizaciones — vía la skill `/material-explainer`.
 
-El plugin cubre el espectro del explainer video — cualquier formato con intención de que el espectador aprenda algo, entienda un concepto, adquiera una habilidad, cambie una intuición o se forme una opinión con evidencia:
+Cada decisión va citada a evidencia: ciencia cognitiva del aprendizaje (Mayer, Sweller, Bjork), teoría del medio aplicable a cada modalidad (documental, ensayo fílmico, retórica visual, active learning) y casos actuales de creadores que están funcionando hoy. No te impone un estilo: te pone enfrente las opciones y los tradeoffs, tú decides.
+
+## Qué cubre (y qué no)
+
+El plugin cubre cualquier contenido —video o estático— con intención de que el espectador o lector aprenda algo, entienda un concepto, adquiera una habilidad, cambie una intuición o se forme una opinión con evidencia.
+
+**Modalidades de video:**
 
 - Tutoriales técnicos (Fireship, yvonnickfrin)
 - Divulgación científica y cultural (Veritasium, Kurzgesagt)
@@ -19,17 +26,42 @@ El plugin cubre el espectro del explainer video — cualquier formato con intenc
 - Podcast audiovisual educativo (Lex Fridman, Huberman)
 - Personal essay pedagógico (Ali Abdaal)
 
-**Fuera de scope:** vlogs, reacciones, gameplay sin análisis, sketch cómico, videoclip musical, ASMR, highlights deportivos, stream conversacional abierto, video-arte, trailer/promo, y contenido publicitario directo sin componente explicativo. Si invocas el plugin para uno de estos, el orquestador lo identifica y te sugiere no usarlo — los principios de este toolkit *contaminan* esos géneros en lugar de mejorarlos.
+**Modalidades de material no-video:**
 
-## El pipeline
+- Láminas didácticas secuenciales (estilo libro de historia ilustrado, como un set de 9 capítulos sobre "El origen del yoga")
+- Slides para presentar en vivo (formato Marp, exportables a PDF/PPTX)
+- Long-form escrito con visualizaciones embebidas (artículo editorial)
 
-Seis etapas en orden, una skill por etapa. Dos son opcionales (concepto y storyboard/previsualización), aunque las dos vienen recomendadas por default:
+**Fuera de scope:** vlogs, reacciones, gameplay sin análisis, sketch cómico, videoclip musical, ASMR, highlights deportivos, stream conversacional abierto, video-arte, trailer/promo, contenido publicitario directo sin componente explicativo, memes, posters decorativos sin contenido secuencial. Si invocas el plugin para uno de estos, el orquestador lo identifica y te sugiere no usarlo — los principios de este toolkit *contaminan* esos géneros en lugar de mejorarlos.
+
+## Los dos pipelines
+
+El orquestador `/create-explainer` te pregunta primero **video o material estático**, y luego te lleva al pipeline correspondiente.
+
+### Pipeline de video (seis etapas)
+
+Una skill por etapa. Dos son opcionales (concepto y storyboard/previsualización), aunque las dos vienen recomendadas por default:
 
 ```
 concepto → guión → [storyboard] → grabación → edición → publicación
 ```
 
-El plugin trae un orquestador (`/create-explainer`) que detecta en qué etapa estás y delega a la skill correspondiente. Si prefieres saltarte el orquestador, puedes invocar cualquier skill directamente con su slash command.
+### Pipeline de material no-video (dos pasos)
+
+Una skill standalone (`/material-explainer`) con dos pasos: generar el plan didáctico (Didactic Brief) y materializarlo en uno o varios formatos:
+
+```
+mini Concept Brief (audiencia + objetivo cognitivo + restricciones)
+    → Didactic Brief (mapa conceptual + secuencia + estilo visual)
+    → Materializar en uno o varios:
+       • prompts-laminas.md (prompts para IA de imagen, set de capítulos)
+       • slides.md (formato Marp, exportable a PDF/PPTX)
+       • articulo.md (long-form editorial)
+```
+
+La generación de imágenes la hace una herramienta externa (Claude artifact, GPT image, Midjourney) — la skill produce los prompts.
+
+Si prefieres saltarte el orquestador, puedes invocar cualquier skill directamente con su slash command.
 
 > **Figura 1.** Pipeline horizontal con las seis etapas conectadas por flechas. Las cajas de "concepto" y "storyboard" van en línea punteada para señalar que son opcionales. Cada etapa lleva un iconito: bombilla (concepto), claqueta (guion), encuadre de storyboard (previsualización), cámara (grabación), tijeras (edición), megáfono (publicación).
 
@@ -50,17 +82,21 @@ Un recorrido completo se ve más o menos así:
 
 Por defecto, recorrer las seis etapas en una sola sesión es bastante. Es normal pausar entre etapas, exportar lo que llevas y volver más tarde.
 
-## El Concept Brief y el Production Brief
+## Los briefs lockeables (Concept, Production, Didactic)
 
-Dos artefactos con estado que actúan como contratos entre etapas.
+Tres artefactos con estado que actúan como contratos. Mismo patrón los tres: header `estado: draft | locked` + `locked-at: YYYY-MM-DD`.
 
-**Concept Brief** (producido por `/concept-explainer`): define audiencia, objetivo, promesa, ángulo, formato, plataforma, tono y restricciones. Estados:
-- **`draft`** — iterable. Las skills siguientes lo leen como referencia pero te avisan que está en borrador.
-- **`locked`** — contrato firme. Las skills siguientes lo tratan como dado; si algo cambia, re-invocas `/concept-explainer` para re-lockear.
+**Concept Brief** (producido por `/concept-explainer`, flujo de video): define audiencia, objetivo, promesa, ángulo, formato, plataforma, tono y restricciones.
 
-**Production Brief** (producido por `/storyboard-explainer`): storyboard, pacing estimado, shotlist, requisitos de captura. Mismos estados que el Concept Brief, misma disciplina.
+**Production Brief** (producido por `/storyboard-explainer`, flujo de video): storyboard, pacing estimado, shotlist, requisitos de captura.
 
-Si después de hacerle `lock` necesitas cambiar algo (porque cambió el alcance, porque al grabar descubriste algo), regresas a la skill correspondiente y vuelves a hacer el ciclo. No vale parchar grabación o edición saltándose esto.
+**Didactic Brief** (producido por `/material-explainer`, flujo de material no-video): concepto, audiencia, objetivo cognitivo, mapa conceptual con prerequisitos, secuencia didáctica de N bloques, estilo visual (preset + meta-prompt verbatim), consolidación.
+
+Estados (los tres):
+- **`draft`** — iterable. Las skills/pasos siguientes lo leen como referencia pero te avisan que está en borrador.
+- **`locked`** — contrato firme. Las skills/pasos siguientes lo tratan como dado; si algo cambia, re-invocas la skill que lo produjo para re-lockear.
+
+Si después de hacerle `lock` necesitas cambiar algo (porque cambió el alcance, porque al grabar/materializar descubriste algo), regresas a la skill correspondiente y vuelves a hacer el ciclo. No vale parchar etapas downstream saltándose esto.
 
 > **Figura 2.** Dos cajas, "draft" a la izquierda y "locked" a la derecha, conectadas por una flecha que dice "lock cuando todo está acordado". Una flecha curva regresa de "locked" a "draft" con la etiqueta "si algo cambia post-lock, re-invoco la skill que lo produjo".
 
@@ -78,13 +114,21 @@ El aviso de drift sale automáticamente cuando editas un pilar gracias a un hook
 
 Si quieres saltarte el orquestador y entrar directo a una skill (porque ya sabes en qué etapa estás), estos son los slash commands disponibles:
 
-- `/create-explainer` — orquestador (entry point recomendado).
+**Orquestador:**
+- `/create-explainer` — entry point recomendado. Bifurca video vs material estático y delega.
+
+**Flujo de video:**
 - `/concept-explainer` — concepto → Concept Brief.
 - `/script-explainer` — guión.
 - `/storyboard-explainer` — storyboard, pacing, shotlist (opcional, recomendada).
 - `/record-explainer` — pre-producción y captura.
 - `/edit-explainer` — edición y post.
 - `/publish-explainer` — publicación y medición.
+
+**Flujo de material no-video:**
+- `/material-explainer` — concepto + audiencia + objetivo cognitivo → Didactic Brief → materializar en láminas didácticas (`prompts-laminas.md`), slides para presentar (`slides.md` Marp), o long-form escrito (`articulo.md`).
+
+**Mantenimiento y configuración:**
 - `/setup-environment` — configurar o actualizar tu perfil de entorno (OS, preferencias, hardware, herramientas). Los skills de etapa lo leen para adaptar recomendaciones a tu setup.
 - `/update-trends` — refrescar tendencias y casos.
 - `/update-tools` — refrescar herramientas.
